@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 3740bb0dfaef1b546a8f95187850bf8f
+timeCreated: 1500327986
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - letterMaterial: {fileID: 2100000, guid: 8c16655873601444fadd6d7721a173cb, type: 2}
+  - font: {fileID: 12800000, guid: e156d56fd852bcb41920abac35f8701d, type: 3}
+  - hDimension: {instanceID: 0}
+  - dDimension: {instanceID: 0}
+  - wDimension: {instanceID: 0}
+  - hDimensionMesh: {instanceID: 0}
+  - dDimensionMesh: {instanceID: 0}
+  - wDimensionMesh: {instanceID: 0}
+  - htm: {instanceID: 0}
+  - dtm: {instanceID: 0}
+  - wtm: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
