@@ -1,3 +1,13 @@
-﻿>>Loading bar
->>pop up with option
->>
+﻿>>Removing username for registration
+>>Updating lable in forgot passord and login
+>>Changes notification text where username is used
+>>Making changes in authentication script
+>>Renaming game objects in heirarchy to avoid confusion
+>>Creating scroll view for story selection
+>>Adding animation for story selection
+>>Managing flow for story selection
+>>Removing old ui images
+>>Creating build and checking ui
+>>Replacing ui sprite with new designs
+>>Creating free diamon pop up
+>>Adding animation and changing pop up content as per requirement

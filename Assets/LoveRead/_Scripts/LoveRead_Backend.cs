@@ -12,6 +12,11 @@ public class LoveRead_Backend : MonoBehaviour
     public static string userkey = "userkey";
     public static string RESEND_VARIFICATION = BASE_URL + "api/resendactivelink";
     public static int SelectedPlayerIndex=4;
+
+    public static string SPLASH_SCENE= "0_SplashScene";
+    public static string MAIN_MENU_SCENE= "1_MainMenuScene";
+    public static string AUTHENTICATION_SCENE= "2_AuthenticationScene";
+    
 }
 
 /*************************************************/
@@ -39,7 +44,7 @@ public class login_response_data
     public string id;
     public string name;
     public string email;
-    public string username;
+    //public string username;
     public int is_varified;
 }
 /************** LOGIN ENDS *************/
@@ -54,7 +59,7 @@ public class login_response_data
 public class register_request
 {
     public string name;
-    public string username;
+    //public string username;
     public string email;
     public string password;
 }
@@ -73,7 +78,7 @@ public class register_response_data
 {
     public string id;
     public string name;
-    public string username;
+    //public string username;
     public string email;
     public string otp;
 }
@@ -110,7 +115,7 @@ public class forgot_password_response
 public class forgot_password_response_data
 {
     public string id;
-    public string username;
+    //public string username;
     public string otp;
 }
 

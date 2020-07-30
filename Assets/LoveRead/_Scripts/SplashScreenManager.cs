@@ -1,36 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Michsky.UI.FSC;
 using UnityEngine.SceneManagement;
+
 public class SplashScreenManager : MonoBehaviour
 {
-
-    public TextMeshProUGUI PhraseText;
-    public string[] Phrases;
-    int PhraseIndex = -1;
+    public List<TextMeshProUGUI> PhrasesTextList = new List<TextMeshProUGUI>();
+    //public TextMeshProUGUI[] PhrasesText;
+    //public string[] Phrases;
+    public int PhraseIndex;
     public Image LoadingBarSlider;
     public float LoadingSpeed;
     public TextMeshProUGUI LoadingProgressText;
-    string NextSceneName = "1_MainMenuScene";
+    
     void Start()
     {
+        //ScreenTransitionAnimation.SetActive(true);
+        //ScreenTransitionAnimation.GetComponent<Animator>().Play("");
+        //ScreenTransitionAnimation.GetComponent<Animator>().Play(panelFadeIn);
+        Shuffle();
+    }
+
+
+    void HideAllPhrases()
+    {
+        for(int i = 0; i < PhrasesTextList.Count;i++)
+        {
+            PhrasesTextList[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void Shuffle()
+    {
+        for (int i = 0; i < PhrasesTextList.Count; i++)
+        {
+            int rnd = Random.Range(0, PhrasesTextList.Count);
+            TextMeshProUGUI tempGO = PhrasesTextList[rnd];
+            PhrasesTextList[rnd] = PhrasesTextList[i];
+            PhrasesTextList[i] = tempGO;
+        }
+
         SwitchPhrase();
     }
 
-
     void SwitchPhrase()
     {
-        PhraseIndex = PhraseIndex + 1;
-        if(PhraseIndex> Phrases.Length-1)
+        HideAllPhrases();
+        PhraseIndex++;
+        if(PhraseIndex== PhrasesTextList.Count)
         {
             PhraseIndex = 0;
         }
-        PhraseText.text = Phrases[PhraseIndex];
+        PhrasesTextList[PhraseIndex].gameObject.SetActive(true);
         Invoke("SwitchPhrase", 3);
     }
+
+    
 
     bool CanGoToNextScene = false;
 
@@ -58,7 +84,7 @@ public class SplashScreenManager : MonoBehaviour
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene(NextSceneName);
+        SceneManager.LoadScene(LoveRead_Backend.AUTHENTICATION_SCENE);
     }
 
 

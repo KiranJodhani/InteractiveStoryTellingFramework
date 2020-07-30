@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using Michsky.UI.ModernUIPack;
+using UnityEngine.UI;
 
 public class AuthenticationManager : MonoBehaviour
 {
@@ -24,12 +25,12 @@ public class AuthenticationManager : MonoBehaviour
     public GameObject ForgotPasswordScreen;
 
     [Header("####### LOGIN TEXTBOXES ###########")]
-    public TMP_InputField username_InputField_login;
+    public TMP_InputField email_InputField_login;
     public TMP_InputField password_InputField_login;
 
     [Header("####### REGISTER TEXTBOXES ###########")]
     public TMP_InputField name_InputField;
-    public TMP_InputField username_InputField;
+    //public TMP_InputField username_InputField;
     public TMP_InputField email_InputField;
     public TMP_InputField password_InputField;
     public const string MatchEmailPattern =
@@ -39,7 +40,8 @@ public class AuthenticationManager : MonoBehaviour
       + @"([a-zA-Z]+[\w-]+\.)+[a-zA-Z]{2,4})$";
 
     [Header("####### FORGOT PASSWORD TEXTBOXES ###########")]
-    public TMP_InputField username_InputField_fp;
+    public TMP_InputField email_InputField_fp;
+    public Button FP_Backbutton;
 
     [Header("####### MODERN UI ###########")]
     public WindowManager WindowManagerInstance;
@@ -134,9 +136,9 @@ public class AuthenticationManager : MonoBehaviour
 
     public void OnClickLoginButton()
     {
-        if(username_InputField_login.text=="" || username_InputField_login.text == null)
+        if(email_InputField_login.text=="" || email_InputField_login.text == null)
         {
-            OpenNotification("Please Enter username or email",1);
+            OpenNotification("Please Enter email",1);
             return;
         }
 
@@ -146,7 +148,7 @@ public class AuthenticationManager : MonoBehaviour
             return;
         }
         ShowLoadingScreen();
-        login_Request_Instance.email = username_InputField_login.text;
+        login_Request_Instance.email = email_InputField_login.text;
         login_Request_Instance.password = password_InputField_login.text;
         string json = JsonUtility.ToJson(login_Request_Instance);
         StartCoroutine(LoginRequestCo(json));
@@ -187,7 +189,7 @@ public class AuthenticationManager : MonoBehaviour
     {
         HideAllScreen();
         name_InputField.text = "";
-        username_InputField.text = "";
+        //username_InputField.text = "";
         email_InputField.text = "";
         password_InputField.text = "";
     }
@@ -195,11 +197,11 @@ public class AuthenticationManager : MonoBehaviour
     public void OnClickSignUpButton()
     {
 
-        if (username_InputField.text == "" || username_InputField.text == null)
-        {
-            OpenNotification("Please Enter username",1);
-            return;
-        }
+        //if (username_InputField.text == "" || username_InputField.text == null)
+        //{
+        //    OpenNotification("Please Enter username",1);
+        //    return;
+        //}
 
         if (name_InputField.text == "" || name_InputField.text == null)
         {
@@ -228,7 +230,7 @@ public class AuthenticationManager : MonoBehaviour
         }
 
         ShowLoadingScreen();
-        register_Request_Instance.username = username_InputField.text;
+        //register_Request_Instance.username = username_InputField.text;
         register_Request_Instance.name = name_InputField.text;
         register_Request_Instance.email = email_InputField.text;
         register_Request_Instance.password = password_InputField.text;
@@ -283,14 +285,14 @@ public class AuthenticationManager : MonoBehaviour
     {
         HideAllScreen();
         ForgotPasswordScreen.SetActive(true);
-        username_InputField_fp.text = "";
+        email_InputField_fp.text = "";
     }
 
 
     public void OnClickResendButton()
     {
         ShowLoadingScreen();
-        resend_varification_request_Instance.email = username_InputField_login.text;
+        resend_varification_request_Instance.email = email_InputField_login.text;
         string json = JsonUtility.ToJson(resend_varification_request_Instance);
         StartCoroutine(ResendVarificationCo(json));
     }
@@ -323,15 +325,15 @@ public class AuthenticationManager : MonoBehaviour
 
     public void FP_OnClickSubmitButton()
     {
-        if (username_InputField_fp.text == "" || username_InputField_fp.text == null)
+        if (email_InputField_fp.text == "" || email_InputField_fp.text == null)
         {
-            OpenNotification("Please Enter username or Email",1);
+            OpenNotification("Please Enter Email",1);
             return;
         }
         else
         {
             ShowLoadingScreen();
-            forgot_password_request_Instance.email = username_InputField_fp.text;
+            forgot_password_request_Instance.email = email_InputField_fp.text;
             string json = JsonUtility.ToJson(forgot_password_request_Instance);
             StartCoroutine(FP_OnClickSubmitButtonCo(json));
         }
@@ -369,12 +371,14 @@ public class AuthenticationManager : MonoBehaviour
 
     public void FP_BackButton()
     {
+        FP_Backbutton.interactable = false;
         PlayScreenTransitionAnimation();
         Invoke("OpenMainMenu", 1);
     }
 
     void OpenMainMenu()
     {
+        FP_Backbutton.interactable = true;
         HideAllScreen();
         MainMenuScreen.SetActive(true);
         WindowManagerInstance.OpenPanel("Register");
