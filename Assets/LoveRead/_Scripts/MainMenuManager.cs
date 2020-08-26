@@ -6,13 +6,19 @@ using System;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public main_character main_Character_api;
     public MainCharacter MainCharacterInstance;
     public ModalWindowManager ModalWindowManagerInstance;
-    [Header("##### SETTINGS MENU #########")]
+    [Header("##### SCREENS #########")]
+    public GameObject MainCharacterScreen;
+    public GameObject StorySelectionScreen;
+    public GameObject ShopScreen;
+    public GameObject BookSelectionScreen;
     public GameObject SettingScreen;
     public Button MenuButton;
 
     public GameObject ScreenTransitionAnimation;
+    public GameObject EventSystem;
     private string panelFadeIn = "Panel Open";
 
     [Header("##### HAIR #########")]
@@ -48,10 +54,69 @@ public class MainMenuManager : MonoBehaviour
     public Color ScrollItemSelectedColor;
     public Color ScrollItemNormalColor;
 
-    [Header("##### FX #########")]
-    public ParticleSystem BoomParticle;
+    [Header("##### BOOK SELECTION #########")]
+    public Transform BookSelectionContent;
+    public GameObject BookSelectionScroll;
+
+
     void Start()
     {
+        //OpenMainCharacterScreen();
+        StorySelectionScreen.SetActive(true);
+    }
+
+
+    public void PlayScreenTransitionAnimation()
+    {
+        ScreenTransitionAnimation.SetActive(true);
+        ScreenTransitionAnimation.GetComponent<Animator>().Play("");
+        ScreenTransitionAnimation.GetComponent<Animator>().Play(panelFadeIn);
+        StartCoroutine(ManageUI_Interaction());
+    }
+    public void ToogleSettingMenu()
+    {
+        PlayScreenTransitionAnimation();
+        Invoke("SettingScreenToogle", 1);
+    }
+
+    IEnumerator ManageUI_Interaction()
+    {
+        EventSystem.SetActive(false);
+        yield return new WaitForSeconds(1.5f);
+        EventSystem.SetActive(true);
+    }
+
+    void SettingScreenToogle()
+    {
+        SettingScreen.SetActive(!SettingScreen.activeSelf);
+        if(!SettingScreen.activeSelf)
+        {
+            HideAllScreens();
+            MainCharacterScreen.SetActive(true);
+        }
+    }
+
+    public void OpenFreeDiamondPopup()
+    {
+        ModalWindowManagerInstance.OpenWindow();
+    }
+
+    void HideAllScreens()
+    {
+        MainCharacterScreen.SetActive(false);
+        StorySelectionScreen.SetActive(false);
+        ShopScreen.SetActive(false);
+        BookSelectionScreen.SetActive(false);
+        SettingScreen.SetActive(false);
+    }
+
+    /**********************************************************/
+    /************* CHARACTER CUSTOMISATION STARTS ************/
+
+    public void OpenMainCharacterScreen()
+    {
+        HideAllScreens();
+        MainCharacterScreen.SetActive(true);
         Main_Look_Button();
         ApplySelectedEyeColor(0);
         ApplySelectedSkinColor(0);
@@ -67,38 +132,6 @@ public class MainMenuManager : MonoBehaviour
         HairStyleScrollContent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
     }
 
-    public void PlayScreenTransitionAnimation()
-    {
-        ScreenTransitionAnimation.SetActive(true);
-        ScreenTransitionAnimation.GetComponent<Animator>().Play("");
-        ScreenTransitionAnimation.GetComponent<Animator>().Play(panelFadeIn);
-    }
-    public void ToogleSettingMenu()
-    {
-        PlayScreenTransitionAnimation();
-        Invoke("SettingScreenToogle", 1);
-        StartCoroutine(ManageButtonInteraction());
-    }
-
-    IEnumerator ManageButtonInteraction()
-    {
-        MenuButton.interactable = false;
-        yield return new WaitForSeconds(1.5f);
-        MenuButton.interactable = true;
-    }
-
-    void SettingScreenToogle()
-    {
-        SettingScreen.SetActive(!SettingScreen.activeSelf);
-    }
-
-    public void OpenFreeDiamondPopup()
-    {
-        ModalWindowManagerInstance.OpenWindow();
-    }
-
-    /**********************************************************/
-    /************* CHARACTER CUSTOMISATION STARTS ************/
 
     public void Main_Look_Button()
     {
@@ -291,13 +324,124 @@ public class MainMenuManager : MonoBehaviour
             }
         }
     }
-
-    void PlayParticle()
-    {
-        BoomParticle.gameObject.SetActive(true);
-        BoomParticle.Play();
-    }
     /************* CHARACTER CUSTOMISATION ENDS ************/
+    /*******************************************************/
+
+
+    /**************************************/
+    /************* SHOP STARTS ************/
+    public void OpenShopMenu()
+    {
+        StartCoroutine(OpenShopMenuCo());
+    }
+
+    IEnumerator OpenShopMenuCo()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+        ShopScreen.SetActive(true);
+    }
+
+    public void CloseShopMenu()
+    {
+        StartCoroutine(CloseShopMenuCo());
+    }
+
+    IEnumerator CloseShopMenuCo()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+        SettingScreen.SetActive(true);
+    }
+
+    /************* SHOP ENDS ************/
+    /**************************************/
+
+    /**********************************************************/
+    /************* STORY/BOOK/CHAPTER STARTS ************/
+    public void OpenStorySelectionScreen()
+    {
+        StartCoroutine(OpenStorySelectionScreenCo());
+    }
+
+    IEnumerator OpenStorySelectionScreenCo()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+        StorySelectionScreen.SetActive(true);
+    }
+
+    public void Close_StorySelection()
+    {
+        StartCoroutine(Close_StorySelectionCo());
+    }
+
+    IEnumerator Close_StorySelectionCo()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+        MainCharacterScreen.SetActive(true);
+    }
+
+    public void OpenBookSelectionScreen()
+    {
+        StartCoroutine(OpenBookSelectionScreenCo());
+    }
+
+    IEnumerator OpenBookSelectionScreenCo()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+        BookSelectionScreen.SetActive(true);
+        OnClickBook(0);
+    }
+
+    public void Close_BookSelection()
+    {
+        StartCoroutine(Close_BookSelectionCo());
+    }
+
+    IEnumerator Close_BookSelectionCo()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+        StorySelectionScreen.SetActive(true);
+    }
+
+    public void OnClickBook(int bookIndex)
+    {
+        int children = BookSelectionContent.childCount;
+        for (int i = 0; i < children; i++)
+        {
+            if (i == bookIndex)
+            {
+                BookSelectionContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
+            }
+            else
+            {
+                BookSelectionContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
+            }
+        }
+    }
+
+    public void Open_LetsChooseLookPopup()
+    {
+        StartCoroutine(Open_LetsChooseLookPopupCo());
+    }
+
+    IEnumerator Open_LetsChooseLookPopupCo()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+    }
+    /************* STORY/BOOK/CHAPTER ENDS ************/
     /**********************************************************/
 }
 

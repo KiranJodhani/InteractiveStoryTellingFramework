@@ -27,11 +27,11 @@ MonoBehaviour:
   buttonIconBasicColor: {r: 1, g: 1, b: 1, a: 1}
   buttonIconColor: {r: 0.37254903, g: 0.40784314, b: 0.4509804, a: 1}
   buttonIconHighlightedColor: {r: 1, g: 1, b: 1, a: 1}
-  dropdownItemFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
+  dropdownItemFont: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   dropdownItemFontSize: 22.5
   dropdownThemeType: 0
   dropdownAnimationType: 1
-  dropdownFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
+  dropdownFont: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   dropdownFontSize: 22.5
   dropdownColor: {r: 0.3254902, g: 0.3529412, b: 0.38431373, a: 1}
   dropdownTextColor: {r: 1, g: 1, b: 1, a: 1}
@@ -39,7 +39,7 @@ MonoBehaviour:
   dropdownItemColor: {r: 0.3019608, g: 0.3254902, b: 0.35686275, a: 1}
   dropdownItemTextColor: {r: 1, g: 1, b: 1, a: 1}
   dropdownItemIconColor: {r: 255, g: 255, b: 255, a: 1}
-  selectorFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
+  selectorFont: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   hSelectorFontSize: 28
   selectorColor: {r: 1, g: 1, b: 1, a: 1}
   selectorHighlightedColor: {r: 0.3254902, g: 0.3529412, b: 0.38431373, a: 1}
@@ -56,7 +56,7 @@ MonoBehaviour:
   modalWindowTitleColor: {r: 1, g: 1, b: 1, a: 1}
   modalWindowDescriptionColor: {r: 1, g: 1, b: 1, a: 1}
   modalWindowIconColor: {r: 1, g: 1, b: 1, a: 1}
-  modalWindowBackgroundColor: {r: 0.69803923, g: 0.75686276, b: 0.827451, a: 1}
+  modalWindowBackgroundColor: {r: 1, g: 1, b: 1, a: 1}
   modalWindowContentPanelColor: {r: 0.69803923, g: 0.75686276, b: 0.827451, a: 0}
   notificationTitleFont: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf,
     type: 2}
@@ -68,7 +68,7 @@ MonoBehaviour:
   notificationTitleColor: {r: 1, g: 1, b: 1, a: 1}
   notificationDescriptionColor: {r: 1, g: 1, b: 1, a: 1}
   notificationIconColor: {r: 1, g: 1, b: 1, a: 1}
-  progressBarLabelFont: {fileID: 11400000, guid: 84dd14695854bbc43a5faa24fcf93d0d,
+  progressBarLabelFont: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf,
     type: 2}
   progressBarLabelFontSize: 25
   progressBarColor: {r: 1, g: 1, b: 1, a: 1}

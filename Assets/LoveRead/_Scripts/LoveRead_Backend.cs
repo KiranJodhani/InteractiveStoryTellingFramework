@@ -16,7 +16,11 @@ public class LoveRead_Backend : MonoBehaviour
     public static string SPLASH_SCENE= "0_SplashScene";
     public static string MAIN_MENU_SCENE= "1_MainMenuScene";
     public static string AUTHENTICATION_SCENE= "2_AuthenticationScene";
+
+    public static string MAIN_CHARACTER_IMAGES = BASE_URL + "main_character";
+
     
+
 }
 
 /*************************************************/
@@ -141,4 +145,79 @@ public class resend_varification_response
 }
 
 /************** RESEND LINK ENDS *************/
+/*******************************************/
+
+/*************************************************/
+/************** MAIN CHARACTER STARTS *************/
+
+[Serializable]
+public class main_character
+{
+    public main_character_hair[] hair;
+    public main_character_look look;
+    public main_character_cloth[] cloths;
+    public main_character_accessories[] accessories;
+}
+
+[Serializable]
+public class main_character_look
+{
+    public main_character_look_skintone[] mc_look_skintone;
+    public main_character_look_eyeColor[] mc_look_eyetone;
+}
+
+[Serializable]
+public class main_character_look_skintone
+{
+    public string skintone_name;
+    public string body_image;
+    public string color_icon;
+    public main_character_lipstick[] lipsticks;
+}
+
+[Serializable]
+public class main_character_lipstick
+{
+    public string lipstick_name;
+    public string[] lipstick_images;
+    public string[] lipstick_icons;
+}
+
+[Serializable]
+public class main_character_look_eyeColor
+{
+    public string eyecolor_name;
+    public string eye_image;
+    public string eye_icon;
+}
+
+[Serializable]
+public class main_character_hair
+{
+    public string hair_name;
+    public string[] hairstyle_back_images;
+    public string[] hairstyle_shadow_images;
+    public string[] hairstyle_images;
+    public string[] hairstyle_color_icons;
+    public string[] hairstyle_icons;
+}
+
+[Serializable]
+public class main_character_cloth
+{
+    public string cloth_name;
+    public string cloth_image;
+    public string cloth_icon;
+}
+
+[Serializable]
+public class main_character_accessories
+{
+    public string accessories_name;
+    public string accessories_image;
+    public string accessories_icon;
+}
+
+
+/************** MAIN CHARACTER ENDS *************/
 /*******************************************/
