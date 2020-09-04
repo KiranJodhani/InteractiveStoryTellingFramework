@@ -9,8 +9,7 @@ using UnityEngine.UI;
 
 public class AuthenticationManager : MonoBehaviour
 {
-
-    [Header("####### API INSTANCES ###########")]
+    [Header("##### API INSTANCES #####")]
     public login_request login_Request_Instance;
     public login_response login_Response_Instance;
     public register_request register_Request_Instance;
@@ -20,15 +19,15 @@ public class AuthenticationManager : MonoBehaviour
     public resend_varification_request resend_varification_request_Instance;
     public resend_varification_response resend_varification_response_Instance;
 
-    [Header("####### SCREENS ###########")]
+    [Header("##### SCREENS #####")]
     public GameObject MainMenuScreen;
     public GameObject ForgotPasswordScreen;
 
-    [Header("####### LOGIN TEXTBOXES ###########")]
+    [Header("##### LOGIN TEXTBOXES #####")]
     public TMP_InputField email_InputField_login;
     public TMP_InputField password_InputField_login;
 
-    [Header("####### REGISTER TEXTBOXES ###########")]
+    [Header("##### REGISTER TEXTBOXES #####")]
     public TMP_InputField name_InputField;
     //public TMP_InputField username_InputField;
     public TMP_InputField email_InputField;
@@ -39,11 +38,11 @@ public class AuthenticationManager : MonoBehaviour
       + @"([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\.([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
       + @"([a-zA-Z]+[\w-]+\.)+[a-zA-Z]{2,4})$";
 
-    [Header("####### FORGOT PASSWORD TEXTBOXES ###########")]
+    [Header("##### FORGOT PASSWORD TEXTBOXES #####")]
     public TMP_InputField email_InputField_fp;
     public Button FP_Backbutton;
 
-    [Header("####### MODERN UI ###########")]
+    [Header("##### MODERN UI #####")]
     public WindowManager WindowManagerInstance;
     public GameObject LoadingScreen;
     public NotificationManager NotificationManagerInstance;
@@ -54,9 +53,10 @@ public class AuthenticationManager : MonoBehaviour
     public ModalWindowManager ModalWindowManagerInstance;
     public TextMeshProUGUI AlertWindowText;
 
-    [Header("####### SCREEN TRANSITION ###########")]
+    [Header("##### SCREEN TRANSITION #####")]
     public GameObject ScreenTransitionAnimation;
     private string panelFadeIn = "Panel Open";
+
 
 
     void Start()
@@ -72,7 +72,6 @@ public class AuthenticationManager : MonoBehaviour
         //}
     }
 
-
     void ShowModalWindow(string msg)
     {
         ModalWindowManagerInstance.descriptionText = msg;
@@ -85,7 +84,7 @@ public class AuthenticationManager : MonoBehaviour
         ModalWindowManagerInstance.OpenWindow();
     }
 
-    public void OpenNotification(string msg,int length)
+    public void OpenNotification(string msg, int length)
     {
         NotificationManagerInstance.description = msg;
         NotificationText.text = msg;
@@ -133,20 +132,20 @@ public class AuthenticationManager : MonoBehaviour
         LoadingScreen.SetActive(false);
     }
 
-
     public void OnClickLoginButton()
     {
-        if(email_InputField_login.text=="" || email_InputField_login.text == null)
+        if (email_InputField_login.text == "" || email_InputField_login.text == null)
         {
-            OpenNotification("Please Enter email",1);
+            OpenNotification("Please Enter email", 1);
             return;
         }
 
         if (password_InputField_login.text == "" || password_InputField_login.text == null)
         {
-            OpenNotification("Please Enter password",1);
+            OpenNotification("Please Enter password", 1);
             return;
         }
+
         ShowLoadingScreen();
         login_Request_Instance.email = email_InputField_login.text;
         login_Request_Instance.password = password_InputField_login.text;
@@ -177,10 +176,10 @@ public class AuthenticationManager : MonoBehaviour
         else if (login_Response_Instance.status == "false")
         {
             OpenNotification(login_Response_Instance.message, 2);
-            if (login_Response_Instance.data.is_varified==0  && login_Response_Instance.data.email != ""
+            if (login_Response_Instance.data.is_varified == 0 && login_Response_Instance.data.email != ""
                     && login_Response_Instance.data.email != null)
             {
-                ShowModalWindow(login_Response_Instance.message+". \nIf you wish to get new link Please click on Resend button.");
+                ShowModalWindow(login_Response_Instance.message + ". \nIf you wish to get new link Please click on Resend button.");
             }
         }
     }
@@ -196,7 +195,6 @@ public class AuthenticationManager : MonoBehaviour
 
     public void OnClickSignUpButton()
     {
-
         //if (username_InputField.text == "" || username_InputField.text == null)
         //{
         //    OpenNotification("Please Enter username",1);
@@ -205,27 +203,27 @@ public class AuthenticationManager : MonoBehaviour
 
         if (name_InputField.text == "" || name_InputField.text == null)
         {
-            OpenNotification("Please Enter name",1);
+            OpenNotification("Please Enter name", 1);
             return;
         }
 
         if (email_InputField.text == "" || email_InputField.text == null)
         {
-            OpenNotification("Please Enter email",1);
+            OpenNotification("Please Enter email", 1);
             return;
         }
         else
         {
             if (!validateEmail(email_InputField.text))
             {
-                OpenNotification("Please Enter valid email",1);
+                OpenNotification("Please Enter valid email", 1);
                 return;
             }
         }
 
         if (password_InputField.text == "" || password_InputField.text == null)
         {
-            OpenNotification("Please Enter password",1);
+            OpenNotification("Please Enter password", 1);
             return;
         }
 
@@ -237,7 +235,6 @@ public class AuthenticationManager : MonoBehaviour
         string json = JsonUtility.ToJson(register_Request_Instance);
         StartCoroutine(RegisterRequestCo(json));
     }
-
 
     IEnumerator RegisterRequestCo(string Bodyjson)
     {
@@ -252,17 +249,18 @@ public class AuthenticationManager : MonoBehaviour
         register_Response_Instance = JsonUtility.FromJson<register_response>(request.downloadHandler.text);
         if (request.downloadHandler.text == "")
         {
-            OpenNotification("Server Error",1);
+            OpenNotification("Server Error", 1);
         }
         else if (register_Response_Instance.status == "true")
         {
-            OpenNotification(register_Response_Instance.message,3);
+            OpenNotification(register_Response_Instance.message, 3);
         }
         else if (register_Response_Instance.status == "false")
         {
-            OpenNotification(register_Response_Instance.message,2);
+            OpenNotification(register_Response_Instance.message, 2);
         }
     }
+
     public static bool validateEmail(string email)
     {
         if (email != null)
@@ -274,7 +272,7 @@ public class AuthenticationManager : MonoBehaviour
             return false;
         }
     }
-    
+
     public void OnClickForgotPassword()
     {
         PlayScreenTransitionAnimation();
@@ -287,7 +285,6 @@ public class AuthenticationManager : MonoBehaviour
         ForgotPasswordScreen.SetActive(true);
         email_InputField_fp.text = "";
     }
-
 
     public void OnClickResendButton()
     {
@@ -322,12 +319,11 @@ public class AuthenticationManager : MonoBehaviour
         }
     }
 
-
     public void FP_OnClickSubmitButton()
     {
         if (email_InputField_fp.text == "" || email_InputField_fp.text == null)
         {
-            OpenNotification("Please Enter Email",1);
+            OpenNotification("Please Enter Email", 1);
             return;
         }
         else
@@ -396,5 +392,4 @@ public class AuthenticationManager : MonoBehaviour
     {
         ScreenTransitionAnimation.SetActive(false);
     }
-
 }

@@ -13,7 +13,14 @@ public class SplashScreenManager : MonoBehaviour
     public Image LoadingBarSlider;
     public float LoadingSpeed;
     public TextMeshProUGUI LoadingProgressText;
-    
+
+    bool CanGoToNextScene = false;
+
+    public GameObject ScreenTransitionAnimation;
+    private string panelFadeIn = "Panel Open";
+
+
+
     void Start()
     {
         //ScreenTransitionAnimation.SetActive(true);
@@ -22,10 +29,9 @@ public class SplashScreenManager : MonoBehaviour
         Shuffle();
     }
 
-
     void HideAllPhrases()
     {
-        for(int i = 0; i < PhrasesTextList.Count;i++)
+        for (int i = 0; i < PhrasesTextList.Count; i++)
         {
             PhrasesTextList[i].gameObject.SetActive(false);
         }
@@ -40,7 +46,6 @@ public class SplashScreenManager : MonoBehaviour
             PhrasesTextList[rnd] = PhrasesTextList[i];
             PhrasesTextList[i] = tempGO;
         }
-
         SwitchPhrase();
     }
 
@@ -48,7 +53,7 @@ public class SplashScreenManager : MonoBehaviour
     {
         HideAllPhrases();
         PhraseIndex++;
-        if(PhraseIndex== PhrasesTextList.Count)
+        if (PhraseIndex == PhrasesTextList.Count)
         {
             PhraseIndex = 0;
         }
@@ -56,23 +61,16 @@ public class SplashScreenManager : MonoBehaviour
         Invoke("SwitchPhrase", 3);
     }
 
-    
-
-    bool CanGoToNextScene = false;
-
     private void Update()
     {
         LoadingBarSlider.fillAmount = LoadingBarSlider.fillAmount + (LoadingSpeed * Time.deltaTime);
         LoadingProgressText.text = "Loading:" + LoadingBarSlider.fillAmount.ToString("P0");
-        if(!CanGoToNextScene && LoadingBarSlider.fillAmount.ToString("P0")=="100%")
+        if (!CanGoToNextScene && LoadingBarSlider.fillAmount.ToString("P0") == "100%")
         {
             CanGoToNextScene = true;
             PlayScreenTransitionAnimation();
         }
     }
-
-    public GameObject ScreenTransitionAnimation;
-    private string panelFadeIn = "Panel Open";
 
     public void PlayScreenTransitionAnimation()
     {
@@ -86,6 +84,4 @@ public class SplashScreenManager : MonoBehaviour
     {
         SceneManager.LoadScene(LoveRead_Backend.AUTHENTICATION_SCENE);
     }
-
-
 }

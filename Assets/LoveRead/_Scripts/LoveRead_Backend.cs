@@ -18,14 +18,12 @@ public class LoveRead_Backend : MonoBehaviour
     public static string AUTHENTICATION_SCENE= "2_AuthenticationScene";
 
     public static string MAIN_CHARACTER_IMAGES = BASE_URL + "main_character";
-
-    
-
 }
 
-/*************************************************/
-/************** LOGIN STARTS *************/
 
+
+/**********************************/
+/********** LOGIN STARTS **********/
 [Serializable]
 public class login_request
 {
@@ -51,14 +49,13 @@ public class login_response_data
     //public string username;
     public int is_varified;
 }
-/************** LOGIN ENDS *************/
-/*************************************************/
+/********** LOGIN ENDS **********/
+/********************************/
 
 
 
-/*************************************************/
-/************** REGISTER STARTS *************/
-
+/*************************************/
+/********** REGISTER STARTS **********/
 [Serializable]
 public class register_request
 {
@@ -122,14 +119,13 @@ public class forgot_password_response_data
     //public string username;
     public string otp;
 }
+/********** REGISTER ENDS **********/
+/***********************************/
 
-/************** REGISTER ENDS *************/
-/*******************************************/
 
 
-/*************************************************/
-/************** RESEND LINK STARTS *************/
-
+/****************************************/
+/********** RESEND LINK STARTS **********/
 [Serializable]
 public class resend_varification_request
 {
@@ -143,13 +139,13 @@ public class resend_varification_response
     public string status;
     public string message;
 }
+/********** RESEND LINK ENDS **********/
+/**************************************/
 
-/************** RESEND LINK ENDS *************/
+
+
 /*******************************************/
-
-/*************************************************/
-/************** MAIN CHARACTER STARTS *************/
-
+/********** MAIN CHARACTER STARTS **********/
 [Serializable]
 public class main_character
 {
@@ -217,7 +213,5 @@ public class main_character_accessories
     public string accessories_image;
     public string accessories_icon;
 }
-
-
-/************** MAIN CHARACTER ENDS *************/
-/*******************************************/
+/********** MAIN CHARACTER ENDS **********/
+/*****************************************/
