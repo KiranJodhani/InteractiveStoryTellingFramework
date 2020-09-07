@@ -10,11 +10,14 @@ public class MainMenuManager : MonoBehaviour
     public main_character main_Character_api;
     public MainCharacter MainCharacterInstance;
     public ModalWindowManager FreeDiamondModalWindowManagerInstance;
+    private const string PlayerStoryProgress = "player_story_progress";
+    private const string PlayerName = "player_name";
 
     [Header("##### SCREENS #####")]
     public GameObject StorySelectionScreen;
     public GameObject BookSelectionScreen;
     public GameObject MainCharacterScreen;
+    public GameObject PlayerNameScreen;
     public GameObject ShopScreen;
     public GameObject SettingScreen;
     public Button MenuButton;
@@ -78,11 +81,22 @@ public class MainMenuManager : MonoBehaviour
     [Header("##### CHAPTER #####")]
     public ModalWindowManager ChapterModalWindowManager;
 
+    [Header("##### PLAYER NAME #####")]
+    public TMP_InputField PlayerNameInput;
+
+
 
     void Start()
     {
         //OpenMainCharacterScreen();
-        StorySelectionScreen.SetActive(true);
+        if (PlayerPrefs.HasKey(PlayerStoryProgress))
+        {
+            StorySelectionScreen.SetActive(true);
+        }
+        else
+        {
+            OpenChapterModalWindow();
+        }
     }
 
     public void PlayScreenTransitionAnimation()
@@ -108,11 +122,11 @@ public class MainMenuManager : MonoBehaviour
     void SettingScreenToogle()
     {
         SettingScreen.SetActive(!SettingScreen.activeSelf);
-        if (!SettingScreen.activeSelf)
-        {
-            HideAllScreens();
-            MainCharacterScreen.SetActive(true);
-        }
+        //if (!SettingScreen.activeSelf)
+        //{
+        //    HideAllScreens();
+        //    MainCharacterScreen.SetActive(true);
+        //}
     }
 
     public void OpenFreeDiamondPopup()
@@ -122,10 +136,11 @@ public class MainMenuManager : MonoBehaviour
 
     void HideAllScreens()
     {
-        MainCharacterScreen.SetActive(false);
         StorySelectionScreen.SetActive(false);
-        ShopScreen.SetActive(false);
         BookSelectionScreen.SetActive(false);
+        PlayerNameScreen.SetActive(false);
+        MainCharacterScreen.SetActive(false);
+        ShopScreen.SetActive(false);
         SettingScreen.SetActive(false);
     }
 
@@ -529,13 +544,29 @@ public class MainMenuManager : MonoBehaviour
                 //ChapterSelectionContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
             }
         }
+        OpenChapterModalWindow();
+    }
+
+    private void OpenChapterModalWindow()
+    {
         ChapterModalWindowManager.OpenWindow();
+    }
+    private void CloseChapterModalWindow()
+    {
+        ChapterModalWindowManager.CloseWindow();
     }
 
     public void OnClickPlayNowChapter()
     {
-        ChapterModalWindowManager.CloseWindow();
-        Open_LetsChooseLookPopup();
+        CloseChapterModalWindow();
+        if (PlayerPrefs.HasKey(PlayerName))
+        {
+            Open_LetsChooseLookPopup();
+        }
+        else
+        {
+            OpenNameScreen();
+        }
     }
     public void OnClickResumeChapter()
     {
@@ -544,6 +575,30 @@ public class MainMenuManager : MonoBehaviour
     public void OnClickPlayAgainChapter()
     {
         ChapterModalWindowManager.CloseWindow();
+        Open_LetsChooseLookPopup();
+    }
+
+    private void OpenNameScreen()
+    {
+        StartCoroutine(OpenNameScreenCO());
+    }
+
+    IEnumerator OpenNameScreenCO()
+    {
+        PlayScreenTransitionAnimation();
+        yield return new WaitForSeconds(1f);
+        HideAllScreens();
+        PlayerNameScreen.SetActive(true);
+    }
+
+    public void OnClickPlayerNameContinue()
+    {
+        if (string.IsNullOrEmpty(PlayerNameInput.text))
+        {
+            return;
+        }
+        PlayerPrefs.SetString(PlayerName, PlayerNameInput.text);
+        Open_LetsChooseLookPopup();
     }
 
     public void Open_LetsChooseLookPopup()
@@ -555,7 +610,7 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayScreenTransitionAnimation();
         yield return new WaitForSeconds(1f);
-        //HideAllScreens();
+        HideAllScreens();
         OpenMainCharacterScreen();
     }
     /************* STORY/BOOK/CHAPTER ENDS ************/
