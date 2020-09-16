@@ -286,79 +286,79 @@ public class AuthenticationManager : MonoBehaviour
         email_InputField_fp.text = "";
     }
 
-    public void OnClickResendButton()
-    {
-        ShowLoadingScreen();
-        resend_varification_request_Instance.email = email_InputField_login.text;
-        string json = JsonUtility.ToJson(resend_varification_request_Instance);
-        StartCoroutine(ResendVarificationCo(json));
-    }
+    //public void OnClickResendButton()
+    //{
+    //    ShowLoadingScreen();
+    //    resend_varification_request_Instance.email = email_InputField_login.text;
+    //    string json = JsonUtility.ToJson(resend_varification_request_Instance);
+    //    StartCoroutine(ResendVarificationCo(json));
+    //}
 
-    IEnumerator ResendVarificationCo(string Bodyjson)
-    {
-        Debug.Log("#### RESEND VARIFICATION REQUEST : " + Bodyjson);
-        var request = new UnityWebRequest(LoveRead_Backend.RESEND_VARIFICATION, "POST");
-        byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(Bodyjson);
-        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-        request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-        yield return request.SendWebRequest();
-        Debug.Log("#### RESEND VARIFICATION RESPONSE: " + request.downloadHandler.text);
-        resend_varification_response_Instance = JsonUtility.FromJson<resend_varification_response>(request.downloadHandler.text);
-        if (request.downloadHandler.text == "")
-        {
-            OpenNotification("Server Error", 1);
-        }
-        else if (resend_varification_response_Instance.status == "true")
-        {
-            OpenNotification(resend_varification_response_Instance.message, 2);
-        }
-        else if (resend_varification_response_Instance.status == "false")
-        {
-            OpenNotification(resend_varification_response_Instance.message, 2);
-        }
-    }
+    //IEnumerator ResendVarificationCo(string Bodyjson)
+    //{
+    //    Debug.Log("#### RESEND VARIFICATION REQUEST : " + Bodyjson);
+    //    var request = new UnityWebRequest(LoveRead_Backend.RESEND_VARIFICATION, "POST");
+    //    byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(Bodyjson);
+    //    request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+    //    request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+    //    request.SetRequestHeader("Content-Type", "application/json");
+    //    yield return request.SendWebRequest();
+    //    Debug.Log("#### RESEND VARIFICATION RESPONSE: " + request.downloadHandler.text);
+    //    resend_varification_response_Instance = JsonUtility.FromJson<resend_varification_response>(request.downloadHandler.text);
+    //    if (request.downloadHandler.text == "")
+    //    {
+    //        OpenNotification("Server Error", 1);
+    //    }
+    //    else if (resend_varification_response_Instance.status == "true")
+    //    {
+    //        OpenNotification(resend_varification_response_Instance.message, 2);
+    //    }
+    //    else if (resend_varification_response_Instance.status == "false")
+    //    {
+    //        OpenNotification(resend_varification_response_Instance.message, 2);
+    //    }
+    //}
 
-    public void FP_OnClickSubmitButton()
-    {
-        if (email_InputField_fp.text == "" || email_InputField_fp.text == null)
-        {
-            OpenNotification("Please Enter Email", 1);
-            return;
-        }
-        else
-        {
-            ShowLoadingScreen();
-            forgot_password_request_Instance.email = email_InputField_fp.text;
-            string json = JsonUtility.ToJson(forgot_password_request_Instance);
-            StartCoroutine(FP_OnClickSubmitButtonCo(json));
-        }
-    }
+    //public void FP_OnClickSubmitButton()
+    //{
+    //    if (email_InputField_fp.text == "" || email_InputField_fp.text == null)
+    //    {
+    //        OpenNotification("Please Enter Email", 1);
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        ShowLoadingScreen();
+    //        forgot_password_request_Instance.email = email_InputField_fp.text;
+    //        string json = JsonUtility.ToJson(forgot_password_request_Instance);
+    //        StartCoroutine(FP_OnClickSubmitButtonCo(json));
+    //    }
+    //}
 
-    IEnumerator FP_OnClickSubmitButtonCo(string Bodyjson)
-    {
-        Debug.Log("#### FORGET PASSWORD REQUEST : " + Bodyjson);
-        var request = new UnityWebRequest(LoveRead_Backend.FORGOT_PASSWORD, "POST");
-        byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(Bodyjson);
-        request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
-        request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-        yield return request.SendWebRequest();
-        Debug.Log("#### FORGET PASSWORD RESPONSE: " + request.downloadHandler.text);
-        forgot_password_response_Instance = JsonUtility.FromJson<forgot_password_response>(request.downloadHandler.text);
-        if (request.downloadHandler.text == "")
-        {
-            OpenNotification("Server Error", 1);
-        }
-        else if (forgot_password_response_Instance.status == "true")
-        {
-            OpenNotification(forgot_password_response_Instance.message, 2);
-        }
-        else if (forgot_password_response_Instance.status == "false")
-        {
-            OpenNotification(forgot_password_response_Instance.message, 2);
-        }
-    }
+    //IEnumerator FP_OnClickSubmitButtonCo(string Bodyjson)
+    //{
+    //    Debug.Log("#### FORGET PASSWORD REQUEST : " + Bodyjson);
+    //    var request = new UnityWebRequest(LoveRead_Backend.FORGOT_PASSWORD, "POST");
+    //    byte[] bodyRaw = new System.Text.UTF8Encoding().GetBytes(Bodyjson);
+    //    request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);
+    //    request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
+    //    request.SetRequestHeader("Content-Type", "application/json");
+    //    yield return request.SendWebRequest();
+    //    Debug.Log("#### FORGET PASSWORD RESPONSE: " + request.downloadHandler.text);
+    //    forgot_password_response_Instance = JsonUtility.FromJson<forgot_password_response>(request.downloadHandler.text);
+    //    if (request.downloadHandler.text == "")
+    //    {
+    //        OpenNotification("Server Error", 1);
+    //    }
+    //    else if (forgot_password_response_Instance.status == "true")
+    //    {
+    //        OpenNotification(forgot_password_response_Instance.message, 2);
+    //    }
+    //    else if (forgot_password_response_Instance.status == "false")
+    //    {
+    //        OpenNotification(forgot_password_response_Instance.message, 2);
+    //    }
+    //}
 
     public void OnClickBackFromMainMenuScreen()
     {

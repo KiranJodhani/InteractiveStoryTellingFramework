@@ -4,14 +4,14 @@ using UnityEngine.UI;
 using Michsky.UI.ModernUIPack;
 using System;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class MainMenuManager : MonoBehaviour
 {
     public main_character main_Character_api;
     public MainCharacter MainCharacterInstance;
     public ModalWindowManager FreeDiamondModalWindowManagerInstance;
-    private const string PlayerStoryProgress = "player_story_progress";
-    private const string PlayerName = "player_name";
 
     [Header("##### SCREENS #####")]
     public GameObject StorySelectionScreen;
@@ -21,15 +21,15 @@ public class MainMenuManager : MonoBehaviour
     public GameObject ShopScreen;
     public GameObject SettingScreen;
     public Button MenuButton;
+    public GameObject LastOpenedScreen;
 
     [Header("##### SCREEN TRANSITION #####")]
     public GameObject ScreenTransitionAnimation;
     public GameObject EventSystem;
     private string panelFadeIn = "Panel Open";
+    public GameObject ContinueToStory;
 
-    [Header("##### CHARACTER CUSTOMIZATION #####")]
-    public GameObject PriceTextParent;
-    public TMP_Text PriceText;
+    
 
     [Header("##### LOOK #####")]
     public Button LookButton;
@@ -40,8 +40,12 @@ public class MainMenuManager : MonoBehaviour
     public Transform SkinColorScrollContent;
     public GameObject EyeColorScroll;
     public Transform EyeColorScrollContent;
-    public int SelectedSkinColor;
-    public int SelectedEyeColor;
+    public GameObject ConfirmLook_SkinColor;
+    public GameObject ConfirmLook_EyeColor;
+    public bool IsSkinColorConfirmed;
+    public bool IsEyeColorConfirmed;
+    //public GameObject PriceTextParent;
+    //public TMP_Text PriceText;
 
     [Header("##### HAIR #####")]
     public Button HairButton;
@@ -52,8 +56,10 @@ public class MainMenuManager : MonoBehaviour
     public Transform HairColorScrollContent;
     public GameObject HairStyleScroll;
     public Transform HairStyleScrollContent;
-    public int SelectedHairStyle;
-    public int SelectedHairColor;
+    public GameObject ConfirmHair_HairStyle;
+    public GameObject ConfirmHair_HairColor;
+    public bool IsHairStyleConfirmed;
+    public bool IsHairColorConfirmed;
 
     [Header("##### CLOTHES #####")]
     public Button ClothesButton;
@@ -80,23 +86,47 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("##### CHAPTER #####")]
     public ModalWindowManager ChapterModalWindowManager;
+    public ModalWindowManager LetsChooseLookModalWindowManager;
 
     [Header("##### PLAYER NAME #####")]
     public TMP_InputField PlayerNameInput;
 
+    [Header("##### SHOP #####")]
+    public TextMeshProUGUI DiamondText;
+    public TextMeshProUGUI KeyText;
+    public ModalWindowManager NotEnoughDiamondsPopUp;
+    public purchased_data Purchased_Data_Instance;
+    public string LastSelectedCategory;
 
 
     void Start()
     {
+
         //OpenMainCharacterScreen();
-        if (PlayerPrefs.HasKey(PlayerStoryProgress))
+        HideAllScreens();
+        if (PlayerPrefs.HasKey(LoveRead_Backend.PlayerStoryProgress))
         {
             StorySelectionScreen.SetActive(true);
         }
         else
         {
+            BookSelectionScreen.SetActive(true);
             OpenChapterModalWindow();
         }
+
+        if (PlayerPrefs.HasKey(LoveRead_Backend.PURCHASED_DATA_KEY))
+        {
+            Purchased_Data_Instance = JsonUtility.FromJson<purchased_data>(PlayerPrefs.GetString(LoveRead_Backend.PURCHASED_DATA_KEY));
+            ManagePurchasedData();
+
+        }
+        else
+        {
+            string _purchasedData = JsonUtility.ToJson(Purchased_Data_Instance);
+            PlayerPrefs.SetString(LoveRead_Backend.PURCHASED_DATA_KEY, _purchasedData);
+            ManagePurchasedData();
+        }
+
     }
 
     public void PlayScreenTransitionAnimation()
@@ -151,12 +181,15 @@ public class MainMenuManager : MonoBehaviour
     {
         HideAllScreens();
         MainCharacterScreen.SetActive(true);
+        LastOpenedScreen = MainCharacterScreen;
         Main_Look_Button();
-        ApplySelectedEyeColor(0);
-        ApplySelectedSkinColor(0);
-        ApplySelectedHairStyle(0);
+        ApplySelectedEyeColor(LoveRead_Backend.SelectedEyeColor);
+        ApplySelectedSkinColor(LoveRead_Backend.SelectedSkinColor);
+        ApplySelectedHairStyle(LoveRead_Backend.SelectedHairStyle);
         ApplySelectedCloth(0);
+        LastSelectedCategory = LoveRead_Backend.Look_SkinColor;
         FixContentPosition();
+        ManageConfirmButtons();
     }
 
     void FixContentPosition()
@@ -186,6 +219,8 @@ public class MainMenuManager : MonoBehaviour
         EyeColorButton.GetComponent<Image>().color = SubButtonNormalColor;
         SkinToneScroll.SetActive(true);
         EyeColorScroll.SetActive(false);
+        LastSelectedCategory = LoveRead_Backend.Look_SkinColor;
+        ManageConfirmLook(LoveRead_Backend.Look_SkinColor);
     }
 
     public void Sub_EyeColor_Button()
@@ -194,15 +229,17 @@ public class MainMenuManager : MonoBehaviour
         EyeColorButton.GetComponent<Image>().color = SubButtonSelectedColor;
         SkinToneScroll.SetActive(false);
         EyeColorScroll.SetActive(true);
+        LastSelectedCategory = LoveRead_Backend.Look_EyeColor;
+        ManageConfirmLook(LoveRead_Backend.Look_EyeColor);
     }
 
     public void ApplySelectedSkinColor(int SkinColorIndex)
     {
-        SelectedSkinColor = SkinColorIndex;
+        LoveRead_Backend.SelectedSkinColor = SkinColorIndex;
         MainCharacterInstance.Face.sprite = MainCharacterInstance.MainCharacterFaceInstance[SkinColorIndex].FaceSprite;
         MainCharacterInstance.Body.sprite = MainCharacterInstance.MainCharacterBodyInstance[SkinColorIndex].BodySprite;
         MainCharacterInstance.HairStyleShadow.sprite =
-            MainCharacterInstance.MainCharacterHairInstance[SelectedHairStyle].HairStyleShadowSprites[SkinColorIndex];
+            MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].HairStyleShadowSprites[SkinColorIndex];
         int children = SkinColorScrollContent.childCount;
         for (int i = 0; i < children; i++)
         {
@@ -215,22 +252,16 @@ public class MainMenuManager : MonoBehaviour
                 SkinColorScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
             }
         }
-
-        if (MainCharacterInstance.MainCharacterBodyInstance[SkinColorIndex].Price > 0)
-        {
-            PriceText.text = MainCharacterInstance.MainCharacterBodyInstance[SkinColorIndex].Price.ToString();
-            PriceTextParent.SetActive(true);
-        }
-        else
-        {
-            PriceTextParent.SetActive(false);
-        }
+        IsSkinColorConfirmed = false;
+        LastSelectedCategory = LoveRead_Backend.Look_SkinColor;
+        ManageConfirmLook(LoveRead_Backend.Look_SkinColor);
+        ContinueToStory.SetActive(false);        
     }
 
     public void ApplySelectedEyeColor(int EyeColorIndex)
     {
         MainCharacterInstance.Eye.sprite = MainCharacterInstance.MainCharacterEyeInstance[EyeColorIndex].EyeSprite;
-        SelectedEyeColor = EyeColorIndex;
+        LoveRead_Backend.SelectedEyeColor = EyeColorIndex;
         int children = EyeColorScrollContent.childCount;
         for (int i = 0; i < children; i++)
         {
@@ -243,18 +274,155 @@ public class MainMenuManager : MonoBehaviour
                 EyeColorScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
             }
         }
-
-        if (MainCharacterInstance.MainCharacterEyeInstance[EyeColorIndex].Price > 0)
-        {
-            PriceText.text = MainCharacterInstance.MainCharacterEyeInstance[EyeColorIndex].Price.ToString();
-            PriceTextParent.SetActive(true);
-        }
-        else
-        {
-            PriceTextParent.SetActive(false);
-        }
+        IsEyeColorConfirmed = false;
+        LastSelectedCategory = LoveRead_Backend.Look_EyeColor;
+        ManageConfirmLook(LoveRead_Backend.Look_EyeColor);
+        ContinueToStory.SetActive(false);
     }
 
+
+    void ManageConfirmLook(string Type)
+    {
+        if (Type== LoveRead_Backend.Look_SkinColor)
+        {
+            ConfirmLook_SkinColor.SetActive(!IsSkinColorConfirmed);
+            if (MainCharacterInstance.MainCharacterBodyInstance[LoveRead_Backend.SelectedSkinColor].Price > 0)
+            {
+                // check if already purchased
+                ConfirmLook_SkinColor.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
+                    MainCharacterInstance.MainCharacterBodyInstance[LoveRead_Backend.SelectedSkinColor].Price.ToString();
+                ConfirmLook_SkinColor.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                ConfirmLook_SkinColor.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+        else if (Type == LoveRead_Backend.Look_EyeColor)
+        {
+            ConfirmLook_EyeColor.SetActive(!IsEyeColorConfirmed);
+            if (MainCharacterInstance.MainCharacterEyeInstance[LoveRead_Backend.SelectedEyeColor].Price > 0)
+            {
+                // check if already purchased
+                ConfirmLook_EyeColor.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
+                    MainCharacterInstance.MainCharacterEyeInstance[LoveRead_Backend.SelectedEyeColor].Price.ToString();
+                ConfirmLook_EyeColor.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                ConfirmLook_EyeColor.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+
+        ManageConfirmButtons();
+    }
+
+    public void ConfirmedSelectedItem()
+    {
+        if(LastSelectedCategory==LoveRead_Backend.Look_EyeColor)
+        {
+            if (ConfirmLook_EyeColor.transform.GetChild(1).gameObject.activeSelf)
+            {
+                int Price = int.Parse(ConfirmLook_EyeColor.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text);
+                if (Purchased_Data_Instance.AvailableDiamonds >= Price)
+                {
+                    IsEyeColorConfirmed = true;
+                    ConfirmLook_EyeColor.SetActive(false);                    
+                    Purchased_Data_Instance.AvailableDiamonds = Purchased_Data_Instance.AvailableDiamonds - Price;
+                    DiamondText.text = Purchased_Data_Instance.AvailableDiamonds.ToString();
+                    ManagePurchasedItems();
+                }
+                else
+                {
+                    NotEnoughDiamondsPopUp.OpenWindow();
+                }
+            }
+            else
+            {
+                IsEyeColorConfirmed = true;
+                ConfirmLook_EyeColor.SetActive(false);
+            }
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Look_SkinColor)
+        {
+            if (ConfirmLook_SkinColor.transform.GetChild(1).gameObject.activeSelf)
+            {
+                int Price = int.Parse(ConfirmLook_SkinColor.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text);
+                if (Purchased_Data_Instance.AvailableDiamonds >= Price)
+                {
+                    IsSkinColorConfirmed = true;
+                    ConfirmLook_SkinColor.SetActive(false);
+                    Purchased_Data_Instance.AvailableDiamonds = Purchased_Data_Instance.AvailableDiamonds - Price;
+                    DiamondText.text = Purchased_Data_Instance.AvailableDiamonds.ToString();
+                    ManagePurchasedItems();
+                }
+                else
+                {
+                    NotEnoughDiamondsPopUp.OpenWindow();
+                }
+            }
+            else
+            {
+                IsSkinColorConfirmed = true;
+                ConfirmLook_SkinColor.SetActive(false);
+            }
+        }
+        if (LastSelectedCategory == LoveRead_Backend.Hair_Style)
+        {
+            
+            if (ConfirmHair_HairStyle.transform.GetChild(1).gameObject.activeSelf)
+            {
+                int Price = int.Parse(ConfirmHair_HairStyle.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text);
+                if (Purchased_Data_Instance.AvailableDiamonds >= Price)
+                {
+                    IsHairStyleConfirmed = true;
+                    ConfirmHair_HairStyle.SetActive(false);
+                    Purchased_Data_Instance.AvailableDiamonds = Purchased_Data_Instance.AvailableDiamonds - Price;
+                    DiamondText.text = Purchased_Data_Instance.AvailableDiamonds.ToString();
+                    ManagePurchasedItems();
+                }
+                else
+                {
+                    NotEnoughDiamondsPopUp.OpenWindow();
+                }
+            }
+            else
+            {
+                IsHairStyleConfirmed = true;
+                ConfirmHair_HairStyle.SetActive(false);
+            }
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Hair_Color)
+        {
+            if (ConfirmHair_HairColor.transform.GetChild(1).gameObject.activeSelf)
+            {
+                int Price = int.Parse(ConfirmHair_HairColor.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text);
+                if (Purchased_Data_Instance.AvailableDiamonds >= Price)
+                {
+                    IsHairColorConfirmed = true;
+                    ConfirmHair_HairColor.SetActive(false);
+                    Purchased_Data_Instance.AvailableDiamonds = Purchased_Data_Instance.AvailableDiamonds - Price;
+                    DiamondText.text = Purchased_Data_Instance.AvailableDiamonds.ToString();
+                    ManagePurchasedItems();
+                }
+                else
+                {
+                    NotEnoughDiamondsPopUp.OpenWindow();
+                }
+            }
+            else
+            {
+                IsHairColorConfirmed = true;
+                ConfirmHair_HairColor.SetActive(false);
+            }
+
+        }
+
+        if (IsSkinColorConfirmed && IsEyeColorConfirmed && IsHairStyleConfirmed && IsHairColorConfirmed)
+        {
+            ContinueToStory.SetActive(true);
+        }
+    }
     // Hair
     public void Main_Hair_Button()
     {
@@ -273,6 +441,9 @@ public class MainMenuManager : MonoBehaviour
         HairColorButton.GetComponent<Image>().color = SubButtonNormalColor;
         HairStyleScroll.SetActive(true);
         HairColorScroll.SetActive(false);
+        LastSelectedCategory = LoveRead_Backend.Hair_Style;
+        ManageConfirmHair(LoveRead_Backend.Hair_Style);
+        
     }
 
     public void Sub_HairColor_Button()
@@ -281,18 +452,20 @@ public class MainMenuManager : MonoBehaviour
         HairStyleButton.GetComponent<Image>().color = SubButtonNormalColor;
         HairStyleScroll.SetActive(false);
         HairColorScroll.SetActive(true);
+        LastSelectedCategory = LoveRead_Backend.Hair_Color;
+        ManageConfirmHair(LoveRead_Backend.Hair_Color);
     }
 
     public void ApplySelectedHairStyle(int HairStyleIndex)
     {
-        SelectedHairStyle = HairStyleIndex;
-        SelectedHairColor = 0;
+        LoveRead_Backend.SelectedHairStyle = HairStyleIndex;
+        LoveRead_Backend.SelectedHairColor = 0;
 
-        if (MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].HairStyleBackSprites[SelectedHairColor])
+        if (MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].HairStyleBackSprites[LoveRead_Backend.SelectedHairColor])
         {
             MainCharacterInstance.HairStyleBack.gameObject.SetActive(true);
             MainCharacterInstance.HairStyleBack.sprite =
-                MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].HairStyleBackSprites[SelectedHairColor];
+                MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].HairStyleBackSprites[LoveRead_Backend.SelectedHairColor];
         }
         else
         {
@@ -300,13 +473,13 @@ public class MainMenuManager : MonoBehaviour
         }
 
         MainCharacterInstance.HairStyle.sprite =
-            MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].HairStyleSprites[SelectedHairColor];
+            MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].HairStyleSprites[LoveRead_Backend.SelectedHairColor];
 
-        if (MainCharacterInstance.MainCharacterHairInstance[SelectedHairStyle].HairStyleShadowSprites[SelectedSkinColor])
+        if (MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].HairStyleShadowSprites[LoveRead_Backend.SelectedSkinColor])
         {
             MainCharacterInstance.HairStyleShadow.gameObject.SetActive(true);
             MainCharacterInstance.HairStyleShadow.sprite =
-                MainCharacterInstance.MainCharacterHairInstance[SelectedHairStyle].HairStyleShadowSprites[SelectedSkinColor];
+                MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].HairStyleShadowSprites[LoveRead_Backend.SelectedSkinColor];
         }
         else
         {
@@ -338,30 +511,35 @@ public class MainMenuManager : MonoBehaviour
         {
             GameObject tmp = Instantiate(HairColorScrollContent.GetChild(0).gameObject, HairColorScrollContent);
             tmp.transform.GetChild(1).GetComponent<Image>().sprite =
-                MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].HairStyleColorIcon[i];
+                MainCharacterInstance.MainCharacterHairInstance[HairStyleIndex].MainCharacterHairColorInstance[i].HairStyleColorIcon;
             string tmpHairColor = i.ToString();
             tmp.name = "HairColor (" + i + ")";
-            tmp.GetComponent<Button>().onClick.AddListener(() => ApplySelectedHairColor(tmpHairColor));
+            tmp.GetComponent<Button>().onClick.AddListener(() => ApplySelectedHairColor(tmpHairColor,"true"));
             tmp.SetActive(true);
         }
         Invoke("ApplySelectedHairColorDelayed", 0.1f);
-
+        IsHairStyleConfirmed = false;
+        LastSelectedCategory = LoveRead_Backend.Hair_Style;
+        ManageConfirmHair(LoveRead_Backend.Hair_Style);
+        ContinueToStory.SetActive(false);
     }
 
     void ApplySelectedHairColorDelayed()
     {
-        ApplySelectedHairColor("0");
+        ApplySelectedHairColor("0","false");
     }
 
-    public void ApplySelectedHairColor(string HairColorIndex)
+   
+    public void ApplySelectedHairColor(string HairColorIndex,string ManageConfirmButton)
     {
-        SelectedHairColor = int.Parse(HairColorIndex);
-        print("Selected Hair Color : " + HairColorIndex);
-        if (MainCharacterInstance.MainCharacterHairInstance[SelectedHairStyle].HairStyleBackSprites[SelectedHairColor])
+        LoveRead_Backend.SelectedHairColor = int.Parse(HairColorIndex);
+        //print("Selected Hair Color : " + HairColorIndex);
+        //print("Manage Confirm : " + ManageConfirmButton);
+        if (MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].HairStyleBackSprites[LoveRead_Backend.SelectedHairColor])
         {
             MainCharacterInstance.HairStyleBack.gameObject.SetActive(true);
             MainCharacterInstance.HairStyleBack.sprite =
-                   MainCharacterInstance.MainCharacterHairInstance[SelectedHairStyle].HairStyleBackSprites[SelectedHairColor];
+                   MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].HairStyleBackSprites[LoveRead_Backend.SelectedHairColor];
         }
         else
         {
@@ -369,13 +547,13 @@ public class MainMenuManager : MonoBehaviour
         }
 
         MainCharacterInstance.HairStyle.sprite =
-            MainCharacterInstance.MainCharacterHairInstance[SelectedHairStyle].HairStyleSprites[SelectedHairColor];
+            MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].HairStyleSprites[LoveRead_Backend.SelectedHairColor];
 
 
         int children = HairColorScrollContent.childCount;
         for (int i = 0; i < children - 1; i++)
         {
-            if (i == SelectedHairColor)
+            if (i == LoveRead_Backend.SelectedHairColor)
             {
                 HairColorScrollContent.GetChild(i + 1).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
             }
@@ -384,6 +562,183 @@ public class MainMenuManager : MonoBehaviour
                 HairColorScrollContent.GetChild(i + 1).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
             }
         }
+
+        if(ManageConfirmButton=="true")
+        {
+            IsHairColorConfirmed = false;
+            ContinueToStory.SetActive(false);
+            LastSelectedCategory = LoveRead_Backend.Hair_Color;
+            ManageConfirmHair(LoveRead_Backend.Hair_Color);
+        }
+        
+    }
+
+    void ManageConfirmHair(string Type)
+    {          
+        if (Type == LoveRead_Backend.Hair_Style)
+        {
+            ConfirmHair_HairStyle.SetActive(!IsHairStyleConfirmed);
+
+            if (MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].Price > 0)
+            {
+                // check if already purchased
+                ConfirmHair_HairStyle.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
+                    MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].Price.ToString();
+                ConfirmHair_HairStyle.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                ConfirmHair_HairStyle.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+        else if (Type == LoveRead_Backend.Hair_Color)
+        {
+            ConfirmHair_HairColor.SetActive(!IsHairColorConfirmed);
+            if (MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].MainCharacterHairColorInstance[LoveRead_Backend.SelectedHairColor].Price > 0)
+            {
+                // check if already purchased
+                ConfirmHair_HairColor.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
+                    MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].MainCharacterHairColorInstance[LoveRead_Backend.SelectedHairColor].Price.ToString();
+                ConfirmHair_HairColor.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                ConfirmHair_HairColor.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+
+        ManageConfirmButtons();
+    }
+
+    public void ManageConfirmButtons()
+    {
+        ConfirmLook_SkinColor.SetActive(false);
+        ConfirmLook_EyeColor.SetActive(false);
+        ConfirmHair_HairStyle.SetActive(false);
+        ConfirmHair_HairColor.SetActive(false);
+
+        if(LastSelectedCategory==LoveRead_Backend.Look_SkinColor)
+        {
+            ConfirmLook_SkinColor.SetActive(!IsSkinColorConfirmed);
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Look_EyeColor)
+        {
+            ConfirmLook_EyeColor.SetActive(!IsEyeColorConfirmed);
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Hair_Style)
+        {
+            ConfirmHair_HairStyle.SetActive(!IsHairStyleConfirmed);
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Hair_Color)
+        {
+            ConfirmHair_HairColor.SetActive(!IsHairColorConfirmed);
+        }
+    }
+
+
+    public void ManageContinueToStoryButton()
+    {
+        if (IsSkinColorConfirmed && IsEyeColorConfirmed && IsHairStyleConfirmed && IsHairColorConfirmed)
+        {
+            ContinueToStory.SetActive(true);
+        }
+    }
+
+    void ManagePurchasedItems()
+    {
+        if(LastSelectedCategory==LoveRead_Backend.Look_SkinColor)
+        {
+            Purchased_Data_Instance.purchased_skintone.Add(LoveRead_Backend.SelectedSkinColor);
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Look_EyeColor)
+        {
+            Purchased_Data_Instance.Purchased_eyeColor.Add(LoveRead_Backend.SelectedEyeColor);
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Hair_Style)
+        {
+            AddPurchasedHairStyle();
+        }
+        else if (LastSelectedCategory == LoveRead_Backend.Hair_Color)
+        {
+            AddPurchasedHairStyle();
+            for (int i = 0; i < Purchased_Data_Instance.PurchasedHair.Count; i++)
+            {
+                if (Purchased_Data_Instance.PurchasedHair[i].purchased_hairstyle == LoveRead_Backend.SelectedHairStyle)
+                {
+                    Purchased_Data_Instance.PurchasedHair[i].purchased_haircolor.Add(LoveRead_Backend.SelectedHairColor);
+                    break;
+                }
+            }
+        }
+        string _purchasedData = JsonUtility.ToJson(Purchased_Data_Instance);
+        PlayerPrefs.SetString(LoveRead_Backend.PURCHASED_DATA_KEY, _purchasedData);
+        ManagePurchasedData();  // This method will change price to 0 of purchased item in serialize class 
+    }
+
+    void AddPurchasedHairStyle()
+    {
+        bool IsHairstyleFound = false;
+        for(int i = 0; i < Purchased_Data_Instance.PurchasedHair.Count;i++)
+        {
+            if(Purchased_Data_Instance.PurchasedHair[i].purchased_hairstyle==LoveRead_Backend.SelectedHairStyle)
+            {
+                IsHairstyleFound = true;
+                break;
+            }
+        }
+        if(!IsHairstyleFound)
+        {
+
+            purchased_hair purchased_Hair_tmp = new purchased_hair();
+            purchased_Hair_tmp.purchased_hairstyle = LoveRead_Backend.SelectedHairStyle;
+            List<int> purchased_haircolor_tmp = new List<int>();
+            purchased_haircolor_tmp.Clear();
+            purchased_Hair_tmp.purchased_haircolor = purchased_haircolor_tmp;
+            Purchased_Data_Instance.PurchasedHair.Add(purchased_Hair_tmp);
+        }
+    }
+
+    void ManagePurchasedData()
+    {
+        for (int i = 0; i < Purchased_Data_Instance.purchased_skintone.Count; i++)
+        {
+            MainCharacterInstance.MainCharacterBodyInstance[Purchased_Data_Instance.purchased_skintone[i]].Price = 0;
+        }
+
+        for (int i = 0; i < Purchased_Data_Instance.Purchased_eyeColor.Count; i++)
+        {
+            MainCharacterInstance.MainCharacterEyeInstance[Purchased_Data_Instance.Purchased_eyeColor[i]].Price = 0;
+        }
+
+        for (int i = 0; i < Purchased_Data_Instance.PurchasedHair.Count; i++)
+        {
+            MainCharacterInstance.MainCharacterHairInstance[Purchased_Data_Instance.PurchasedHair[i].purchased_hairstyle].Price = 0;
+            for(int j = 0; j < Purchased_Data_Instance.PurchasedHair[i].purchased_haircolor.Count;j++)
+            {
+                int HairColorIndexTemp = Purchased_Data_Instance.PurchasedHair[i].purchased_haircolor[j];
+                MainCharacterInstance.MainCharacterHairInstance[Purchased_Data_Instance.PurchasedHair[i].purchased_hairstyle]
+                    .MainCharacterHairColorInstance[HairColorIndexTemp].Price = 0;
+                
+            }
+        }
+
+        SetDiamondKeyTexts();
+    }
+
+
+    public void GoToMainGameScene()
+    {
+        PlayScreenTransitionAnimation();
+        StartCoroutine(GoToMainGameSceneDelayed());
+    }
+
+
+    IEnumerator GoToMainGameSceneDelayed()
+    {
+        yield return new WaitForSeconds(1);
+        HideAllScreens();
+        yield return new WaitForSeconds(0.1f);
+        SceneManager.LoadScene(LoveRead_Backend.MAIN_GAME_SCENE);
     }
 
     // Clothes
@@ -412,16 +767,6 @@ public class MainMenuManager : MonoBehaviour
             {
                 ClothesScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
             }
-        }
-
-        if (MainCharacterInstance.MainCharacterClothInstance[ClothIndex].Price > 0)
-        {
-            PriceText.text = MainCharacterInstance.MainCharacterClothInstance[ClothIndex].Price.ToString();
-            PriceTextParent.SetActive(true);
-        }
-        else
-        {
-            PriceTextParent.SetActive(false);
         }
     }
     /************* CHARACTER CUSTOMISATION ENDS ************/
@@ -453,13 +798,39 @@ public class MainMenuManager : MonoBehaviour
         PlayScreenTransitionAnimation();
         yield return new WaitForSeconds(1f);
         HideAllScreens();
-        SettingScreen.SetActive(true);
+        if(LastOpenedScreen)
+        {
+            LastOpenedScreen.SetActive(true);
+        }
+        //SettingScreen.SetActive(true);
     }
 
+
+    public void BuyDiamonds(int quantity)
+    {
+        Purchased_Data_Instance.AvailableDiamonds = Purchased_Data_Instance.AvailableDiamonds + quantity;
+        string _purchasedData = JsonUtility.ToJson(Purchased_Data_Instance);
+        PlayerPrefs.SetString(LoveRead_Backend.PURCHASED_DATA_KEY, _purchasedData);
+        SetDiamondKeyTexts();
+    }
+
+    public void BuyKeys(int quantity)
+    {
+        Purchased_Data_Instance.AvailableKeys = Purchased_Data_Instance.AvailableKeys + quantity;
+        string _purchasedData = JsonUtility.ToJson(Purchased_Data_Instance);
+        PlayerPrefs.SetString(LoveRead_Backend.PURCHASED_DATA_KEY, _purchasedData);
+        SetDiamondKeyTexts();
+    }
+
+    void SetDiamondKeyTexts()
+    {
+        DiamondText.text = Purchased_Data_Instance.AvailableDiamonds.ToString();
+        KeyText.text = Purchased_Data_Instance.AvailableKeys.ToString();
+    }
     /************* SHOP ENDS ************/
     /**************************************/
 
-    /**********************************************************/
+    /****************************************************/
     /************* STORY/BOOK/CHAPTER STARTS ************/
     public void OpenStorySelectionScreen()
     {
@@ -559,7 +930,7 @@ public class MainMenuManager : MonoBehaviour
     public void OnClickPlayNowChapter()
     {
         CloseChapterModalWindow();
-        if (PlayerPrefs.HasKey(PlayerName))
+        if (PlayerPrefs.HasKey(LoveRead_Backend.PlayerName))
         {
             Open_LetsChooseLookPopup();
         }
@@ -597,22 +968,43 @@ public class MainMenuManager : MonoBehaviour
         {
             return;
         }
-        PlayerPrefs.SetString(PlayerName, PlayerNameInput.text);
+        PlayerPrefs.SetString(LoveRead_Backend.PlayerName, PlayerNameInput.text);
         Open_LetsChooseLookPopup();
     }
 
     public void Open_LetsChooseLookPopup()
     {
-        StartCoroutine(Open_LetsChooseLookPopupCo());
+        LetsChooseLookModalWindowManager.OpenWindow();
+        //StartCoroutine(Open_LetsChooseLookPopupCo());
     }
 
-    IEnumerator Open_LetsChooseLookPopupCo()
+    //IEnumerator Open_LetsChooseLookPopupCo()
+    //{
+    //    HideAllScreens();
+    //    LetsChooseLookModalWindowManager.OpenWindow();
+    //    yield return new WaitForSeconds(1f);
+    //    LetsChooseLookModalWindowManager.CloseWindow();
+    //    PlayScreenTransitionAnimation();
+    //    yield return new WaitForSeconds(1f);
+    //    OpenMainCharacterScreen();
+    //}
+
+    public void OnClick_LetsGo()
     {
+        LetsChooseLookModalWindowManager.CloseWindow();
+        StartCoroutine(OnClick_LetsGoCo());
+    }
+
+    IEnumerator OnClick_LetsGoCo()
+    {
+        HideAllScreens();
         PlayScreenTransitionAnimation();
         yield return new WaitForSeconds(1f);
-        HideAllScreens();
         OpenMainCharacterScreen();
     }
+
+
+
     /************* STORY/BOOK/CHAPTER ENDS ************/
     /**********************************************************/
 }
@@ -644,7 +1036,7 @@ public class MainCharacterBody
 [Serializable]
 public class MainCharacterFace
 {
-    public int Price;
+    //public int Price;
     public Sprite FaceSprite;
 }
 
@@ -670,5 +1062,12 @@ public class MainCharacterHair
     public Sprite[] HairStyleBackSprites;
     public Sprite[] HairStyleShadowSprites;
     public Sprite[] HairStyleSprites;
-    public Sprite[] HairStyleColorIcon;
+    public MainCharacterHairColor[] MainCharacterHairColorInstance;
+}
+
+[Serializable]
+public class MainCharacterHairColor
+{
+    public int Price;
+    public Sprite HairStyleColorIcon;
 }

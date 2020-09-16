@@ -5,19 +5,36 @@ using System;
 
 public class LoveRead_Backend : MonoBehaviour
 {
-    public static string BASE_URL= "http://172.105.35.50/love_read/";
-    public static string REGISTER = BASE_URL + "api/register";
-    public static string LOGIN = BASE_URL + "api/login";
-    public static string FORGOT_PASSWORD = BASE_URL + "api/forgotPassword";
-    public static string userkey = "userkey";
-    public static string RESEND_VARIFICATION = BASE_URL + "api/resendactivelink";
-    public static int SelectedPlayerIndex=4;
+    
+    //***********  API *************
+    public readonly static string BASE_URL= "http://172.105.35.50/love_read/";
+    public readonly static string REGISTER = BASE_URL + "api/register";
+    public readonly static string LOGIN = BASE_URL + "api/login";
+    public readonly static string userkey = "userkey";
+    public readonly static string MAIN_CHARACTER_IMAGES = BASE_URL + "main_character";
 
-    public static string SPLASH_SCENE= "0_SplashScene";
-    public static string MAIN_MENU_SCENE= "1_MainMenuScene";
-    public static string AUTHENTICATION_SCENE= "2_AuthenticationScene";
+    //***********  SCENES *************
+    public readonly static string SPLASH_SCENE= "0_SplashScene";
+    public readonly static string MAIN_MENU_SCENE= "1_MainMenuScene";
+    public readonly static string AUTHENTICATION_SCENE= "2_AuthenticationScene";
+    public readonly static string MAIN_GAME_SCENE = "3_MainGameScene";
 
-    public static string MAIN_CHARACTER_IMAGES = BASE_URL + "main_character";
+
+    //***********  CUSTOMISATION *************
+    public readonly static string Look_EyeColor = "Look_EyeColor";
+    public readonly static string Look_SkinColor = "Look_SkinColor";
+    public readonly static string Hair_Style = "Hair_Style";
+    public readonly static string Hair_Color = "Hair_Color";
+    public static int SelectedSkinColor=0;
+    public static int SelectedEyeColor=0;
+    public static int SelectedHairStyle=0;
+    public static int SelectedHairColor=0;
+
+    public static string PlayerStoryProgress = "player_story_progress";
+    public static string PlayerName = "player_name";
+
+    //***********  SHOP *************
+    public readonly static string PURCHASED_DATA_KEY = "PURCHASED_DATA_KEY";
 }
 
 
@@ -215,3 +232,26 @@ public class main_character_accessories
 }
 /********** MAIN CHARACTER ENDS **********/
 /*****************************************/
+
+
+/****************************************/
+/********** PURCHASED ITEMS STARTS **********/
+[Serializable]
+public class purchased_data
+{
+    public  int AvailableDiamonds;
+    public  int AvailableKeys;
+    public List<int> purchased_skintone = new List<int>();
+    public List<int> Purchased_eyeColor = new List<int>();
+    public List<purchased_hair> PurchasedHair = new List<purchased_hair>();
+}
+
+[Serializable]
+public class purchased_hair
+{
+    public int purchased_hairstyle;
+    public List<int> purchased_haircolor = new List<int>();
+}
+
+/********** PURCHASED ITEMS ENDS **********/
+/**************************************/
