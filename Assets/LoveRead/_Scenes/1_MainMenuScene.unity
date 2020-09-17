@@ -60166,11 +60166,501 @@ MonoBehaviour:
     - Price: 5
       BodySprite: {fileID: 21300000, guid: 17f7bbafb4b6746baad410872ae1c246, type: 3}
     MainCharacterFaceInstance:
-    - FaceSprite: {fileID: 21300000, guid: 661fd44e6b0e64e65bd9dc75b9296317, type: 3}
-    - FaceSprite: {fileID: 21300000, guid: 71eecc8f022d94921b4bb5635eba3bef, type: 3}
-    - FaceSprite: {fileID: 21300000, guid: dcba85ffbe743491d89609ad882217d8, type: 3}
-    - FaceSprite: {fileID: 21300000, guid: 519418eb0941347089d3b4fbdb111f97, type: 3}
-    - FaceSprite: {fileID: 21300000, guid: 46cf42dffbe504a9b8b992c498765119, type: 3}
+    - skintone: 0_Skintone
+      FaceSprite: {fileID: 21300000, guid: 661fd44e6b0e64e65bd9dc75b9296317, type: 3}
+      MainCharacterLipstickInstance:
+      - LipstickName: 0_matte peach
+        FaceSprite:
+        - {fileID: 21300000, guid: 7e74e6afaebba41ce8927aeaea9badaa, type: 3}
+        - {fileID: 21300000, guid: 446d10303a3f74f3a8cb8ba7b888b093, type: 3}
+        - {fileID: 21300000, guid: d64a9c79268e247f4aa01135aa51a6f3, type: 3}
+        - {fileID: 21300000, guid: 661fd44e6b0e64e65bd9dc75b9296317, type: 3}
+        - {fileID: 21300000, guid: fa697b2c1b6544eaab182220d29e616c, type: 3}
+        - {fileID: 21300000, guid: 5b083c20ad0a745eab7b3876cfee9067, type: 3}
+        - {fileID: 21300000, guid: 4047f18bd248d4d838e3b7a045d63763, type: 3}
+        - {fileID: 21300000, guid: f59ecdf5f6c7c4d1ca8e0f131108fa1a, type: 3}
+        - {fileID: 21300000, guid: 7e7ebfc7b6918413597b62ee1cb3415c, type: 3}
+        - {fileID: 21300000, guid: f93040a4820484e6cb250d189b485502, type: 3}
+      - LipstickName: 1_matte pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 4639403cc178f4d39baef12a0c83e3d2, type: 3}
+        - {fileID: 21300000, guid: b3b71741e49d54467bb127fe44108495, type: 3}
+        - {fileID: 21300000, guid: 42417a0a011714edaa1c0df3392afd63, type: 3}
+        - {fileID: 21300000, guid: ac450c777b6cd410db1f33931b154996, type: 3}
+        - {fileID: 21300000, guid: e490112556c5b438dbe0658c5cbdc484, type: 3}
+        - {fileID: 21300000, guid: 1e9be92e3a9c743628279702a5837eae, type: 3}
+        - {fileID: 21300000, guid: cd5ed06023a7f4cc5b879b9f6d2e875c, type: 3}
+        - {fileID: 21300000, guid: 8b222701a7d80407cae52740689b8787, type: 3}
+        - {fileID: 21300000, guid: c7dd738c478be4b0ba7fecf0f65d8737, type: 3}
+        - {fileID: 21300000, guid: 48c44c6db4f6d4d42a065b4a78e06029, type: 3}
+      - LipstickName: 2_matte purple
+        FaceSprite:
+        - {fileID: 21300000, guid: 4ac562392984646299ba3626e065f400, type: 3}
+        - {fileID: 21300000, guid: 124382b1d8b804d789ffae0c1c424841, type: 3}
+        - {fileID: 21300000, guid: 8558719adebca411fa25290c32d12a6c, type: 3}
+        - {fileID: 21300000, guid: 29cf1c33a8d014b3b87dbe0affa7d2c6, type: 3}
+        - {fileID: 21300000, guid: 666c71126150848daa7c25125fc7d016, type: 3}
+        - {fileID: 21300000, guid: 6cfe29d8bcc0343669543a4e03115413, type: 3}
+        - {fileID: 21300000, guid: b53361d8e190f4444b1957a09c9e9204, type: 3}
+        - {fileID: 21300000, guid: b2ee6b74a6cc241bd9e903ac2df84360, type: 3}
+        - {fileID: 21300000, guid: 45fceb1c87d60406b974c18c99c8eb92, type: 3}
+        - {fileID: 21300000, guid: 26e0ff8ce65b34a54b3ac9eb4c3912bf, type: 3}
+      - LipstickName: 3_matte red
+        FaceSprite:
+        - {fileID: 21300000, guid: 47b694bd5912848969b9f7c5806d77b5, type: 3}
+        - {fileID: 21300000, guid: 0c713311a5ba74cacafff1052c2717c1, type: 3}
+        - {fileID: 21300000, guid: 0d490aa1c59c9403cafb801209e18934, type: 3}
+        - {fileID: 21300000, guid: ffc28e981fa2b407783347f59d3cc240, type: 3}
+        - {fileID: 21300000, guid: 5076e6999c33f4f61b9dcdcac0a1f009, type: 3}
+        - {fileID: 21300000, guid: 8c23a402563214670897b928557bee7d, type: 3}
+        - {fileID: 21300000, guid: ced33f31bd805438285731eddca16832, type: 3}
+        - {fileID: 21300000, guid: 7970fed5e767e41b6b4aeb25cb64061c, type: 3}
+        - {fileID: 21300000, guid: 9f3683c0f0213476ab52c6a260c56455, type: 3}
+        - {fileID: 21300000, guid: 2be2a2052565e4ac7b160d34375133dc, type: 3}
+      - LipstickName: 4_peach
+        FaceSprite:
+        - {fileID: 21300000, guid: 355bc35027eef46fc9f7eb15937c1f8d, type: 3}
+        - {fileID: 21300000, guid: 9b37c152aee504a168cb227b34b9ba2a, type: 3}
+        - {fileID: 21300000, guid: c12823236031e4b5ab6bfe2f10ef7825, type: 3}
+        - {fileID: 21300000, guid: 0cbb9e09c619d476bace311e37d92ba1, type: 3}
+        - {fileID: 21300000, guid: bd61d6ad3f6de469990d0f905fa7d100, type: 3}
+        - {fileID: 21300000, guid: cb3083bf546074193aebb65266c9a070, type: 3}
+        - {fileID: 21300000, guid: d5cb4e2991c0f459daec0df84434933c, type: 3}
+        - {fileID: 21300000, guid: 07e7e89d405914567998d5f545ab7c1a, type: 3}
+        - {fileID: 21300000, guid: ad90528421623488ca59d63e6c52be85, type: 3}
+        - {fileID: 21300000, guid: dff42328266844c34a1ec6885dc13ff7, type: 3}
+      - LipstickName: 5_pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 584b6c7a7dbac437a91a0ae5375c423b, type: 3}
+        - {fileID: 21300000, guid: a6de9316a802e420c8766fddb7f962fc, type: 3}
+        - {fileID: 21300000, guid: fd543d49f47ff4397a055b03330c7a36, type: 3}
+        - {fileID: 21300000, guid: 8931b758ab80847c09717ce4fc293365, type: 3}
+        - {fileID: 21300000, guid: dcea622b432b9424d96b7bb2567cda72, type: 3}
+        - {fileID: 21300000, guid: 6f750be6fccf94d73badef207c1bef5c, type: 3}
+        - {fileID: 21300000, guid: 36543a399d99041e88dd2355f52264fc, type: 3}
+        - {fileID: 21300000, guid: 197a814b6815d4a9ab5c9a36fa9e203c, type: 3}
+        - {fileID: 21300000, guid: 22ae77a1d0f414e0fa40b30e6a4f9108, type: 3}
+        - {fileID: 21300000, guid: 6745a1a54dce74fbcb582a02886a88e4, type: 3}
+      - LipstickName: 6_purple
+        FaceSprite:
+        - {fileID: 21300000, guid: 49641a320c0914da9a57685dabc24487, type: 3}
+        - {fileID: 21300000, guid: 978ee0207732a4f5e9a5a970ef832310, type: 3}
+        - {fileID: 21300000, guid: cb661da9341b54a7baf7318815608975, type: 3}
+        - {fileID: 21300000, guid: a69f27906fa9f4125964d3d5e66cc3cc, type: 3}
+        - {fileID: 21300000, guid: 43f73518c46b048a298169c487520f2f, type: 3}
+        - {fileID: 21300000, guid: 655eb6f6d17614ab7b352655d6e8a356, type: 3}
+        - {fileID: 21300000, guid: 43d646033293044ce9a5ec31b4e9cb18, type: 3}
+        - {fileID: 21300000, guid: 523385bc811f14f4b92a41281a117b7f, type: 3}
+        - {fileID: 21300000, guid: 6ea33068d0e594604a9effe132c27181, type: 3}
+        - {fileID: 21300000, guid: 487a89a2782f74b0da776e44eda9f791, type: 3}
+      - LipstickName: 7_red
+        FaceSprite:
+        - {fileID: 21300000, guid: 3b50de882bd3a4eb78dcd73811e14e8f, type: 3}
+        - {fileID: 21300000, guid: 389724a8cf480433bbaed2925b33f2ea, type: 3}
+        - {fileID: 21300000, guid: 5515bd181bb1b4a5a8225b71c42d792f, type: 3}
+        - {fileID: 21300000, guid: 01c0378d4999f45d5a2a413c0ee90c43, type: 3}
+        - {fileID: 21300000, guid: 06feed2b97de749aeb2541262804a615, type: 3}
+        - {fileID: 21300000, guid: 98352c55438324fc08375f5383c92f47, type: 3}
+        - {fileID: 21300000, guid: fb85e55db25ef480cbddabaa8a079510, type: 3}
+        - {fileID: 21300000, guid: d423773d76e2b4aa4a358b7f2a425d24, type: 3}
+        - {fileID: 21300000, guid: bc558c27129264902b512e23a70d3bfa, type: 3}
+        - {fileID: 21300000, guid: fc15f69cdd7cd4d9db602668ecb814a6, type: 3}
+    - skintone: 1_Skintone
+      FaceSprite: {fileID: 21300000, guid: 71eecc8f022d94921b4bb5635eba3bef, type: 3}
+      MainCharacterLipstickInstance:
+      - LipstickName: 0_matte peach
+        FaceSprite:
+        - {fileID: 21300000, guid: 5360c82a4f4044b818990a31da6b3952, type: 3}
+        - {fileID: 21300000, guid: ad73e48eef8c04b749c1074f343d462f, type: 3}
+        - {fileID: 21300000, guid: 0c7aef2c04439406da24fd69e5c00603, type: 3}
+        - {fileID: 21300000, guid: 71eecc8f022d94921b4bb5635eba3bef, type: 3}
+        - {fileID: 21300000, guid: 500d4df52c3df47d7910437f64c1e538, type: 3}
+        - {fileID: 21300000, guid: 36a04cefb980647c0bd8d5f71d694110, type: 3}
+        - {fileID: 21300000, guid: 27d83f0226d4d47708a8a4de9d08b49b, type: 3}
+        - {fileID: 21300000, guid: f1838f09804194e7bb92a62643a48516, type: 3}
+        - {fileID: 21300000, guid: 390e8affc383344a4b184787113e88c8, type: 3}
+        - {fileID: 21300000, guid: 732d926bc5c614e51b70b6bc2b4a20cb, type: 3}
+      - LipstickName: 1_matte pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 94f831c9fdafa4bfd975497f8f3b422f, type: 3}
+        - {fileID: 21300000, guid: 970d23a56e0ad4d09afdec4121bfacbe, type: 3}
+        - {fileID: 21300000, guid: 484e0f917f6454d53b43a8d38202f8b7, type: 3}
+        - {fileID: 21300000, guid: 01433a764785142abb227f01b13aa20c, type: 3}
+        - {fileID: 21300000, guid: 2ac0d67a8d3bb46888114f6ce1236e28, type: 3}
+        - {fileID: 21300000, guid: 7b4e6db62ec0e49b2882b20d9353650a, type: 3}
+        - {fileID: 21300000, guid: 34665133367ec43abbc4492ecf6d9dee, type: 3}
+        - {fileID: 21300000, guid: 3198a1992ae774094a696d3e4573772d, type: 3}
+        - {fileID: 21300000, guid: 90b74aeb3453c4c64b815d9fe5e94ea9, type: 3}
+        - {fileID: 21300000, guid: fb1529da2b4004181a304dda5e94aac9, type: 3}
+      - LipstickName: 2_matte purple
+        FaceSprite:
+        - {fileID: 21300000, guid: ed062e029e15442a3b20b73213d6b626, type: 3}
+        - {fileID: 21300000, guid: 52c62f5bdef3042cb9eac192ab3756c8, type: 3}
+        - {fileID: 21300000, guid: 705a51c46239e42129871863f341efef, type: 3}
+        - {fileID: 21300000, guid: 6a014bc25d671428d85571d7b6ee6478, type: 3}
+        - {fileID: 21300000, guid: a3b7b2fa3af5f4581b4722e2f450de93, type: 3}
+        - {fileID: 21300000, guid: 13a492032a5d94870a61b536c85d13ce, type: 3}
+        - {fileID: 21300000, guid: 98ce0b0752e6644108d906a85d73239c, type: 3}
+        - {fileID: 21300000, guid: c588e4f207080446c8f4f17223c0229a, type: 3}
+        - {fileID: 21300000, guid: b0c6f42b2dc5a4f8aba1dca87bd245db, type: 3}
+        - {fileID: 21300000, guid: 356f14d719714403a8b1a81dd3251008, type: 3}
+      - LipstickName: 3_matte red
+        FaceSprite:
+        - {fileID: 21300000, guid: 4765daa1ed9ea45b8bc91be111bc0828, type: 3}
+        - {fileID: 21300000, guid: 481278e767db04e02a2461f824add040, type: 3}
+        - {fileID: 21300000, guid: d7ee4f2f872da49d28aa6c7286b9ebb2, type: 3}
+        - {fileID: 21300000, guid: e2243729e8a45420b945e59831b45a39, type: 3}
+        - {fileID: 21300000, guid: 4c1f92bf92db844b2bb69521478e3687, type: 3}
+        - {fileID: 21300000, guid: b4b97d60cd5d445819dc10bdc032327b, type: 3}
+        - {fileID: 21300000, guid: 995dc1f8352bb43adab6f8d51bba2121, type: 3}
+        - {fileID: 21300000, guid: 297728b0fc1644d4cb5194d2af741635, type: 3}
+        - {fileID: 21300000, guid: 1a9612811ec0d47cfb73bcae9df41579, type: 3}
+        - {fileID: 21300000, guid: b97d5e8c3329e427f834d3e3f3022d85, type: 3}
+      - LipstickName: 4_peach
+        FaceSprite:
+        - {fileID: 21300000, guid: 488738ce5aa4b4996bd24d3990237ac0, type: 3}
+        - {fileID: 21300000, guid: ddbc19a9b951342699496dda762fb071, type: 3}
+        - {fileID: 21300000, guid: 4a06b4abb99ba471ab28eb6c0737de6e, type: 3}
+        - {fileID: 21300000, guid: 9083fd27825e342d2906c9667afa2f3a, type: 3}
+        - {fileID: 21300000, guid: f2e5bcbe547e44ec5b108c8eb8e7ee7d, type: 3}
+        - {fileID: 21300000, guid: d48d3f84794f540bb95fd011f1dddaca, type: 3}
+        - {fileID: 21300000, guid: dcdadbc7fc37f4466aef216be62b9e4f, type: 3}
+        - {fileID: 21300000, guid: 33ba23fa9b000475da4ffa59c2367d51, type: 3}
+        - {fileID: 21300000, guid: c2c5e0b0e6c7f463bb2f7cbbf29292ff, type: 3}
+        - {fileID: 21300000, guid: 7dd02319ee479449cb078886ccff81dd, type: 3}
+      - LipstickName: 5_pink
+        FaceSprite: []
+      - LipstickName: 6_purple
+        FaceSprite:
+        - {fileID: 21300000, guid: 4345912c3c31e4fcd9894d97fd3969dd, type: 3}
+        - {fileID: 21300000, guid: 4a29e358748134a4bb2451f433a49b68, type: 3}
+        - {fileID: 21300000, guid: 2d24707e5ccba42398beaf2a6d7857e4, type: 3}
+        - {fileID: 21300000, guid: b63ac69b749344d09a47324c0f5582ec, type: 3}
+        - {fileID: 21300000, guid: 1182a75af1b6241aba01a95715772959, type: 3}
+        - {fileID: 21300000, guid: 63342a517a37d4e4eb272d3b8d0dcb89, type: 3}
+        - {fileID: 21300000, guid: 266786710f22c45478c93abd42e75888, type: 3}
+        - {fileID: 21300000, guid: be309e9185c05494a9345d43e8e4a33e, type: 3}
+        - {fileID: 21300000, guid: 1fc40077476eb4aceb023a4ed3b4edb4, type: 3}
+        - {fileID: 21300000, guid: e2859772dbb5f4990b0f8a6e891bd00e, type: 3}
+        - {fileID: 21300000, guid: e4efd8b88391e48869686717c5eed08b, type: 3}
+        - {fileID: 21300000, guid: ac50835e18eb440ea92052627b841ac0, type: 3}
+        - {fileID: 21300000, guid: c2a69a850f2af418c80cf31104efcfe0, type: 3}
+        - {fileID: 21300000, guid: 4900eb0602ccd448b991664996024547, type: 3}
+        - {fileID: 21300000, guid: e30388578f09f4611b20c7efcae77c7a, type: 3}
+        - {fileID: 21300000, guid: 12d14a517d25544508a1b7f2d239563b, type: 3}
+        - {fileID: 21300000, guid: d28ab2642d6744292b0d83b95afe275d, type: 3}
+        - {fileID: 21300000, guid: 52c67167c2b904f65820f71308aa774c, type: 3}
+        - {fileID: 21300000, guid: 7757255f2518047ee8cce914214a57d2, type: 3}
+        - {fileID: 21300000, guid: 670456b70299f4f1bacec5b521f0060e, type: 3}
+      - LipstickName: 7_red
+        FaceSprite:
+        - {fileID: 21300000, guid: 7be7feea99e4f40279a065ece55f1b58, type: 3}
+        - {fileID: 21300000, guid: 970c4d9f6e78d46109b3faf34996bb79, type: 3}
+        - {fileID: 21300000, guid: ceacf96ce21eb4bca9c3fcbd8b5ad5c9, type: 3}
+        - {fileID: 21300000, guid: 50d9d33d8f67142068f82f2340faf3c0, type: 3}
+        - {fileID: 21300000, guid: dbb64a902e9494842b699433b583ddc0, type: 3}
+        - {fileID: 21300000, guid: 2f61cc1e469884b5196b491405cb1b31, type: 3}
+        - {fileID: 21300000, guid: 2db973dc1a38c4dc3aa1244d8117f897, type: 3}
+        - {fileID: 21300000, guid: ba137e451eafc48138484793a36545d4, type: 3}
+        - {fileID: 21300000, guid: d59c45657eaa34af0be6dd9d155f9afc, type: 3}
+        - {fileID: 21300000, guid: bfa0a39abd59048d7b758d3a42d8900b, type: 3}
+    - skintone: 2_Skintone
+      FaceSprite: {fileID: 21300000, guid: dcba85ffbe743491d89609ad882217d8, type: 3}
+      MainCharacterLipstickInstance:
+      - LipstickName: 0_matte peach
+        FaceSprite:
+        - {fileID: 21300000, guid: 9f6db8d0408c248f0b8c967063d386ce, type: 3}
+        - {fileID: 21300000, guid: 4862bb7ff293e4bf3aec213d5baf53ef, type: 3}
+        - {fileID: 21300000, guid: 4554c09a5346e484489e7161a555deea, type: 3}
+        - {fileID: 21300000, guid: dcba85ffbe743491d89609ad882217d8, type: 3}
+        - {fileID: 21300000, guid: 5869cd896a1444889871afba9a125bc5, type: 3}
+        - {fileID: 21300000, guid: dbc132eeee8d448d59c1f6c1795b6c55, type: 3}
+        - {fileID: 21300000, guid: 10fa2c58e886c425c8c473cc548a98ed, type: 3}
+        - {fileID: 21300000, guid: 262ad95c2ac834e6cade489451d6259b, type: 3}
+        - {fileID: 21300000, guid: c5ecbed00152746ba901c00690f94378, type: 3}
+        - {fileID: 21300000, guid: b1e166f3a7c3045afa6beb0369fecb37, type: 3}
+      - LipstickName: 1_matte pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 49078a500f68744a4bfce1aea5d4fc0b, type: 3}
+        - {fileID: 21300000, guid: b1fb8dfb4c8bd41a9a49278afc6951a8, type: 3}
+        - {fileID: 21300000, guid: bcef04e8a7f384be7be4544c6d52cc32, type: 3}
+        - {fileID: 21300000, guid: 5ec668a285bbd4827b4caf560fc71963, type: 3}
+        - {fileID: 21300000, guid: 094c92ffd988a4fad91fe7b7b1d555b0, type: 3}
+        - {fileID: 21300000, guid: d102ef2ce44454fcea68788886664b6b, type: 3}
+        - {fileID: 21300000, guid: 441b5f60e3eff4d98994146bff3b8003, type: 3}
+        - {fileID: 21300000, guid: 370a7e382389448a28429092482f5f28, type: 3}
+        - {fileID: 21300000, guid: 25a0a89667b2146119a4129d03856d2d, type: 3}
+        - {fileID: 21300000, guid: cdf2d03939c4344039bd02f6f6b04b3c, type: 3}
+      - LipstickName: 2_matte purple
+        FaceSprite:
+        - {fileID: 21300000, guid: b22c00ce0abcd43218aff30cece4008c, type: 3}
+        - {fileID: 21300000, guid: 1c4053d00539247cd95c4e46259ccd8e, type: 3}
+        - {fileID: 21300000, guid: d0465401714ec44a8adb08740d59b6c4, type: 3}
+        - {fileID: 21300000, guid: f794b50819d5a4e2ea64df887de1b8eb, type: 3}
+        - {fileID: 21300000, guid: 0102b0f0f4b4941b8b3dcaf16897f219, type: 3}
+        - {fileID: 21300000, guid: b32602956e7bf4b9aa83e4f074c2227a, type: 3}
+        - {fileID: 21300000, guid: b9bcd060d847d44f79582e714b29f131, type: 3}
+        - {fileID: 21300000, guid: 9d353e7be06734c85ad04cfe3f1099a4, type: 3}
+        - {fileID: 21300000, guid: 2119b65d75d784add8d4f92b0b6f68c8, type: 3}
+        - {fileID: 21300000, guid: e1e212638bcb44a80ae0095bddd02c43, type: 3}
+      - LipstickName: 3_matte red
+        FaceSprite:
+        - {fileID: 21300000, guid: 07a266e0fd6a241198ffce248b6e3c0d, type: 3}
+        - {fileID: 21300000, guid: 855ed3a0f75b04a5cae5a75635039146, type: 3}
+        - {fileID: 21300000, guid: 2e231b33acf1e4d18b2368c2f20795a7, type: 3}
+        - {fileID: 21300000, guid: e70712dc8c0b94c79b00ec23dd901745, type: 3}
+        - {fileID: 21300000, guid: 3b9aff1ecb0a4421e8dafcec8613a3de, type: 3}
+        - {fileID: 21300000, guid: 96e75d61d14954092b877caee9ab5c4c, type: 3}
+        - {fileID: 21300000, guid: 45811bd2f85bc4301a8fbcfa5fa4ad89, type: 3}
+        - {fileID: 21300000, guid: ad93663df07894b4ea8324d6c38660d7, type: 3}
+        - {fileID: 21300000, guid: a914f61408a174e51844dadf1942ba9f, type: 3}
+        - {fileID: 21300000, guid: a1668006c63f1413ea633131253e3f33, type: 3}
+      - LipstickName: 4_peach
+        FaceSprite:
+        - {fileID: 21300000, guid: 83e22671981bf430a81ad33d3692384c, type: 3}
+        - {fileID: 21300000, guid: 0b76baea77b9c4404a0064e67ee79332, type: 3}
+        - {fileID: 21300000, guid: 975e1dd30169d418f9133d2d306412c2, type: 3}
+        - {fileID: 21300000, guid: 556377c2f65c048c29ae8d8f47e07044, type: 3}
+        - {fileID: 21300000, guid: a4e8caf20d4c4468c913f2d5ba56b58a, type: 3}
+        - {fileID: 21300000, guid: b7aa9ac2bc1e24e42862708824584c03, type: 3}
+        - {fileID: 21300000, guid: 68c5d30a738e049d1887a850859ad370, type: 3}
+        - {fileID: 21300000, guid: 8d11597e482b34196b8b8a0d7aef414e, type: 3}
+        - {fileID: 21300000, guid: 362dba6fe71cb4c629baae3a5d1fc70f, type: 3}
+        - {fileID: 21300000, guid: baac495cf6e294c9380ab8fa2fbd2679, type: 3}
+      - LipstickName: 5_pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 31022c7db022a4c18a95d2f70f2e02c5, type: 3}
+        - {fileID: 21300000, guid: 292d49ee2e1444b72926d2f6a17caaf7, type: 3}
+        - {fileID: 21300000, guid: a75fc45039f5443b693ac8e2c2fc51ad, type: 3}
+        - {fileID: 21300000, guid: fd32788b0d4564064aea1bafdee1356e, type: 3}
+        - {fileID: 21300000, guid: 53d4939dca2f2475d964765ef12ac243, type: 3}
+        - {fileID: 21300000, guid: 3a6ad3e906c8f4969815f5248286ca41, type: 3}
+        - {fileID: 21300000, guid: 8585ca637e6dd4c6da65be75f07ed507, type: 3}
+        - {fileID: 21300000, guid: 9a41e809ba180488188932b45b9402e4, type: 3}
+        - {fileID: 21300000, guid: 10d4d115c5570482985c03f87b93c6aa, type: 3}
+        - {fileID: 21300000, guid: f9896353bc4944c9dbb6936b50d66745, type: 3}
+      - LipstickName: 6_purple
+        FaceSprite:
+        - {fileID: 21300000, guid: 3aa5945f9568c41de8bea849084e40c2, type: 3}
+        - {fileID: 21300000, guid: e399e1ad5641e4849824667040c88807, type: 3}
+        - {fileID: 21300000, guid: 30bd438935ffd44b583f9f96101fe562, type: 3}
+        - {fileID: 21300000, guid: 880681d42a9e24167ac055ea4205bcb3, type: 3}
+        - {fileID: 21300000, guid: ef59ac9325f96464ebc2dd1d3c3fc487, type: 3}
+        - {fileID: 21300000, guid: c7b2e66ec38794b7bbf8c502ee0ac9d5, type: 3}
+        - {fileID: 21300000, guid: 6d3f74ba3f8be410a8cdcc0bf20e8e73, type: 3}
+        - {fileID: 21300000, guid: 58545de1397bc4c29af56429264d931a, type: 3}
+        - {fileID: 21300000, guid: 3a1512261e2e041c0b5df938d209f0f0, type: 3}
+        - {fileID: 21300000, guid: dc63530e1f87d4fc187876636775f749, type: 3}
+      - LipstickName: 7_red
+        FaceSprite:
+        - {fileID: 21300000, guid: 6ba197789127f409bb0d5c268d35d68c, type: 3}
+        - {fileID: 21300000, guid: 460354378226748e3bc779aa10ce5526, type: 3}
+        - {fileID: 21300000, guid: 691ac9ac64f4b49daa0d1b1226f7cbba, type: 3}
+        - {fileID: 21300000, guid: ed1b481d43ab94fab9c1f9ab1d0007de, type: 3}
+        - {fileID: 21300000, guid: 2e8a62052431d4142a50b63f80ebc4da, type: 3}
+        - {fileID: 21300000, guid: 80c5d2575fd6b4111a9567b038d39086, type: 3}
+        - {fileID: 21300000, guid: 04ea3f7e3af3d4836896462638ce120b, type: 3}
+        - {fileID: 21300000, guid: 909633e28c9b64bf3a92e018db83b822, type: 3}
+        - {fileID: 21300000, guid: fdbcd77359f0448f398279164e8a6f39, type: 3}
+        - {fileID: 21300000, guid: 6aa2dbf3641734f989824da061cef5be, type: 3}
+    - skintone: 3_Skintone
+      FaceSprite: {fileID: 21300000, guid: 519418eb0941347089d3b4fbdb111f97, type: 3}
+      MainCharacterLipstickInstance:
+      - LipstickName: 0_matte peach
+        FaceSprite:
+        - {fileID: 21300000, guid: a23369350d6af47b288c94901d099267, type: 3}
+        - {fileID: 21300000, guid: bf87b634c49a54c5c86bc8bfe98c9df8, type: 3}
+        - {fileID: 21300000, guid: f76441ab862df4a5bb6087f1d8933a10, type: 3}
+        - {fileID: 21300000, guid: 519418eb0941347089d3b4fbdb111f97, type: 3}
+        - {fileID: 21300000, guid: f0f237cb97be34e6395bceea31278612, type: 3}
+        - {fileID: 21300000, guid: fd569eb6b3eb343748dae748d6a7949d, type: 3}
+        - {fileID: 21300000, guid: d875283a7f0974a97b89abb9273f6b1b, type: 3}
+        - {fileID: 21300000, guid: 5c0e05959cc1a491b96abc88e2745a71, type: 3}
+        - {fileID: 21300000, guid: 5d47fc3b1ab7443c5aad874a1b594b92, type: 3}
+        - {fileID: 21300000, guid: 1b3960a455c354464a5459471004b6f8, type: 3}
+      - LipstickName: 1_matte pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 57bf24e2530f4445b89a76b4b3b72571, type: 3}
+        - {fileID: 21300000, guid: f817a43a2a15c4ecfba2a97b50cbda4e, type: 3}
+        - {fileID: 21300000, guid: 4c15179a4d84240afb3a57ea8ef7203d, type: 3}
+        - {fileID: 21300000, guid: b0a05441a1c774b019cc798b3be06073, type: 3}
+        - {fileID: 21300000, guid: 2ab60d9f174f34235a22d51817787df1, type: 3}
+        - {fileID: 21300000, guid: d52b671759c1c4aee9abcb9caaec908f, type: 3}
+        - {fileID: 21300000, guid: 3aa384e2db32144f2a7b0e938a322600, type: 3}
+        - {fileID: 21300000, guid: bee2b1a0fa505447ea43b625fe59841e, type: 3}
+        - {fileID: 21300000, guid: 10bb01a97d59e407a829f8ea601aa1a2, type: 3}
+        - {fileID: 21300000, guid: eeb4c284604af481e93214b5ae7a6059, type: 3}
+      - LipstickName: 2_matte purple
+        FaceSprite:
+        - {fileID: 21300000, guid: ab0337343e7dd4a92a21b41a1773b5cf, type: 3}
+        - {fileID: 21300000, guid: b9ac3f9ab8cd942449b20e336b484c0d, type: 3}
+        - {fileID: 21300000, guid: 11e2fa409cf6044c79322c291da569fd, type: 3}
+        - {fileID: 21300000, guid: 57beb8647a5dd451d8235fab1ed07587, type: 3}
+        - {fileID: 21300000, guid: 537928d2a93ca43eebabbccc2316030b, type: 3}
+        - {fileID: 21300000, guid: f2fd1ad09f53448f9a120c5608f58e47, type: 3}
+        - {fileID: 21300000, guid: 9cf3dcee542294a82b2eb0ec7cd9eed1, type: 3}
+        - {fileID: 21300000, guid: 323bbecbeb3ee48b5a344346145594c0, type: 3}
+        - {fileID: 21300000, guid: 24b74cf0686db4ecf8c650e3a1e3dc8e, type: 3}
+        - {fileID: 21300000, guid: c20fcdbd3af434b5b887365360e09bd5, type: 3}
+      - LipstickName: 3_matte red
+        FaceSprite:
+        - {fileID: 21300000, guid: 89fd017d4ef68430ab79b6d15b06048d, type: 3}
+        - {fileID: 21300000, guid: 2df511393f9b6494db46e0e8175a6edb, type: 3}
+        - {fileID: 21300000, guid: 934fd914745084c6d90f81420a03eb73, type: 3}
+        - {fileID: 21300000, guid: 381dcc209a31d4c61aad1f927d20832c, type: 3}
+        - {fileID: 21300000, guid: e03239a67270e43c99103dfe37371938, type: 3}
+        - {fileID: 21300000, guid: 67d1b5007adb54580afe5e835e90e137, type: 3}
+        - {fileID: 21300000, guid: fb336e7841c6a442c9fb527c6dfee5fa, type: 3}
+        - {fileID: 21300000, guid: e97d20821d2c64a36b298f4c9854f9c1, type: 3}
+        - {fileID: 21300000, guid: 73e18026e604d4e9a9ea28058767a8a0, type: 3}
+        - {fileID: 21300000, guid: 801c0a4292faa41d78c0555a7ce4c565, type: 3}
+      - LipstickName: 4_peach
+        FaceSprite:
+        - {fileID: 21300000, guid: 4494061ff98cd486b9ebc4f9a966f212, type: 3}
+        - {fileID: 21300000, guid: c9fec5c80d54c43f7840fd5c9ee37ff8, type: 3}
+        - {fileID: 21300000, guid: 63b9659470ad346a4aa697686c03e31e, type: 3}
+        - {fileID: 21300000, guid: 5fd324a9114be4cbdbbb83900f6c9623, type: 3}
+        - {fileID: 21300000, guid: 91f5a1a1a33f04c17b1e6a46ffc8b5cf, type: 3}
+        - {fileID: 21300000, guid: 09e49d648ac144a6c8d766d01e665a49, type: 3}
+        - {fileID: 21300000, guid: e89e966019e1b4dd89611b0bc863f0ef, type: 3}
+        - {fileID: 21300000, guid: 883a63f7ee03d4ea8abf8e3f84e267f8, type: 3}
+        - {fileID: 21300000, guid: 62308d59988a64dba82082944b45ed7a, type: 3}
+        - {fileID: 21300000, guid: 7aa96a9cf67364408a2d7931cee6ec60, type: 3}
+      - LipstickName: 5_pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 6073a70a7a9764d0e9a6b5211afd9276, type: 3}
+        - {fileID: 21300000, guid: bd519ef0d171d4d209c9f061c328bb22, type: 3}
+        - {fileID: 21300000, guid: 8650123b689134b1c96491a7383a86b4, type: 3}
+        - {fileID: 21300000, guid: 5717ef8e27a784a999f5c2e910936eee, type: 3}
+        - {fileID: 21300000, guid: 02f70f10066d1492592012e2ab95c7f0, type: 3}
+        - {fileID: 21300000, guid: 91491aecdab7f46169d8af5ffe0257f4, type: 3}
+        - {fileID: 21300000, guid: 7a05cbb0af5b64c78a9552f61bf95097, type: 3}
+        - {fileID: 21300000, guid: ecb89622ad3b445148e0369fca5ac942, type: 3}
+        - {fileID: 21300000, guid: 26aadab3ada7c42b8817580d3c6c3ca7, type: 3}
+        - {fileID: 21300000, guid: c39730504b9c040d29399706065746c2, type: 3}
+      - LipstickName: 6_purple
+        FaceSprite:
+        - {fileID: 21300000, guid: ce025a8a2854948c4946f4a466af2f5f, type: 3}
+        - {fileID: 21300000, guid: 00a28bd4372ed4a6a8b3165710a23c1b, type: 3}
+        - {fileID: 21300000, guid: 0e7c110ac32244feaad2853e07aa20aa, type: 3}
+        - {fileID: 21300000, guid: 1789916f97794412088ea1997c1b4855, type: 3}
+        - {fileID: 21300000, guid: 5749daacffa0d482b8f80a4265475466, type: 3}
+        - {fileID: 21300000, guid: b1756b3c1a05948e6a9c07a2f04246a5, type: 3}
+        - {fileID: 21300000, guid: 9321db5ac604e4cacb8417ca9502f2f4, type: 3}
+        - {fileID: 21300000, guid: 3b0927c0ff19e41cdb3676b7aac31e9d, type: 3}
+        - {fileID: 21300000, guid: cda02fcce5c6f4aea9fcb18206937dc2, type: 3}
+        - {fileID: 21300000, guid: 6fad310f6cb5b4ca7b55ae6536b7aeb1, type: 3}
+      - LipstickName: 7_red
+        FaceSprite:
+        - {fileID: 21300000, guid: f4416d5eb883448a48206b96f9e03fe4, type: 3}
+        - {fileID: 21300000, guid: dbef9bc7b915e4138af097b11eaa1542, type: 3}
+        - {fileID: 21300000, guid: 47673b5d521284b11817960aed84ec1a, type: 3}
+        - {fileID: 21300000, guid: e63f1a522674c491f8d8c116b21ae6fc, type: 3}
+        - {fileID: 21300000, guid: c166fba73b96246afbf15e41c83c8306, type: 3}
+        - {fileID: 21300000, guid: b7f23bb12b0db4131b4418bec5ffdf70, type: 3}
+        - {fileID: 21300000, guid: 07f1c849df5d24a5bacf87d65cf07893, type: 3}
+        - {fileID: 21300000, guid: 5cdb868c81d06448eb321475c43213d1, type: 3}
+        - {fileID: 21300000, guid: f122072b1a76c4439ada6d8253f99592, type: 3}
+        - {fileID: 21300000, guid: 54a8c4a95530a4d70b79c27a9bdbdf6e, type: 3}
+    - skintone: 4_Skintone
+      FaceSprite: {fileID: 21300000, guid: 46cf42dffbe504a9b8b992c498765119, type: 3}
+      MainCharacterLipstickInstance:
+      - LipstickName: 0_matte peach
+        FaceSprite:
+        - {fileID: 21300000, guid: e2ceecbcf339e48c0bfbe4b475a0cc5b, type: 3}
+        - {fileID: 21300000, guid: 98ce261b37cc3421c986573a89a169ec, type: 3}
+        - {fileID: 21300000, guid: 675eb49d277834a2192b778501ca4de3, type: 3}
+        - {fileID: 21300000, guid: 46cf42dffbe504a9b8b992c498765119, type: 3}
+        - {fileID: 21300000, guid: e46afcf5c1c74469eac946ce0e448ffa, type: 3}
+        - {fileID: 21300000, guid: 3d3c83009bc20415b97c8d38f0e1d22c, type: 3}
+        - {fileID: 21300000, guid: eefc21d30bcc14f6d8908cb7dbbd4fb4, type: 3}
+        - {fileID: 21300000, guid: 1961d3769689d4a499b32982f9f6f2aa, type: 3}
+        - {fileID: 21300000, guid: 1c703f25f3233446d880f6cc52586268, type: 3}
+        - {fileID: 21300000, guid: c450f2cc0fa1f4360a9fc126be5f008d, type: 3}
+      - LipstickName: 1_matte pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 82fe49200fd1240829acc8fcd0ea3afe, type: 3}
+        - {fileID: 21300000, guid: 1ebf14a37b6c54d9b95c475c659c5c34, type: 3}
+        - {fileID: 21300000, guid: 030fcad37e24b41798894f0a62b2bfbb, type: 3}
+        - {fileID: 21300000, guid: 9ddb7cfac26ed40db900e9939c736c5f, type: 3}
+        - {fileID: 21300000, guid: 377e6374e4dfb49ea917ed205efe8229, type: 3}
+        - {fileID: 21300000, guid: b48348345c41b4e9988bbcdd3862cb36, type: 3}
+        - {fileID: 21300000, guid: 9117d884901394e468d32798426a2765, type: 3}
+        - {fileID: 21300000, guid: aeaba783d8c9f467782d47ade059484d, type: 3}
+        - {fileID: 21300000, guid: 536f13d71a1ff42048d3eadf3093eaef, type: 3}
+        - {fileID: 21300000, guid: e10097c8620d94af98b1500af10a9c86, type: 3}
+      - LipstickName: 2_matte purple
+        FaceSprite:
+        - {fileID: 21300000, guid: f269dfef94022467f94154d21ed48961, type: 3}
+        - {fileID: 21300000, guid: d639062746a5a4356a87a840c5d99b45, type: 3}
+        - {fileID: 21300000, guid: 6f3833e5cf2974798828a3d8881847ca, type: 3}
+        - {fileID: 21300000, guid: a7751c5ddea004a9983b1a2019db6a90, type: 3}
+        - {fileID: 21300000, guid: 099d058709568457b813aab7bbb4b52f, type: 3}
+        - {fileID: 21300000, guid: 49f3ec4a3c2ba4b94aaa1301f1860259, type: 3}
+        - {fileID: 21300000, guid: 56008e1298f664dbcaaf160de27bddef, type: 3}
+        - {fileID: 21300000, guid: 31a7b8fd5f1bb4c2c8722136c7eed110, type: 3}
+        - {fileID: 21300000, guid: 7456b72239e314c58951e9f03b268a02, type: 3}
+        - {fileID: 21300000, guid: 1a72e930974f94a178b38275889e0308, type: 3}
+      - LipstickName: 3_matte red
+        FaceSprite:
+        - {fileID: 21300000, guid: 99dfeb25e5d754864a3f484d9ae19d2f, type: 3}
+        - {fileID: 21300000, guid: 90a6e5aeffcbd48dc9b6d853adbc2208, type: 3}
+        - {fileID: 21300000, guid: 567ea870f6ede4b5aa0174c693382eac, type: 3}
+        - {fileID: 21300000, guid: 5b44f00e07f2747f19cfa409022cf0a9, type: 3}
+        - {fileID: 21300000, guid: d90d53d75681d45ef98649813cbfcb99, type: 3}
+        - {fileID: 21300000, guid: b36c07fab63494e92b81c1b763c37543, type: 3}
+        - {fileID: 21300000, guid: c5cd9371c460c42b78fe6aaddf9e02c5, type: 3}
+        - {fileID: 21300000, guid: 36bc4681b99e64275ac869ca418c771b, type: 3}
+        - {fileID: 21300000, guid: d474032727e3a4be39e8f618a3642ead, type: 3}
+        - {fileID: 21300000, guid: db24584754d6f4f3fac17c0efe4f5b1f, type: 3}
+      - LipstickName: 4_peach
+        FaceSprite:
+        - {fileID: 21300000, guid: e2cdf883cc03445279a5b9d8355e5d82, type: 3}
+        - {fileID: 21300000, guid: 8eb3bdf52e1204e9d91d09a560bfd47b, type: 3}
+        - {fileID: 21300000, guid: e8203a39dc48c408a866f97953b013e9, type: 3}
+        - {fileID: 21300000, guid: e7728a4598b4e47149b470dd12203924, type: 3}
+        - {fileID: 21300000, guid: 5e4fa4e7b616a423f94aae04ff99966a, type: 3}
+        - {fileID: 21300000, guid: 35c2264f337c4472e8d37afb56415750, type: 3}
+        - {fileID: 21300000, guid: 0f5dcda854ba940f893d890d9436a022, type: 3}
+        - {fileID: 21300000, guid: 036d26f0752dc43da98dcd6910c00b87, type: 3}
+        - {fileID: 21300000, guid: 435c4d2e7b475455e9553dbb78989d93, type: 3}
+        - {fileID: 21300000, guid: 70d836f4eab4a43aebc3590e54641f10, type: 3}
+      - LipstickName: 5_pink
+        FaceSprite:
+        - {fileID: 21300000, guid: 965ef52a8666b4677bf3e28730887c3a, type: 3}
+        - {fileID: 21300000, guid: e4b90a122be134a8788bc15dd22861eb, type: 3}
+        - {fileID: 21300000, guid: 03a9f1c6ffa544ef98becb2c4308b878, type: 3}
+        - {fileID: 21300000, guid: 6e2586600fff141dabded705b4d0dc96, type: 3}
+        - {fileID: 21300000, guid: 2e2dd5b7721674f6497853dd8a5068de, type: 3}
+        - {fileID: 21300000, guid: 3ff4734d12eec4065949895a93685d8b, type: 3}
+        - {fileID: 21300000, guid: 0a68e6732c7244ee0b1f6e8ec9d86bde, type: 3}
+        - {fileID: 21300000, guid: ec0e1e967acbb444d814e43d9dea4f3e, type: 3}
+        - {fileID: 21300000, guid: eaaffa16446db44589b3b4452f0dee84, type: 3}
+        - {fileID: 21300000, guid: fe76d30b601d74a5e8b4245961d3390f, type: 3}
+      - LipstickName: 6_purple
+        FaceSprite:
+        - {fileID: 21300000, guid: 526cbe12881984621ae0b52edbe399ee, type: 3}
+        - {fileID: 21300000, guid: 240d693d0cb19409b9228c4c8dc03b7e, type: 3}
+        - {fileID: 21300000, guid: 684555a3b56314455b428805eb0d29c0, type: 3}
+        - {fileID: 21300000, guid: d17c941a586dd4bf1b06661cd1ed5e23, type: 3}
+        - {fileID: 21300000, guid: c42114693e6b3474aaff4852605263ad, type: 3}
+        - {fileID: 21300000, guid: 095cc8f80456443f799b3111310cfc00, type: 3}
+        - {fileID: 21300000, guid: a31f34bacdeea4976b098cfa3f8bb2a2, type: 3}
+        - {fileID: 21300000, guid: 4073a023ec54f4aecb2c22a81620d035, type: 3}
+        - {fileID: 21300000, guid: 2e89ad36cad5043fababb3be6db60e46, type: 3}
+        - {fileID: 21300000, guid: f1a4380ae0b8d4dd1a1b4cb148501406, type: 3}
+      - LipstickName: 7_red
+        FaceSprite:
+        - {fileID: 21300000, guid: eb7c3de7fc38e472ba1eb696ed22a760, type: 3}
+        - {fileID: 21300000, guid: 2da099ef3f2a04eefbc55ad254335799, type: 3}
+        - {fileID: 21300000, guid: 63281be446be44229a7c21f8dc213598, type: 3}
+        - {fileID: 21300000, guid: b2e69b56788d940ff97cedddcabc6c33, type: 3}
+        - {fileID: 21300000, guid: 3670ca6a5e5244391abb88d55736d953, type: 3}
+        - {fileID: 21300000, guid: 919220014841d49f2a3784f07b706c91, type: 3}
+        - {fileID: 21300000, guid: 09f0e16d56d164eb4ba30df667f4466c, type: 3}
+        - {fileID: 21300000, guid: d6d853018ffc14fd6af736443098ec16, type: 3}
+        - {fileID: 21300000, guid: 2c945824b90f241bc8bf28f03456d625, type: 3}
+        - {fileID: 21300000, guid: 97ebdaf3c37444c81a7f38ebdabd86d4, type: 3}
     MainCharacterEyeInstance:
     - Price: 0
       EyeSprite: {fileID: 21300000, guid: 7bad2fe8bb78740a4bf171ebc6074912, type: 3}
@@ -61070,14 +61560,14 @@ MonoBehaviour:
   ClothesScrollContent: {fileID: 1737351349}
   AccessoriesButton: {fileID: 0}
   AccessoriesPanel: {fileID: 0}
+  LipsticksButton: {fileID: 0}
   EarringsButton: {fileID: 0}
-  MedallionsButton: {fileID: 0}
   GlassesButton: {fileID: 0}
   TattoosButton: {fileID: 0}
+  LipsticksScroll: {fileID: 0}
+  LipsticksScrollContent: {fileID: 0}
   EarringsScroll: {fileID: 0}
   EarringsScrollContent: {fileID: 0}
-  MedallionsScroll: {fileID: 0}
-  MedallionsScrollContent: {fileID: 0}
   GlassesScroll: {fileID: 0}
   GlassesScrollContent: {fileID: 0}
   TattoosScroll: {fileID: 0}

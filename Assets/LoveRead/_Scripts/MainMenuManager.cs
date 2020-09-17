@@ -1142,7 +1142,7 @@ public class MainCharacter
     public MainCharacterEye[] MainCharacterEyeInstance;
     public MainCharacterCloth[] MainCharacterClothInstance;
     public MainCharacterHair[] MainCharacterHairInstance;
-    public MainCharacterLipstick[] MainCharacterLipstickInstance;
+    
 }
 
 [Serializable]
@@ -1155,9 +1155,18 @@ public class MainCharacterBody
 [Serializable]
 public class MainCharacterFace
 {
-    //public int Price;
+    public string  skintone;
     public Sprite FaceSprite;
+    public MainCharacterLipstick[] MainCharacterLipstickInstance;
 }
+
+//[Serializable]
+//public class MainCharacterLipstick
+//{
+//    public string  skintone;
+//    public Sprite FaceSprite;
+//    public MainCharacterLipstick[] MainCharacterLipstickInstance;
+//}
 
 [Serializable]
 public class MainCharacterEye
@@ -1169,9 +1178,8 @@ public class MainCharacterEye
 [Serializable]
 public class MainCharacterLipstick
 {
-    //public int Price;
     public string LipstickName;
-    public Sprite FaceSprite;
+    public Sprite[] FaceSprite;
 }
 
 

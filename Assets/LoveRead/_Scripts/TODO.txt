@@ -9,6 +9,16 @@
     6-Earrings
     7-Glasses
     8-Tattoos
+
+0_matte peach
+1_matte pink
+2_matte purple
+3_matte red
+4_peach
+5_pink
+6_purple
+7_red
     
+
 
 
