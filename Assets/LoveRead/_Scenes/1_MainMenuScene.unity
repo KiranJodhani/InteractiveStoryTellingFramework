@@ -6455,7 +6455,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258999777}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -7693,8 +7693,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4290530816
+  m_fontColor: {r: 0, g: 0.30588236, b: 0.7372549, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -9701,7 +9701,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm Hairstyle
+  m_text: Confirm Hair Style
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   m_sharedMaterial: {fileID: -3044387107592564722, guid: dbd09f76a7749495f83c8e9de6a71fbf,
@@ -9771,10 +9771,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 329134000}
-    characterCount: 17
+    characterCount: 18
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -21381,7 +21381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -9, y: -39.2}
+  m_AnchoredPosition: {x: -9, y: -20}
   m_SizeDelta: {x: 423.4, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &774821089
@@ -37141,7 +37141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm Haircolor
+  m_text: Confirm Hair Color
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   m_sharedMaterial: {fileID: -3044387107592564722, guid: dbd09f76a7749495f83c8e9de6a71fbf,
@@ -37211,10 +37211,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1291199621}
-    characterCount: 17
+    characterCount: 18
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -38505,7 +38505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm Skintone
+  m_text: Confirm Skin Tone
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   m_sharedMaterial: {fileID: -3044387107592564722, guid: dbd09f76a7749495f83c8e9de6a71fbf,
@@ -38575,10 +38575,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1323652837}
-    characterCount: 16
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -48961,7 +48961,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm Eyecolor
+  m_text: Confirm Eye Color
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   m_sharedMaterial: {fileID: -3044387107592564722, guid: dbd09f76a7749495f83c8e9de6a71fbf,
@@ -49031,10 +49031,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1753829315}
-    characterCount: 16
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -52232,7 +52232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8901961, g: 0.4117647, b: 0.5764706, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -59609,10 +59609,6 @@ MonoBehaviour:
   SkinColorScrollContent: {fileID: 1855796730}
   EyeColorScroll: {fileID: 1917691884}
   EyeColorScrollContent: {fileID: 420898161}
-  ConfirmLook_SkinColor: {fileID: 832744650}
-  ConfirmLook_EyeColor: {fileID: 1301890335}
-  IsSkinColorConfirmed: 0
-  IsEyeColorConfirmed: 0
   HairButton: {fileID: 705043889}
   HairPanel: {fileID: 908985561}
   HairColorButton: {fileID: 124143237}
@@ -59621,10 +59617,6 @@ MonoBehaviour:
   HairColorScrollContent: {fileID: 1705281534}
   HairStyleScroll: {fileID: 1035465083}
   HairStyleScrollContent: {fileID: 1139845501}
-  ConfirmHair_HairStyle: {fileID: 773120878}
-  ConfirmHair_HairColor: {fileID: 962073629}
-  IsHairStyleConfirmed: 0
-  IsHairColorConfirmed: 0
   ClothesButton: {fileID: 79915700}
   ClothesPanel: {fileID: 1163097149}
   ClothesScroll: {fileID: 811223959}
@@ -59652,7 +59644,17 @@ MonoBehaviour:
     purchased_skintone: 
     Purchased_eyeColor: 
     PurchasedHair: []
-  LastSelectedCategory: 
+  confirmedItemsInstance:
+    LastSelectedCategory: 0
+    CategoriesInstance:
+    - IsConfirmed: 0
+      ConfirmButton: {fileID: 832744650}
+    - IsConfirmed: 0
+      ConfirmButton: {fileID: 1301890335}
+    - IsConfirmed: 0
+      ConfirmButton: {fileID: 773120878}
+    - IsConfirmed: 0
+      ConfirmButton: {fileID: 962073629}
 --- !u!1 &2121770359
 GameObject:
   m_ObjectHideFlags: 0
