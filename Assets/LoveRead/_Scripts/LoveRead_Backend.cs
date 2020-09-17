@@ -25,10 +25,21 @@ public class LoveRead_Backend : MonoBehaviour
     public readonly static string Look_SkinColor = "Look_SkinColor";
     public readonly static string Hair_Style = "Hair_Style";
     public readonly static string Hair_Color = "Hair_Color";
+    public readonly static string Cloth = "Cloth";
+    public readonly static string Acc_lipstick = "Acc_lipstick";
+    public readonly static string Acc_earrings = "Acc_earrings";
+    public readonly static string Acc_glasses= "Acc_glasses";
+    public readonly static string Acc_tattos = "Acc_tattos";
+
     public static int SelectedSkinColor=0;
     public static int SelectedEyeColor=0;
     public static int SelectedHairStyle=0;
-    public static int SelectedHairColor=0;
+    public static int SelectedHairColor = 0;
+    public static int SelectedCloth = 0;
+    public static int SelectedLipstick = 0;
+    public static int SelectedEarrings = 0;
+    public static int SelectedGlasses = 0;
+    public static int SelectedTattoos = 0;
 
     public static string PlayerStoryProgress = "player_story_progress";
     public static string PlayerName = "player_name";
@@ -243,6 +254,7 @@ public class purchased_data
     public  int AvailableKeys;
     public List<int> purchased_skintone = new List<int>();
     public List<int> Purchased_eyeColor = new List<int>();
+    public List<int> Purchased_clothes = new List<int>();
     public List<purchased_hair> PurchasedHair = new List<purchased_hair>();
 }
 

@@ -1,1 +1,14 @@
-﻿
+﻿    
+
+    0-Skin Color
+    1-Eye Color
+    2-Hair Style
+    3-Hair Color
+    4-Cloth
+    5-Lipstick
+    6-Earrings
+    7-Glasses
+    8-Tattoos
+    
+
+
