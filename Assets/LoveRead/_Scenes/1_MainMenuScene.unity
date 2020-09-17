@@ -31142,7 +31142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 218e54214ade64b57acd76e0fbcca5b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e5a5c5b071d14c70a998f68d7461b85, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -43775,7 +43775,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ac450c777b6cd410db1f33931b154996, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01c0378d4999f45d5a2a413c0ee90c43, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -44914,7 +44914,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 86b11f42f2fc24577a22424d461f8056, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5836b9047ca884836aeee641212c67d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -45399,7 +45399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d37a6e45149944f93b5f5ad0c09b0f20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f128994995cd94c589f8f4be63f19599, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -61526,6 +61526,31 @@ MonoBehaviour:
       - Price: 0
         HairStyleColorIcon: {fileID: 21300000, guid: f91f23862a65f423da4b84cfa0b9de20,
           type: 3}
+    LipstickPriceInstance:
+    - LipstickName: 0_matte peach
+      price: 0
+      Lipstick_icon: {fileID: 21300000, guid: 8f5db3be9a34d46ffa7b4405e13d8aa3, type: 3}
+    - LipstickName: 1_matte pink
+      price: 60
+      Lipstick_icon: {fileID: 21300000, guid: e394b197ea8a84e6ea5452f04f424be7, type: 3}
+    - LipstickName: 2_matte purple
+      price: 0
+      Lipstick_icon: {fileID: 21300000, guid: 578d469ec5a854188b1dc4dcac8945b1, type: 3}
+    - LipstickName: 3_matte red
+      price: 40
+      Lipstick_icon: {fileID: 21300000, guid: 4c321c8282aa4419bb67c6daac757926, type: 3}
+    - LipstickName: 4_peach
+      price: 0
+      Lipstick_icon: {fileID: 21300000, guid: 9befce429bac04c20bac2d94f79bd059, type: 3}
+    - LipstickName: 5_pink
+      price: 0
+      Lipstick_icon: {fileID: 21300000, guid: 95ab8e49738384feb8bd9b3b529f8699, type: 3}
+    - LipstickName: 6_purple
+      price: 2
+      Lipstick_icon: {fileID: 21300000, guid: 74a0dcbe1da304f91ac4150d75c84ff0, type: 3}
+    - LipstickName: 7_red
+      price: 0
+      Lipstick_icon: {fileID: 21300000, guid: a86444476cc5b420589b236dc26916fc, type: 3}
   FreeDiamondModalWindowManagerInstance: {fileID: 1177034619}
   StorySelectionScreen: {fileID: 176900024}
   BookSelectionScreen: {fileID: 1578524833}

@@ -29,7 +29,7 @@ public class LoveRead_Backend : MonoBehaviour
     public readonly static string Acc_lipstick = "Acc_lipstick";
     public readonly static string Acc_earrings = "Acc_earrings";
     public readonly static string Acc_glasses= "Acc_glasses";
-    public readonly static string Acc_tattos = "Acc_tattos";
+    public readonly static string Acc_tattoos = "Acc_tattoos";
 
     public static int SelectedSkinColor=0;
     public static int SelectedEyeColor=0;

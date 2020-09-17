@@ -1,4 +1,4 @@
-﻿    
+﻿remove face sprite from face instance     
 
     0-Skin Color
     1-Eye Color
