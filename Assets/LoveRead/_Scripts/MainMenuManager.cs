@@ -40,12 +40,6 @@ public class MainMenuManager : MonoBehaviour
     public Transform SkinColorScrollContent;
     public GameObject EyeColorScroll;
     public Transform EyeColorScrollContent;
-    //public GameObject ConfirmLook_SkinColor;
-    //public GameObject ConfirmLook_EyeColor;
-    //public bool IsSkinColorConfirmed;
-    //public bool IsEyeColorConfirmed;
-    //public GameObject PriceTextParent;
-    //public TMP_Text PriceText;
 
     [Header("##### HAIR #####")]
     public Button HairButton;
@@ -203,6 +197,7 @@ public class MainMenuManager : MonoBehaviour
         ApplySelectedSkinColor(LoveRead_Backend.SelectedSkinColor);
         ApplySelectedHairStyle(LoveRead_Backend.SelectedHairStyle);
         ApplySelectedCloth(LoveRead_Backend.SelectedCloth);
+        ApplySelectedLipsstick(LoveRead_Backend.SelectedLipstick);
         confirmedItemsInstance.LastSelectedCategory = 0;
         FixContentPosition();
         ManageConfirmButtons();
@@ -595,10 +590,10 @@ public class MainMenuManager : MonoBehaviour
 
     void HideAllAccessoriesContent()
     {
-        EarringsScroll.SetActive(true);
-        LipsticksScroll.SetActive(true);
-        GlassesScroll.SetActive(true);
-        TattoosScroll.SetActive(true);
+        EarringsScroll.SetActive(false);
+        LipsticksScroll.SetActive(false);
+        GlassesScroll.SetActive(false);
+        TattoosScroll.SetActive(false);
 
         EarringsButton.GetComponent<Image>().color = SubButtonNormalColor;
         LipsticksButton.GetComponent<Image>().color = SubButtonNormalColor;
@@ -628,7 +623,7 @@ public class MainMenuManager : MonoBehaviour
         EarringsButton.GetComponent<Image>().color = SubButtonSelectedColor;
         EarringsScroll.SetActive(true);
         confirmedItemsInstance.LastSelectedCategory = 6;
-        ManageConfirmLook(LoveRead_Backend.Acc_earrings);
+        //ManageConfirmLook(LoveRead_Backend.Acc_earrings);
     }
 
     public void Sub_Glasses_Button()
@@ -637,65 +632,76 @@ public class MainMenuManager : MonoBehaviour
         GlassesButton.GetComponent<Image>().color = SubButtonSelectedColor;
         GlassesScroll.SetActive(true);
         confirmedItemsInstance.LastSelectedCategory = 7;
-        ManageConfirmLook(LoveRead_Backend.Acc_glasses);
+        //ManageConfirmLook(LoveRead_Backend.Acc_glasses);
     }
 
-    public void Sub_Medallion_Button()
+    public void Sub_Tattoos_Button()
     {
         HideAllAccessoriesContent();
         TattoosButton.GetComponent<Image>().color = SubButtonSelectedColor;
         TattoosScroll.SetActive(true);
         confirmedItemsInstance.LastSelectedCategory = 8;
-        ManageConfirmLook(LoveRead_Backend.Acc_tattoos);
+        //ManageConfirmLook(LoveRead_Backend.Acc_tattoos);
     }
 
     public void ApplySelectedLipsstick(int LipstickIndex)
     {
         LoveRead_Backend.SelectedLipstick = LipstickIndex;
+       
+        MainCharacterInstance.Face.sprite =
+            MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+            .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].FaceSprite[3];
 
-        //int SelectedSkinTone= MainCharacterInstance.
-        //MainCharacterInstance.Face.sprite = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedLipstick].FaceSprite;
-
-        int children = TattoosScrollContent.childCount;
+        int children = LipsticksScrollContent.childCount;
         for (int i = 0; i < children; i++)
         {
             if (i == LipstickIndex)
             {
-                SkinColorScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
+                LipsticksScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
             }
             else
             {
-                SkinColorScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
+                LipsticksScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
             }
         }
         confirmedItemsInstance.LastSelectedCategory = 5;
         confirmedItemsInstance.CategoriesInstance[5].IsConfirmed = false;
-        ManageConfirmLook(LoveRead_Backend.Acc_lipstick);
+        ManageConfirmAccessories(LoveRead_Backend.Acc_lipstick);
         ContinueToStory.SetActive(false);
     }
 
-    //public void ApplySelectedEyeColor(int EyeColorIndex)
-    //{
-    //    MainCharacterInstance.Eye.sprite = MainCharacterInstance.MainCharacterEyeInstance[EyeColorIndex].EyeSprite;
-    //    LoveRead_Backend.SelectedEyeColor = EyeColorIndex;
-    //    int children = EyeColorScrollContent.childCount;
-    //    for (int i = 0; i < children; i++)
-    //    {
-    //        if (i == EyeColorIndex)
-    //        {
-    //            EyeColorScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
-    //        }
-    //        else
-    //        {
-    //            EyeColorScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
-    //        }
-    //    }
-    //    //IsEyeColorConfirmed = false;
-    //    confirmedItemsInstance.LastSelectedCategory = 1;
-    //    confirmedItemsInstance.CategoriesInstance[1].IsConfirmed = false;
-    //    ManageConfirmLook(LoveRead_Backend.Look_EyeColor);
-    //    ContinueToStory.SetActive(false);
-    //}
+    public void ApplySelectedEarring(int EarringIndex)
+    {
+        LoveRead_Backend.SelectedEarrings = EarringIndex;
+
+        if(EarringIndex==0)
+        {
+            MainCharacterInstance.Earring.gameObject.SetActive(false);
+        }
+        else
+        {
+            MainCharacterInstance.Earring.gameObject.SetActive(true);
+            //MainCharacterInstance.Earring.sprite =MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].FaceSprite[3];
+        }
+
+        int children = EarringsScrollContent.childCount;
+        for (int i = 0; i < children; i++)
+        {
+            if (i == EarringIndex)
+            {
+                EarringsScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
+            }
+            else
+            {
+                EarringsScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
+            }
+        }
+        confirmedItemsInstance.LastSelectedCategory = 6;
+        confirmedItemsInstance.CategoriesInstance[6].IsConfirmed = false;
+        ManageConfirmLook(LoveRead_Backend.Acc_earrings);
+        ContinueToStory.SetActive(false);
+    }
+
 
 
     void ManageConfirmAccessories(string Type)
@@ -707,7 +713,7 @@ public class MainMenuManager : MonoBehaviour
             if (MainCharacterInstance.LipstickPriceInstance[LoveRead_Backend.SelectedLipstick].Price > 0)
             {
                 confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
-                    MainCharacterInstance.MainCharacterBodyInstance[LoveRead_Backend.SelectedSkinColor].Price.ToString();
+                    MainCharacterInstance.LipstickPriceInstance[LoveRead_Backend.SelectedLipstick].Price.ToString();
                 confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(true);
             }
             else
@@ -1120,6 +1126,7 @@ public class MainCharacter
     public Image Body;
     public Image Eye;
     public Image Face;
+    public Image Earring;
     public Image HairStyleShadow;
     public Image Cloth;
     public Image HairStyle;
@@ -1160,6 +1167,14 @@ public class MainCharacterEye
     public int Price;
     public Sprite EyeSprite;
 }
+
+//[Serializable]
+//public class MainCharacterEye
+//{
+//    public int Price;
+//    public Sprite EyeSprite;
+//}
+
 
 [Serializable]
 public class MainCharacterLipstick
@@ -1225,6 +1240,7 @@ public class ConfirmedItems
 [Serializable]
 public class Categories
 {
+    public string name;
     public bool IsConfirmed;
     public GameObject ConfirmButton;
 }

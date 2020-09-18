@@ -1,5 +1,15 @@
 ﻿remove face sprite from face instance     
 
+
+>>referencing lipstick
+>>Changes in character customisation class
+>>Checking layer ordering of accessories
+>>Creating icons for lipsticks
+
+
+
+>>Adding cloth 
+
     0-Skin Color
     1-Eye Color
     2-Hair Style
@@ -19,6 +29,6 @@
 6_purple
 7_red
     
-
+accessories
 
 
