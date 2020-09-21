@@ -1,12 +1,16 @@
-﻿remove face sprite from face instance     
+﻿>>Adding lipstick customization
+>>Adding manage confirm button for lipstick
+>>Managing price for lipstick
+>>Changes in purchased data for lipstick
+>>Adding earing data in serialized class
+>>Creating cloth icons and updating it in scrollview
+>>Adding glasses and tattos
+           
 
 
->>referencing lipstick
->>Changes in character customisation class
->>Checking layer ordering of accessories
->>Creating icons for lipsticks
-
-
+=============================
+5:45
+ManageConfirmAccessories to generic one
 
 >>Adding cloth 
 

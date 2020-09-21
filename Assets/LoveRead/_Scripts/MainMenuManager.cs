@@ -198,6 +198,9 @@ public class MainMenuManager : MonoBehaviour
         ApplySelectedHairStyle(LoveRead_Backend.SelectedHairStyle);
         ApplySelectedCloth(LoveRead_Backend.SelectedCloth);
         ApplySelectedLipsstick(LoveRead_Backend.SelectedLipstick);
+        ApplySelectedEarring(LoveRead_Backend.SelectedEarrings);
+        ApplySelectedGlasses(LoveRead_Backend.SelectedGlasses);
+        ApplySelectedTattoos(LoveRead_Backend.SelectedTattoos);
         confirmedItemsInstance.LastSelectedCategory = 0;
         FixContentPosition();
         ManageConfirmButtons();
@@ -623,7 +626,7 @@ public class MainMenuManager : MonoBehaviour
         EarringsButton.GetComponent<Image>().color = SubButtonSelectedColor;
         EarringsScroll.SetActive(true);
         confirmedItemsInstance.LastSelectedCategory = 6;
-        //ManageConfirmLook(LoveRead_Backend.Acc_earrings);
+        ManageConfirmAccessories(LoveRead_Backend.Acc_lipstick);
     }
 
     public void Sub_Glasses_Button()
@@ -632,7 +635,7 @@ public class MainMenuManager : MonoBehaviour
         GlassesButton.GetComponent<Image>().color = SubButtonSelectedColor;
         GlassesScroll.SetActive(true);
         confirmedItemsInstance.LastSelectedCategory = 7;
-        //ManageConfirmLook(LoveRead_Backend.Acc_glasses);
+        ManageConfirmAccessories(LoveRead_Backend.Acc_glasses);
     }
 
     public void Sub_Tattoos_Button()
@@ -641,7 +644,7 @@ public class MainMenuManager : MonoBehaviour
         TattoosButton.GetComponent<Image>().color = SubButtonSelectedColor;
         TattoosScroll.SetActive(true);
         confirmedItemsInstance.LastSelectedCategory = 8;
-        //ManageConfirmLook(LoveRead_Backend.Acc_tattoos);
+        ManageConfirmAccessories(LoveRead_Backend.Acc_tattoos);
     }
 
     public void ApplySelectedLipsstick(int LipstickIndex)
@@ -681,7 +684,8 @@ public class MainMenuManager : MonoBehaviour
         else
         {
             MainCharacterInstance.Earring.gameObject.SetActive(true);
-            //MainCharacterInstance.Earring.sprite =MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].FaceSprite[3];
+            MainCharacterInstance.Earring.sprite =
+                MainCharacterInstance.MainCharacterEarringsInstance[LoveRead_Backend.SelectedEarrings].EarringsSprite;
         }
 
         int children = EarringsScrollContent.childCount;
@@ -698,11 +702,75 @@ public class MainMenuManager : MonoBehaviour
         }
         confirmedItemsInstance.LastSelectedCategory = 6;
         confirmedItemsInstance.CategoriesInstance[6].IsConfirmed = false;
-        ManageConfirmLook(LoveRead_Backend.Acc_earrings);
+        ManageConfirmAccessories(LoveRead_Backend.Acc_earrings);
         ContinueToStory.SetActive(false);
     }
 
+    public void ApplySelectedGlasses(int GlassesIndex)
+    {
+        LoveRead_Backend.SelectedGlasses = GlassesIndex;
 
+        if (GlassesIndex == 0)
+        {
+            MainCharacterInstance.Glass.gameObject.SetActive(false);
+        }
+        else
+        {
+            MainCharacterInstance.Glass.gameObject.SetActive(true);
+            MainCharacterInstance.Glass.sprite =
+                MainCharacterInstance.MainCharacterGlassesInstance[LoveRead_Backend.SelectedGlasses].GlassesSprite;
+        }
+
+        int children = GlassesScrollContent.childCount;
+        for (int i = 0; i < children; i++)
+        {
+            if (i == GlassesIndex)
+            {
+                GlassesScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
+            }
+            else
+            {
+                GlassesScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
+            }
+        }
+        confirmedItemsInstance.LastSelectedCategory = 7;
+        confirmedItemsInstance.CategoriesInstance[7].IsConfirmed = false;
+        ManageConfirmAccessories(LoveRead_Backend.Acc_glasses);
+        ContinueToStory.SetActive(false);
+    }
+
+    public void ApplySelectedTattoos(int TattoosIndex)
+    {
+        LoveRead_Backend.SelectedTattoos = TattoosIndex;
+
+        if (TattoosIndex == 0)
+        {
+            MainCharacterInstance.Tattoo.gameObject.SetActive(false);
+        }
+        else
+        {
+            MainCharacterInstance.Tattoo.gameObject.SetActive(true);
+            MainCharacterInstance.Tattoo.sprite =
+                MainCharacterInstance.MainCharacterTattoosInstance[LoveRead_Backend.SelectedTattoos].TattoosSprite;
+        }
+
+        int children = TattoosScrollContent.childCount;
+        for (int i = 0; i < children; i++)
+        {
+            if (i == TattoosIndex)
+            {
+                TattoosScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemSelectedColor;
+            }
+            else
+            {
+                TattoosScrollContent.GetChild(i).GetChild(0).GetComponent<Image>().color = ScrollItemNormalColor;
+            }
+        }
+        confirmedItemsInstance.LastSelectedCategory = 8;
+        confirmedItemsInstance.CategoriesInstance[8].IsConfirmed = false;
+        ManageConfirmAccessories(LoveRead_Backend.Acc_tattoos);
+        ContinueToStory.SetActive(false);
+    }
 
     void ManageConfirmAccessories(string Type)
     {
@@ -721,6 +789,52 @@ public class MainMenuManager : MonoBehaviour
                 confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(false);
             }
         }
+        else if (Type == LoveRead_Backend.Acc_earrings)
+        {
+            int Index = 6;
+            confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.SetActive(!confirmedItemsInstance.CategoriesInstance[Index].IsConfirmed);
+            if (MainCharacterInstance.MainCharacterEarringsInstance[LoveRead_Backend.SelectedEarrings].Price > 0)
+            {
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
+                    MainCharacterInstance.MainCharacterEarringsInstance[LoveRead_Backend.SelectedEarrings].Price.ToString();
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+        else if (Type == LoveRead_Backend.Acc_glasses)
+        {
+            int Index = 7;
+            confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.SetActive(!confirmedItemsInstance.CategoriesInstance[Index].IsConfirmed);
+            if (MainCharacterInstance.MainCharacterGlassesInstance[LoveRead_Backend.SelectedGlasses].Price > 0)
+            {
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
+                    MainCharacterInstance.MainCharacterGlassesInstance[LoveRead_Backend.SelectedGlasses].Price.ToString();
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+        else if (Type == LoveRead_Backend.Acc_tattoos)
+        {
+            int Index = 8;
+            confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.SetActive(!confirmedItemsInstance.CategoriesInstance[Index].IsConfirmed);
+            if (MainCharacterInstance.MainCharacterTattoosInstance[LoveRead_Backend.SelectedTattoos].Price > 0)
+            {
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
+                    MainCharacterInstance.MainCharacterTattoosInstance[LoveRead_Backend.SelectedTattoos].Price.ToString();
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                confirmedItemsInstance.CategoriesInstance[Index].ConfirmButton.transform.GetChild(1).gameObject.SetActive(false);
+            }
+        }
+
         ManageConfirmButtons();
     }
 
@@ -768,6 +882,22 @@ public class MainMenuManager : MonoBehaviour
         else if (confirmedItemsInstance.LastSelectedCategory == 4)
         {
             Purchased_Data_Instance.Purchased_clothes.Add(LoveRead_Backend.SelectedCloth);
+        }
+        else if (confirmedItemsInstance.LastSelectedCategory == 5)
+        {
+            Purchased_Data_Instance.Purchased_lipsticks.Add(LoveRead_Backend.SelectedLipstick);
+        }
+        else if (confirmedItemsInstance.LastSelectedCategory == 6)
+        {
+            Purchased_Data_Instance.Purchased_earrings.Add(LoveRead_Backend.SelectedEarrings);
+        }
+        else if (confirmedItemsInstance.LastSelectedCategory == 7)
+        {
+            Purchased_Data_Instance.Purchased_glasses.Add(LoveRead_Backend.SelectedGlasses);
+        }
+        else if (confirmedItemsInstance.LastSelectedCategory == 8)
+        {
+            Purchased_Data_Instance.Purchased_tattoos.Add(LoveRead_Backend.SelectedTattoos);
         }
         string _purchasedData = JsonUtility.ToJson(Purchased_Data_Instance);
         PlayerPrefs.SetString(LoveRead_Backend.PURCHASED_DATA_KEY, _purchasedData);
@@ -817,12 +947,27 @@ public class MainMenuManager : MonoBehaviour
                 int HairColorIndexTemp = Purchased_Data_Instance.PurchasedHair[i].purchased_haircolor[j];
                 MainCharacterInstance.MainCharacterHairInstance[Purchased_Data_Instance.PurchasedHair[i].purchased_hairstyle]
                     .MainCharacterHairColorInstance[HairColorIndexTemp].Price = 0;
-
             }
         }
         for (int i = 0; i < Purchased_Data_Instance.Purchased_clothes.Count; i++)
         {
             MainCharacterInstance.MainCharacterClothInstance[Purchased_Data_Instance.Purchased_clothes[i]].Price = 0;
+        }
+        for (int i = 0; i < Purchased_Data_Instance.Purchased_lipsticks.Count; i++)
+        {
+            MainCharacterInstance.LipstickPriceInstance[Purchased_Data_Instance.Purchased_lipsticks[i]].Price = 0;
+        }
+        for (int i = 0; i < Purchased_Data_Instance.Purchased_earrings.Count; i++)
+        {
+            MainCharacterInstance.MainCharacterEarringsInstance[Purchased_Data_Instance.Purchased_earrings[i]].Price = 0;
+        }
+        for (int i = 0; i < Purchased_Data_Instance.Purchased_glasses.Count; i++)
+        {
+            MainCharacterInstance.MainCharacterGlassesInstance[Purchased_Data_Instance.Purchased_glasses[i]].Price = 0;
+        }
+        for (int i = 0; i < Purchased_Data_Instance.Purchased_tattoos.Count; i++)
+        {
+            MainCharacterInstance.MainCharacterTattoosInstance[Purchased_Data_Instance.Purchased_tattoos[i]].Price = 0;
         }
         SetDiamondKeyTexts();
     }
@@ -1127,6 +1272,8 @@ public class MainCharacter
     public Image Eye;
     public Image Face;
     public Image Earring;
+    public Image Glass;
+    public Image Tattoo;
     public Image HairStyleShadow;
     public Image Cloth;
     public Image HairStyle;
@@ -1136,6 +1283,9 @@ public class MainCharacter
     public MainCharacterCloth[] MainCharacterClothInstance;
     public MainCharacterHair[] MainCharacterHairInstance;
     public LipstickPrice[] LipstickPriceInstance;
+    public MainCharacterEarrings[] MainCharacterEarringsInstance;
+    public MainCharacterGlasses[] MainCharacterGlassesInstance;
+    public MainCharacterTattoos[] MainCharacterTattoosInstance;
 }
 
 [Serializable]
@@ -1153,13 +1303,29 @@ public class MainCharacterFace
     public MainCharacterLipstick[] MainCharacterLipstickInstance;
 }
 
-//[Serializable]
-//public class MainCharacterLipstick
-//{
-//    public string  skintone;
-//    public Sprite FaceSprite;
-//    public MainCharacterLipstick[] MainCharacterLipstickInstance;
-//}
+[Serializable]
+public class MainCharacterEarrings
+{
+    public string name;
+    public int Price;
+    public Sprite EarringsSprite;
+}
+
+[Serializable]
+public class MainCharacterGlasses
+{
+    public string name;
+    public int Price;
+    public Sprite GlassesSprite;
+}
+
+[Serializable]
+public class MainCharacterTattoos
+{
+    public string name;
+    public int Price;
+    public Sprite TattoosSprite;
+}
 
 [Serializable]
 public class MainCharacterEye
@@ -1167,13 +1333,6 @@ public class MainCharacterEye
     public int Price;
     public Sprite EyeSprite;
 }
-
-//[Serializable]
-//public class MainCharacterEye
-//{
-//    public int Price;
-//    public Sprite EyeSprite;
-//}
 
 
 [Serializable]

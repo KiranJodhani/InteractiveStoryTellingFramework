@@ -254,8 +254,13 @@ public class purchased_data
     public  int AvailableKeys;
     public List<int> purchased_skintone = new List<int>();
     public List<int> Purchased_eyeColor = new List<int>();
-    public List<int> Purchased_clothes = new List<int>();
     public List<purchased_hair> PurchasedHair = new List<purchased_hair>();
+    public List<int> Purchased_clothes = new List<int>();
+    public List<int> Purchased_lipsticks = new List<int>();
+    public List<int> Purchased_earrings = new List<int>();
+    public List<int> Purchased_glasses = new List<int>();
+    public List<int> Purchased_tattoos = new List<int>();
+
 }
 
 [Serializable]
