@@ -29,7 +29,8 @@ public class MainMenuManager : MonoBehaviour
     private string panelFadeIn = "Panel Open";
     public GameObject ContinueToStory;
 
-    
+    [Header("##### CUSTOMISATION #####")]
+    public GameObject SelectionButtonHolder;
 
     [Header("##### LOOK #####")]
     public Button LookButton;
@@ -92,9 +93,11 @@ public class MainMenuManager : MonoBehaviour
     public Transform ChapterSelectionContent;
     public GameObject ChapterSelectionScroll;
 
-    [Header("##### CHAPTER #####")]
+
+    [Header("##### POP UPS #####")]
     public ModalWindowManager ChapterModalWindowManager;
     public ModalWindowManager LetsChooseLookModalWindowManager;
+    public ModalWindowManager NotSuitableHairstylePopUp;
 
     [Header("##### PLAYER NAME #####")]
     public TMP_InputField PlayerNameInput;
@@ -110,19 +113,10 @@ public class MainMenuManager : MonoBehaviour
 
     void Start()
     {
-
-        OpenMainCharacterScreen();
-        //HideAllScreens();
-        //if (PlayerPrefs.HasKey(LoveRead_Backend.PlayerStoryProgress))
-        //{
-        //    StorySelectionScreen.SetActive(true);
-        //}
-        //else
-        //{
-        //    BookSelectionScreen.SetActive(true);
-        //    OpenChapterModalWindow();
-        //}
-
+        HideAllScreens();
+        //OpenMainCharacterScreen();
+        OpenStorySelectionScreen();
+        
         if (PlayerPrefs.HasKey(LoveRead_Backend.PURCHASED_DATA_KEY))
         {
             Purchased_Data_Instance = JsonUtility.FromJson<purchased_data>(PlayerPrefs.GetString(LoveRead_Backend.PURCHASED_DATA_KEY));
@@ -186,24 +180,79 @@ public class MainMenuManager : MonoBehaviour
     /**********************************************************/
     /************* CHARACTER CUSTOMISATION STARTS ************/
 
-    public void OpenMainCharacterScreen()
+    public void OpenMainCharacterScreen(int NumberOfChoices)
     {
+        foreach(Transform child in SelectionButtonHolder.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+        for (int i = 0; i < NumberOfChoices; i++)
+        {
+            SelectionButtonHolder.transform.GetChild(i).gameObject.SetActive(true);
+        }
+
         HideAllScreens();
         HideAllPanels();
         MainCharacterScreen.SetActive(true);
         LastOpenedScreen = MainCharacterScreen;
         Main_Look_Button();
-        ApplySelectedEyeColor(LoveRead_Backend.SelectedEyeColor);
-        ApplySelectedSkinColor(LoveRead_Backend.SelectedSkinColor);
-        ApplySelectedHairStyle(LoveRead_Backend.SelectedHairStyle);
-        ApplySelectedCloth(LoveRead_Backend.SelectedCloth);
-        ApplySelectedLipsstick(LoveRead_Backend.SelectedLipstick);
-        ApplySelectedEarring(LoveRead_Backend.SelectedEarrings);
-        ApplySelectedGlasses(LoveRead_Backend.SelectedGlasses);
-        ApplySelectedTattoos(LoveRead_Backend.SelectedTattoos);
+        if(NumberOfChoices==2)
+        {
+            ApplySelectedEyeColor(LoveRead_Backend.SelectedEyeColor);
+            ApplySelectedSkinColor(LoveRead_Backend.SelectedSkinColor);
+            ApplySelectedHairStyle(LoveRead_Backend.SelectedHairStyle);
+
+            for(int i = 3; i < confirmedItemsInstance.CategoriesInstance.Length;i++)
+            {
+                confirmedItemsInstance.CategoriesInstance[i].IsConfirmed = true;
+            }
+        }
+        else if (NumberOfChoices == 3)
+        {
+            ApplySelectedEyeColor(LoveRead_Backend.SelectedEyeColor);
+            ApplySelectedSkinColor(LoveRead_Backend.SelectedSkinColor);
+            ApplySelectedHairStyle(LoveRead_Backend.SelectedHairStyle);
+            ApplySelectedCloth(LoveRead_Backend.SelectedCloth);
+            for (int i = 4; i < confirmedItemsInstance.CategoriesInstance.Length; i++)
+            {
+                confirmedItemsInstance.CategoriesInstance[i].IsConfirmed = true;
+            }
+        }
+        else if (NumberOfChoices == 4)
+        {
+            ApplySelectedEyeColor(LoveRead_Backend.SelectedEyeColor);
+            ApplySelectedSkinColor(LoveRead_Backend.SelectedSkinColor);
+            ApplySelectedHairStyle(LoveRead_Backend.SelectedHairStyle);
+            ApplySelectedCloth(LoveRead_Backend.SelectedCloth);
+            ApplySelectedLipsstick(LoveRead_Backend.SelectedLipstick);
+            ApplySelectedEarring(LoveRead_Backend.SelectedEarrings);
+            ApplySelectedGlasses(LoveRead_Backend.SelectedGlasses);
+            ApplySelectedTattoos(LoveRead_Backend.SelectedTattoos);
+        }
+
         confirmedItemsInstance.LastSelectedCategory = 0;
         FixContentPosition();
         ManageConfirmButtons();
+    }
+
+    void ApplyDefaultLook()
+    {
+
+    }
+
+    void ApplyDefaultHair()
+    {
+
+    }
+
+    void ApplyDefaultCloth()
+    {
+
+    }
+
+    void ApplyDefaultAccessaries()
+    {
+
     }
 
     void HideAllPanels()
@@ -650,7 +699,7 @@ public class MainMenuManager : MonoBehaviour
     public void ApplySelectedLipsstick(int LipstickIndex)
     {
         LoveRead_Backend.SelectedLipstick = LipstickIndex;
-       
+
         MainCharacterInstance.Face.sprite =
             MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
             .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].FaceSprite[3];
@@ -677,7 +726,7 @@ public class MainMenuManager : MonoBehaviour
     {
         LoveRead_Backend.SelectedEarrings = EarringIndex;
 
-        if(EarringIndex==0)
+        if (EarringIndex == 0)
         {
             MainCharacterInstance.Earring.gameObject.SetActive(false);
         }
@@ -704,6 +753,11 @@ public class MainMenuManager : MonoBehaviour
         confirmedItemsInstance.CategoriesInstance[6].IsConfirmed = false;
         ManageConfirmAccessories(LoveRead_Backend.Acc_earrings);
         ContinueToStory.SetActive(false);
+
+        if(!MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairColor].IsSuitableForEarring && EarringIndex!=0)
+        {
+            NotSuitableHairstylePopUp.OpenWindow();
+        }
     }
 
     public void ApplySelectedGlasses(int GlassesIndex)
@@ -1089,6 +1143,7 @@ public class MainMenuManager : MonoBehaviour
     /************* STORY/BOOK/CHAPTER STARTS ************/
     public void OpenStorySelectionScreen()
     {
+        LastOpenedScreen = StorySelectionScreen;
         StartCoroutine(OpenStorySelectionScreenCo());
     }
 
@@ -1114,7 +1169,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
     public void OpenBookSelectionScreen()
-    {
+    {       
         StartCoroutine(OpenBookSelectionScreenCo());
     }
 
@@ -1124,7 +1179,16 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         HideAllScreens();
         BookSelectionScreen.SetActive(true);
-        OnClickBook(0);
+        if (!PlayerPrefs.HasKey(LoveRead_Backend.PlayerStoryProgress))
+        {
+            OnClickBook(0);
+            OnClickChapter(0);
+            PlayerPrefs.SetString(LoveRead_Backend.PlayerStoryProgress, "EnteredOnce");
+        }
+        else
+        {
+            
+        }
     }
 
     public void Close_BookSelection()
@@ -1230,19 +1294,7 @@ public class MainMenuManager : MonoBehaviour
     public void Open_LetsChooseLookPopup()
     {
         LetsChooseLookModalWindowManager.OpenWindow();
-        //StartCoroutine(Open_LetsChooseLookPopupCo());
     }
-
-    //IEnumerator Open_LetsChooseLookPopupCo()
-    //{
-    //    HideAllScreens();
-    //    LetsChooseLookModalWindowManager.OpenWindow();
-    //    yield return new WaitForSeconds(1f);
-    //    LetsChooseLookModalWindowManager.CloseWindow();
-    //    PlayScreenTransitionAnimation();
-    //    yield return new WaitForSeconds(1f);
-    //    OpenMainCharacterScreen();
-    //}
 
     public void OnClick_LetsGo()
     {
@@ -1255,7 +1307,7 @@ public class MainMenuManager : MonoBehaviour
         HideAllScreens();
         PlayScreenTransitionAnimation();
         yield return new WaitForSeconds(1f);
-        OpenMainCharacterScreen();
+        OpenMainCharacterScreen(2);
     }
 
 
@@ -1362,6 +1414,7 @@ public class MainCharacterHair
 {
     public string HairName;
     public int Price;
+    public bool IsSuitableForEarring;
     public Sprite[] HairStyleBackSprites;
     public Sprite[] HairStyleShadowSprites;
     public Sprite[] HairStyleSprites;
