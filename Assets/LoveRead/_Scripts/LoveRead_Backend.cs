@@ -272,3 +272,23 @@ public class purchased_hair
 
 /********** PURCHASED ITEMS ENDS **********/
 /**************************************/
+
+
+/**************************************/
+/********** PURCHASED ITEMS ENDS *******/
+
+[Serializable]
+public class Chapter
+{
+    public string chapter_name;
+    public ChapterScene[] ChapterScene_Instance;
+}
+
+[Serializable]
+public class ChapterScene
+{
+    public string scene_name;
+}
+
+/********** PURCHASED ITEMS ENDS *******/
+/**************************************/
