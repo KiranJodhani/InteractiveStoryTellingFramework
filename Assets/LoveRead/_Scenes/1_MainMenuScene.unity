@@ -75019,12 +75019,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   main_Character_api:
-    hair: []
-    look:
-      mc_look_skintone: []
-      mc_look_eyetone: []
-    cloths: []
-    accessories: []
+    body: []
   MainCharacterInstance:
     HairStyleBack: {fileID: 1032331693}
     Body: {fileID: 290326213}

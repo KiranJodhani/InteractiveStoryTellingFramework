@@ -173,14 +173,23 @@ public class resend_varification_response
 
 
 /*******************************************/
-/********** MAIN CHARACTER STARTS **********/
+/********** MAIN CHARACTER STARTS API **********/
 [Serializable]
 public class main_character
 {
-    public main_character_hair[] hair;
-    public main_character_look look;
-    public main_character_cloth[] cloths;
-    public main_character_accessories[] accessories;
+    public main_character_body[] body;
+    //public main_character_hair[] hair;
+    //public main_character_look look;
+    //public main_character_cloth[] cloths;
+    //public main_character_accessories[] accessories;
+}
+
+[Serializable]
+public class main_character_body
+{
+    public string body_color;
+    public string body_image;
+    public Sprite body_sprite;
 }
 
 [Serializable]
@@ -241,7 +250,7 @@ public class main_character_accessories
     public string accessories_image;
     public string accessories_icon;
 }
-/********** MAIN CHARACTER ENDS **********/
+/********** MAIN CHARACTER ENDS API **********/
 /*****************************************/
 
 
