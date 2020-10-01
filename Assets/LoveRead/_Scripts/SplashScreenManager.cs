@@ -82,6 +82,6 @@ public class SplashScreenManager : MonoBehaviour
 
     void LoadNextScene()
     {
-        SceneManager.LoadScene(LoveRead_Backend.AUTHENTICATION_SCENE);
+        SceneManager.LoadScene(LoveRead_Backend.MAIN_MENU_SCENE);
     }
 }

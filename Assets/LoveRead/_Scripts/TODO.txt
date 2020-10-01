@@ -1,4 +1,6 @@
-﻿
+﻿1. Caching main character body image
+
+manage items which has mutliple url
 
 0-Skin Color
 1-Eye Color
@@ -29,4 +31,22 @@ Body :
 3. https://i.imgur.com/JvzKGqG.png
 4. https://i.imgur.com/zyRPKT1.png
 5. https://i.imgur.com/2l25PAh.png
+
+Cloths
+
+
+Red dress jeanse : https://i.imgur.com/H0lI8vj.png
+https://i.imgur.com/m6nDPD3.png
+
+yellow dress : https://i.imgur.com/HsNjN9z.png
+https://i.imgur.com/j4xDEGH.png
+
+Green Dress : https://i.imgur.com/X1cWeH9.png
+https://i.imgur.com/caNWcB0.png
+
+Night dress : https://i.imgur.com/nAvLdx7.png
+https://i.imgur.com/q7FF7hd.png
+
+White Dress : https://i.imgur.com/f9nfuD9.png
+https://i.imgur.com/AgxSkiC.png
 

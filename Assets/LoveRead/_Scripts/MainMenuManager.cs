@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public main_character main_Character_api;
     public MainCharacter MainCharacterInstance;
     public ModalWindowManager FreeDiamondModalWindowManagerInstance;
 

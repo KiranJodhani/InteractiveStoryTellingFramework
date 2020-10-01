@@ -177,10 +177,11 @@ public class resend_varification_response
 [Serializable]
 public class main_character
 {
+    public string code;
     public main_character_body[] body;
     //public main_character_hair[] hair;
     //public main_character_look look;
-    //public main_character_cloth[] cloths;
+    public main_character_cloth[] cloths;
     //public main_character_accessories[] accessories;
 }
 
@@ -241,6 +242,9 @@ public class main_character_cloth
     public string cloth_name;
     public string cloth_image;
     public string cloth_icon;
+    public Sprite cloth_sprite;
+    public Sprite cloth_icon_sprite;
+    public int price;
 }
 
 [Serializable]
