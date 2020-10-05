@@ -182,7 +182,7 @@ public class main_character
     //public main_character_hair[] hair;
     //public main_character_look look;
     public main_character_cloth[] cloths;
-    //public main_character_accessories[] accessories;
+    public main_character_accessories accessories;
 }
 
 [Serializable]
@@ -250,10 +250,46 @@ public class main_character_cloth
 [Serializable]
 public class main_character_accessories
 {
-    public string accessories_name;
-    public string accessories_image;
-    public string accessories_icon;
+    public skin_tones[] skin_tones_lipsticks;
+    public earring[] earrings;
 }
+
+[Serializable]
+public class earring
+{
+    public string earring_name;
+    public string earring_image;
+    public string earring_icon;
+    public Sprite earring_sprite;
+    public Sprite earring_icon_sprite;
+    public int price;
+}
+
+[Serializable]
+public class skin_tones
+{
+    public string skin_color;
+    public lipstick[] lipsticks;
+}
+
+[Serializable]
+public class lipstick
+{
+    public string lipstick_name;
+    public string lipstick_icon;
+    public Sprite lipstick_icon_sprite;
+    public int price;
+    public emotion[] emotions;
+}
+
+[Serializable]
+public class emotion
+{
+    public string emotion_name;
+    public string emotion_image;
+    public Sprite emotion_image_sprite;
+}
+
 /********** MAIN CHARACTER ENDS API **********/
 /*****************************************/
 

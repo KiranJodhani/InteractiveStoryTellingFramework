@@ -133,6 +133,18 @@ public class MainCharacterCache : MonoBehaviour
                 ImageURL_Array = main_character_instance.cloths[DownloadClassInstance.DownloadCounter].cloth_icon.Split('/');
             }
         }
+        else if (DownloadClassInstance.CurrentItem == 2)
+        {
+            DownloadClassInstance.NumberOfImages = main_character_instance.cloths.Length;
+            if (DownloadClassInstance.items[DownloadClassInstance.CurrentItem].current_sub_item == 0)
+            {
+                ImageURL_Array = main_character_instance.cloths[DownloadClassInstance.DownloadCounter].cloth_image.Split('/');
+            }
+            else if (DownloadClassInstance.items[DownloadClassInstance.CurrentItem].current_sub_item == 1)
+            {
+                ImageURL_Array = main_character_instance.cloths[DownloadClassInstance.DownloadCounter].cloth_icon.Split('/');
+            }
+        }
         LocalImages = Directory.GetFiles(DownloadClassInstance.Root_Dir + DownloadClassInstance.items[DownloadClassInstance.CurrentItem].Dir);
         bool IsImageFound = false;
         if (LocalImages.Length > 0)

@@ -4768,6 +4768,9 @@ MonoBehaviour:
     code: 1
     body: []
     cloths: []
+    accessories:
+      skin_tones_lipsticks: []
+      earrings: []
   DownloadClassInstance:
     CurrentItem: 0
     DownloadCounter: 0
@@ -4860,6 +4863,75 @@ MonoBehaviour:
       cloth_sprite: {fileID: 0}
       cloth_icon_sprite: {fileID: 0}
       price: 43
+    accessories:
+      skin_tones_lipsticks:
+      - skin_color: 1
+        lipsticks:
+        - lipstick_name: 1_matte peach
+          lipstick_icon: 'https://i.imgur.com/FFTihd2.png '
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions:
+          - emotion_name: Angry
+            emotion_image: 
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Horny
+            emotion_image: 
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Laugh
+            emotion_image: 
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: 
+            emotion_image: 
+            emotion_image_sprite: {fileID: 0}
+        - lipstick_name: 2_matte pink
+          lipstick_icon: 
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions: []
+        - lipstick_name: 3_matte purple
+          lipstick_icon: 
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions: []
+        - lipstick_name: 4_matte red
+          lipstick_icon: 
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions: []
+      - skin_color: 
+        lipsticks: []
+      - skin_color: 
+        lipsticks: []
+      - skin_color: 
+        lipsticks: []
+      - skin_color: 
+        lipsticks: []
+      earrings:
+      - earring_name: 1
+        earring_image: https://i.imgur.com/bcOAQ50.png
+        earring_icon: https://i.imgur.com/yPloqDZ.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 0
+      - earring_name: 2
+        earring_image: https://i.imgur.com/ezJWIYL.png
+        earring_icon: https://i.imgur.com/t23A8u7.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 20
+      - earring_name: 3
+        earring_image: https://i.imgur.com/lQlFP2X.png
+        earring_icon: https://i.imgur.com/92yvArc.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 40
+      - earring_name: 4
+        earring_image: https://i.imgur.com/7ifHGIb.png
+        earring_icon: https://i.imgur.com/GtdWWdw.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 30
 --- !u!4 &2046147482
 Transform:
   m_ObjectHideFlags: 0

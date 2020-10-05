@@ -23,7 +23,7 @@ manage items which has mutliple url
 
 
 
-
+============================================================
 Body :
 
 1. https://i.imgur.com/TRuX05J.png
@@ -32,6 +32,8 @@ Body :
 4. https://i.imgur.com/zyRPKT1.png
 5. https://i.imgur.com/2l25PAh.png
 
+
+============================================================
 Cloths
 
 
@@ -50,3 +52,38 @@ https://i.imgur.com/q7FF7hd.png
 White Dress : https://i.imgur.com/f9nfuD9.png
 https://i.imgur.com/AgxSkiC.png
 
+============================================================
+Earrings
+
+Double circle :
+https://i.imgur.com/bcOAQ50.png
+https://i.imgur.com/yPloqDZ.png
+
+Heart :
+https://i.imgur.com/ezJWIYL.png
+https://i.imgur.com/t23A8u7.png
+
+
+Single :
+https://i.imgur.com/lQlFP2X.png
+https://i.imgur.com/92yvArc.png
+
+Small :
+https://i.imgur.com/7ifHGIb.png
+https://i.imgur.com/GtdWWdw.png
+
+============================================================
+lipstick
+
+Icons
+1_matte peach
+https://i.imgur.com/FFTihd2.png
+
+2_matte pink
+https://i.imgur.com/EXPFbue.png
+
+3_matte purple
+https://i.imgur.com/swBrutx.png
+
+4_matte red
+https://i.imgur.com/w43JyZG.png
