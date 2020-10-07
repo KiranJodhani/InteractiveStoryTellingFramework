@@ -46,6 +46,17 @@ public class LoveRead_Backend : MonoBehaviour
 
     //***********  SHOP *************
     public readonly static string PURCHASED_DATA_KEY = "PURCHASED_DATA_KEY";
+
+    //***********  CUSTOMISATION *************
+    public readonly static string ScreenType_Narration = "narration";
+    public readonly static string ScreenType_MC_Speaking = "mc_speaking";
+    public readonly static string ScreenType_OC_Speaking = "oc_speaking";
+    public readonly static string ScreenType_MC_Thinking = "mc_thinking";
+    public readonly static string ScreenType_OC_Thinking = "oc_thinking";
+    public readonly static string ScreenType_Choice = "choice";
+    public readonly static string ScreenType_Action = "action";
+
+
 }
 
 
@@ -337,6 +348,25 @@ public class Chapter
 public class ChapterScene
 {
     public string scene_name;
+    public ChapterSceneScreen[] chapterSceneScreens;
+}
+
+[Serializable]
+public class ChapterSceneScreen
+{
+    public string screenType;
+    public string character_name;
+    public string content;
+    public string emotion;
+    public choiceScreen[] choiceScreens;
+}
+
+[Serializable]
+public class choiceScreen
+{
+    public string choiceText;
+    public int price;
+    public int targetScreenNumber;
 }
 
 /********** PURCHASED ITEMS ENDS *******/

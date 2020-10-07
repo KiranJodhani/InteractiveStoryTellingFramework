@@ -111,6 +111,12 @@ public class MainMenuManager : MonoBehaviour
 
     public ConfirmedItems confirmedItemsInstance;
 
+
+    [Header("##### CHAPTER CONTENTS #####")]
+    public Chapter ChapterInstance;
+    public TextMeshProUGUI MC_NameText;
+    public TextMeshProUGUI MC_SpeakingText;
+    
     void Start()
     {
         HideAllScreens();
@@ -542,10 +548,17 @@ public class MainMenuManager : MonoBehaviour
         {
             confirmedItemsInstance.CategoriesInstance[3].IsConfirmed = false;
             ContinueToStory.SetActive(false);
+            //confirmedItemsInstance.LastSelectedCategory = 3;
+            //ManageConfirmHair(LoveRead_Backend.Hair_Color);
+        }
+        else
+        {
+            confirmedItemsInstance.CategoriesInstance[3].IsConfirmed = true;
+            ContinueToStory.SetActive(false);
             confirmedItemsInstance.LastSelectedCategory = 3;
             ManageConfirmHair(LoveRead_Backend.Hair_Color);
         }
-        
+
     }
 
     void ManageConfirmHair(string Type)
@@ -1088,6 +1101,18 @@ public class MainMenuManager : MonoBehaviour
     public void OpenChapter()
     {
         HideAllScreens();
+        MainCharacterInstance.InGame_HairStyle.sprite = MainCharacterInstance.HairStyle.sprite;
+        MainCharacterInstance.InGame_Body.sprite = MainCharacterInstance.Body.sprite;
+        MainCharacterInstance.InGame_Eye.sprite = MainCharacterInstance.Eye.sprite;
+        MainCharacterInstance.InGame_Earring.gameObject.SetActive(MainCharacterInstance.Earring.gameObject.activeSelf); 
+        MainCharacterInstance.InGame_Earring.sprite = MainCharacterInstance.Earring.sprite;
+        MainCharacterInstance.InGame_Glass.gameObject.SetActive(MainCharacterInstance.Glass.gameObject.activeSelf);
+        MainCharacterInstance.InGame_Glass.sprite = MainCharacterInstance.Glass.sprite;
+        MainCharacterInstance.InGame_Tattoo.gameObject.SetActive(MainCharacterInstance.Tattoo.gameObject.activeSelf);
+        MainCharacterInstance.InGame_Tattoo.sprite = MainCharacterInstance.Tattoo.sprite;
+        MainCharacterInstance.InGame_HairStyleShadow.sprite = MainCharacterInstance.HairStyleShadow.sprite;
+        MainCharacterInstance.InGame_Cloth.sprite = MainCharacterInstance.Cloth.sprite;
+        MainCharacterInstance.InGame_HairStyle.sprite = MainCharacterInstance.HairStyle.sprite;
         ChapterScreen.SetActive(true);
     }
 

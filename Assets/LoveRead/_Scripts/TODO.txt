@@ -1,4 +1,4 @@
-﻿0.Checking hair color confimed
+﻿
 1. Chapter algorithm
 
 2. Caching main character body image
