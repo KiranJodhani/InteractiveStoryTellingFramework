@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -80,6 +79,26 @@ public class MainCharacterCache : MonoBehaviour
             catch (IOException ex)
             {
                 print("Error : " + ex.Message);
+            }
+        }
+        for (int i = 0; i < main_character_instanceJSON.body.Length; i++)
+        {
+            string FolderName = "/SkinTone_" + (i + 1).ToString()+"/";
+            for (int j = 0; j < main_character_instanceJSON.accessories.skin_tones_lipsticks[i].lipsticks.Length; j++)
+            {
+                try
+                {
+                    string LipstickFullPath = DownloadClassInstance.Root_Dir + DownloadClassInstance.items[2].Dir + FolderName
+                    +"/" + main_character_instanceJSON.accessories.skin_tones_lipsticks[i].lipsticks[j].lipstick_name;
+                    if (!Directory.Exists(LipstickFullPath))
+                    {
+                        Directory.CreateDirectory(LipstickFullPath);
+                    }
+                }
+                catch (IOException ex)
+                {
+                    print("Error : " + ex.Message);
+                }
             }
         }
     }

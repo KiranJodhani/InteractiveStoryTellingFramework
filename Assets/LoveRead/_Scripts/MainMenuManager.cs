@@ -19,6 +19,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject PlayerNameScreen;
     public GameObject ShopScreen;
     public GameObject SettingScreen;
+    public GameObject ChapterScreen;
     public Button MenuButton;
     public GameObject LastOpenedScreen;
 
@@ -113,9 +114,9 @@ public class MainMenuManager : MonoBehaviour
     void Start()
     {
         HideAllScreens();
-        //OpenMainCharacterScreen();
-        OpenStorySelectionScreen();
-        
+        OpenMainCharacterScreen(2);
+        //OpenStorySelectionScreen();
+
         if (PlayerPrefs.HasKey(LoveRead_Backend.PURCHASED_DATA_KEY))
         {
             Purchased_Data_Instance = JsonUtility.FromJson<purchased_data>(PlayerPrefs.GetString(LoveRead_Backend.PURCHASED_DATA_KEY));
@@ -174,6 +175,7 @@ public class MainMenuManager : MonoBehaviour
         MainCharacterScreen.SetActive(false);
         ShopScreen.SetActive(false);
         SettingScreen.SetActive(false);
+        ChapterScreen.SetActive(false);
     }
 
     /**********************************************************/
@@ -536,7 +538,7 @@ public class MainMenuManager : MonoBehaviour
             }
         }
 
-        if(ManageConfirmButton=="true")
+        if(ManageConfirmButton=="false")
         {
             confirmedItemsInstance.CategoriesInstance[3].IsConfirmed = false;
             ContinueToStory.SetActive(false);
@@ -1074,11 +1076,25 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         HideAllScreens();
         yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene(LoveRead_Backend.MAIN_GAME_SCENE);
+        OpenChapter();
+        //SceneManager.LoadScene(LoveRead_Backend.MAIN_GAME_SCENE);
     }
 
     /************* CHARACTER CUSTOMISATION ENDS ************/
     /*******************************************************/
+
+    /******************************************/
+    /************* CHAPTER STARTS ************/
+    public void OpenChapter()
+    {
+        HideAllScreens();
+        ChapterScreen.SetActive(true);
+    }
+
+    /************* CHAPTER ENDS ************/
+    /******************************************/
+
+
 
 
     /**************************************/
@@ -1328,6 +1344,18 @@ public class MainCharacter
     public Image HairStyleShadow;
     public Image Cloth;
     public Image HairStyle;
+
+    public Image InGame_HairStyleBack;
+    public Image InGame_Body;
+    public Image InGame_Eye;
+    public Image InGame_Face;
+    public Image InGame_Earring;
+    public Image InGame_Glass;
+    public Image InGame_Tattoo;
+    public Image InGame_HairStyleShadow;
+    public Image InGame_Cloth;
+    public Image InGame_HairStyle;
+
     public MainCharacterBody[] MainCharacterBodyInstance;
     public MainCharacterFace[] MainCharacterFaceInstance;
     public MainCharacterEye[] MainCharacterEyeInstance;

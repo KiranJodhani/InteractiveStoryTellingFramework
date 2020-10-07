@@ -4813,7 +4813,7 @@ MonoBehaviour:
       sub_item_length: 0
       current_sub_item: 0
       Dir: /skincolor
-  DoConvertOnly: 0
+  DoConvertOnly: 1
   main_character_instanceJSON:
     code: 1
     body:
@@ -4873,40 +4873,358 @@ MonoBehaviour:
           price: 0
           emotions:
           - emotion_name: Angry
-            emotion_image: 
+            emotion_image: https://i.imgur.com/3oVEdSE.png
             emotion_image_sprite: {fileID: 0}
           - emotion_name: Horny
-            emotion_image: 
+            emotion_image: https://i.imgur.com/1IfY67p.png
             emotion_image_sprite: {fileID: 0}
-          - emotion_name: Laugh
-            emotion_image: 
+          - emotion_name: Laughing
+            emotion_image: https://i.imgur.com/9x6gT5v.png
             emotion_image_sprite: {fileID: 0}
-          - emotion_name: 
-            emotion_image: 
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/p9G313N.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rollingEye
+            emotion_image: https://i.imgur.com/gVAArdT.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/OR53rdV.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/KCGzmGs.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/CPJNy3y.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/2KDIiG4.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/zJKxOYS.png
             emotion_image_sprite: {fileID: 0}
         - lipstick_name: 2_matte pink
           lipstick_icon: 
           lipstick_icon_sprite: {fileID: 0}
           price: 0
-          emotions: []
-        - lipstick_name: 3_matte purple
+          emotions:
+          - emotion_name: angry
+            emotion_image: https://i.imgur.com/8OR1yUz.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: horny
+            emotion_image: https://i.imgur.com/noeE9u0.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: laugh
+            emotion_image: https://i.imgur.com/Mj6yLZk.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/k9Boo3c.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rolling
+            emotion_image: https://i.imgur.com/kvON4vx.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/pr7gPBZ.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/It0axUd.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/lSow0aO.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/vZn6KPR.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/B1nRbqG.png
+            emotion_image_sprite: {fileID: 0}
+      - skin_color: 2
+        lipsticks:
+        - lipstick_name: 1_matte peach
+          lipstick_icon: 'https://i.imgur.com/FFTihd2.png '
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions:
+          - emotion_name: Angry
+            emotion_image: https://i.imgur.com/3oVEdSE.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Horny
+            emotion_image: https://i.imgur.com/1IfY67p.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Laughing
+            emotion_image: https://i.imgur.com/9x6gT5v.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/p9G313N.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rollingEye
+            emotion_image: https://i.imgur.com/gVAArdT.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/OR53rdV.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/KCGzmGs.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/CPJNy3y.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/2KDIiG4.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/zJKxOYS.png
+            emotion_image_sprite: {fileID: 0}
+        - lipstick_name: 2_matte pink
           lipstick_icon: 
           lipstick_icon_sprite: {fileID: 0}
           price: 0
-          emotions: []
-        - lipstick_name: 4_matte red
+          emotions:
+          - emotion_name: angry
+            emotion_image: https://i.imgur.com/8OR1yUz.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: horny
+            emotion_image: https://i.imgur.com/noeE9u0.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: laugh
+            emotion_image: https://i.imgur.com/Mj6yLZk.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/k9Boo3c.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rolling
+            emotion_image: https://i.imgur.com/kvON4vx.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/pr7gPBZ.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/It0axUd.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/lSow0aO.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/vZn6KPR.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/B1nRbqG.png
+            emotion_image_sprite: {fileID: 0}
+      - skin_color: 3
+        lipsticks:
+        - lipstick_name: 1_matte peach
+          lipstick_icon: 'https://i.imgur.com/FFTihd2.png '
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions:
+          - emotion_name: Angry
+            emotion_image: https://i.imgur.com/3oVEdSE.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Horny
+            emotion_image: https://i.imgur.com/1IfY67p.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Laughing
+            emotion_image: https://i.imgur.com/9x6gT5v.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/p9G313N.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rollingEye
+            emotion_image: https://i.imgur.com/gVAArdT.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/OR53rdV.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/KCGzmGs.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/CPJNy3y.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/2KDIiG4.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/zJKxOYS.png
+            emotion_image_sprite: {fileID: 0}
+        - lipstick_name: 2_matte pink
           lipstick_icon: 
           lipstick_icon_sprite: {fileID: 0}
           price: 0
-          emotions: []
-      - skin_color: 
-        lipsticks: []
-      - skin_color: 
-        lipsticks: []
-      - skin_color: 
-        lipsticks: []
-      - skin_color: 
-        lipsticks: []
+          emotions:
+          - emotion_name: angry
+            emotion_image: https://i.imgur.com/8OR1yUz.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: horny
+            emotion_image: https://i.imgur.com/noeE9u0.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: laugh
+            emotion_image: https://i.imgur.com/Mj6yLZk.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/k9Boo3c.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rolling
+            emotion_image: https://i.imgur.com/kvON4vx.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/pr7gPBZ.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/It0axUd.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/lSow0aO.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/vZn6KPR.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/B1nRbqG.png
+            emotion_image_sprite: {fileID: 0}
+      - skin_color: 4
+        lipsticks:
+        - lipstick_name: 1_matte peach
+          lipstick_icon: 'https://i.imgur.com/FFTihd2.png '
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions:
+          - emotion_name: Angry
+            emotion_image: https://i.imgur.com/3oVEdSE.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Horny
+            emotion_image: https://i.imgur.com/1IfY67p.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Laughing
+            emotion_image: https://i.imgur.com/9x6gT5v.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/p9G313N.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rollingEye
+            emotion_image: https://i.imgur.com/gVAArdT.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/OR53rdV.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/KCGzmGs.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/CPJNy3y.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/2KDIiG4.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/zJKxOYS.png
+            emotion_image_sprite: {fileID: 0}
+        - lipstick_name: 2_matte pink
+          lipstick_icon: 
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions:
+          - emotion_name: angry
+            emotion_image: https://i.imgur.com/8OR1yUz.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: horny
+            emotion_image: https://i.imgur.com/noeE9u0.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: laugh
+            emotion_image: https://i.imgur.com/Mj6yLZk.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/k9Boo3c.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rolling
+            emotion_image: https://i.imgur.com/kvON4vx.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/pr7gPBZ.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/It0axUd.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/lSow0aO.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/vZn6KPR.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/B1nRbqG.png
+            emotion_image_sprite: {fileID: 0}
+      - skin_color: 5
+        lipsticks:
+        - lipstick_name: 1_matte peach
+          lipstick_icon: 'https://i.imgur.com/FFTihd2.png '
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions:
+          - emotion_name: Angry
+            emotion_image: https://i.imgur.com/3oVEdSE.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Horny
+            emotion_image: https://i.imgur.com/1IfY67p.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: Laughing
+            emotion_image: https://i.imgur.com/9x6gT5v.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/p9G313N.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rollingEye
+            emotion_image: https://i.imgur.com/gVAArdT.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/OR53rdV.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/KCGzmGs.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/CPJNy3y.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/2KDIiG4.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/zJKxOYS.png
+            emotion_image_sprite: {fileID: 0}
+        - lipstick_name: 2_matte pink
+          lipstick_icon: 
+          lipstick_icon_sprite: {fileID: 0}
+          price: 0
+          emotions:
+          - emotion_name: angry
+            emotion_image: https://i.imgur.com/8OR1yUz.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: horny
+            emotion_image: https://i.imgur.com/noeE9u0.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: laugh
+            emotion_image: https://i.imgur.com/Mj6yLZk.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: normal
+            emotion_image: https://i.imgur.com/k9Boo3c.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: rolling
+            emotion_image: https://i.imgur.com/kvON4vx.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: sad
+            emotion_image: https://i.imgur.com/pr7gPBZ.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: scary
+            emotion_image: https://i.imgur.com/It0axUd.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: shocked
+            emotion_image: https://i.imgur.com/lSow0aO.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: smiling
+            emotion_image: https://i.imgur.com/vZn6KPR.png
+            emotion_image_sprite: {fileID: 0}
+          - emotion_name: wink
+            emotion_image: https://i.imgur.com/B1nRbqG.png
+            emotion_image_sprite: {fileID: 0}
       earrings:
       - earring_name: 1
         earring_image: https://i.imgur.com/bcOAQ50.png
