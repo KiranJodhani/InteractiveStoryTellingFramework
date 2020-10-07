@@ -119,6 +119,7 @@ public class MainMenuManager : MonoBehaviour
     
     void Start()
     {
+        print(JsonUtility.ToJson(ChapterInstance));
         HideAllScreens();
         OpenMainCharacterScreen(2);
         //OpenStorySelectionScreen();
@@ -553,7 +554,7 @@ public class MainMenuManager : MonoBehaviour
         }
         else
         {
-            confirmedItemsInstance.CategoriesInstance[3].IsConfirmed = true;
+            confirmedItemsInstance.CategoriesInstance[3].IsConfirmed = false;
             ContinueToStory.SetActive(false);
             confirmedItemsInstance.LastSelectedCategory = 3;
             ManageConfirmHair(LoveRead_Backend.Hair_Color);

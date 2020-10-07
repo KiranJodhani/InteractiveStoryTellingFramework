@@ -6266,7 +6266,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &198900113
 MonoBehaviour:
@@ -13588,8 +13588,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 535.1, y: 530.2}
+  m_AnchoredPosition: {x: 0, y: -290}
+  m_SizeDelta: {x: 543.6, y: 598.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &377070879
 MonoBehaviour:
@@ -17224,9 +17224,9 @@ RectTransform:
   m_Father: {fileID: 1944206566}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 110, y: -17.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 220, y: 65}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &452428555
@@ -21381,7 +21381,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "My boss is not very happy with me lately and I can \u0301t afford losing
-    this job..."
+    this job...My boss is not very happy with me lately and Idsfsfrere"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dbd09f76a7749495f83c8e9de6a71fbf, type: 2}
   m_sharedMaterial: {fileID: -3044387107592564722, guid: dbd09f76a7749495f83c8e9de6a71fbf,
@@ -21430,7 +21430,7 @@ MonoBehaviour:
   m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
-  m_isTextTruncated: 0
+  m_isTextTruncated: 1
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
@@ -21451,12 +21451,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 588793013}
-    characterCount: 79
+    characterCount: 129
     spriteCount: 0
-    spaceCount: 16
-    wordCount: 17
+    spaceCount: 26
+    wordCount: 28
     linkCount: 0
-    lineCount: 2
+    lineCount: 3
     pageCount: 1
     materialCount: 2
   m_isUsingLegacyAnimationComponent: 0
@@ -23343,7 +23343,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &635558630
 MonoBehaviour:
@@ -26711,7 +26711,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &740215633
 MonoBehaviour:
@@ -29523,7 +29523,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &822382953
 MonoBehaviour:
@@ -32351,7 +32351,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &900159538
 MonoBehaviour:
@@ -43259,7 +43259,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1203807804
 MonoBehaviour:
@@ -49334,7 +49334,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1332989078
 MonoBehaviour:
@@ -53784,7 +53784,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -738.2}
-  m_SizeDelta: {x: 650, y: 150}
+  m_SizeDelta: {x: 657.6, y: 153.1}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1487148841
 MonoBehaviour:
@@ -60964,7 +60964,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -132.2, y: -679}
-  m_SizeDelta: {x: 342.5, y: 79.69995}
+  m_SizeDelta: {x: 382.9, y: 79.69995}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1681570346
 MonoBehaviour:
@@ -62480,7 +62480,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1735742276
 MonoBehaviour:
@@ -67243,7 +67243,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1878432972
 MonoBehaviour:
@@ -70488,7 +70488,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 750, y: 1229.75}
+  m_SizeDelta: {x: 928, y: 1330.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1954084720
 MonoBehaviour:
@@ -77261,102 +77261,202 @@ MonoBehaviour:
         character_name: Irina
         content: You wake up in your room and yawn.
         emotion: normal
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: narration
         character_name: Irina
         content: You look at the phone... In an hour you have to be at work.
         emotion: normal
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: mc_speaking
         character_name: Irina
         content: Oh...
         emotion: sad
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: narration
         character_name: Irina
         content: Bale, your boyfriend, lies beside you checking his phone.
         emotion: nornmal
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: narration
         character_name: Irina
         content: He looks at you and smiles
         emotion: nornmal
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: oc_speaking
         character_name: Bale
         content: Good morning, Sunshine!
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: narration
         character_name: Bale
         content: He kisses you in a forehead
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: mc_speaking
         character_name: Irina
         content: Hello you!
         emotion: happy
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: mc_thinking
         character_name: Irina
         content: "\u200BHe looks sooo cute in the morning..."
         emotion: happy
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: narration
         character_name: Irina
         content: You move closer to him feeling cozy under the blanket
         emotion: happy
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: oc_speaking
         character_name: Bale
         content: Look! I found a new bakery right here around the corner!
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: narration
         character_name: Bale
         content: He shows you an Instagram post, the place just opened
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: oc_speaking
         character_name: Bale
         content: They claim to have the best cupcakes in town...
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: mc_thinking
         character_name: Irina
         content: It looks delicious!
         emotion: happy
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: mc_speaking
         character_name: Irina
         content: Wow! It looks so good!
         emotion: happy
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: oc_speaking
         character_name: Bale
         content: Yes, we should definitely go try them!
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: oc_speaking
         character_name: Bale
         content: Are you busy today?
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: oc_speaking
         character_name: Bale
         content: I think I have a plan for a perfect breakfast!
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: oc_thinking
         character_name: Irina
         content: I would love to be able to spend days like Bale...
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
       - screenType: mc_thinking
         character_name: Irina
         content: But I have to get ready for work...
         emotion: 
-        choiceScreens: []
+        choiceScreen:
+          choiceText: 
+          choiceScreenOptions: []
+        actionScreen:
+          actionText: 
+          actionScreenOptions: []
   MC_NameText: {fileID: 1899419318}
   MC_SpeakingText: {fileID: 1899419318}
 --- !u!1 &2121770359

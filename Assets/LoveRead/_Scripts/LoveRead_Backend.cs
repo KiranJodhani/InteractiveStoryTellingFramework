@@ -358,16 +358,38 @@ public class ChapterSceneScreen
     public string character_name;
     public string content;
     public string emotion;
-    public choiceScreen[] choiceScreens;
+    public choiceScreen choiceScreen;
+    public actionScreen actionScreen;
 }
 
 [Serializable]
 public class choiceScreen
 {
     public string choiceText;
+    public choiceScreenOptions[] choiceScreenOptions;
+}
+
+[Serializable]
+public class choiceScreenOptions
+{
+    public string optionText;
     public int price;
     public int targetScreenNumber;
 }
 
+[Serializable]
+public class actionScreen
+{
+    public string actionText;
+    public actionScreenOptions[] actionScreenOptions;
+}
+
+[Serializable]
+public class actionScreenOptions
+{
+    public string optionText;
+    public int price;
+    public int targetScreenNumber;
+}
 /********** PURCHASED ITEMS ENDS *******/
 /**************************************/
