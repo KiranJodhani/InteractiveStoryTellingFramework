@@ -12,7 +12,7 @@ public class MainCharacterCache : MonoBehaviour
     public TextAsset DummyResponse;
     public main_character main_character_instance;
     public DownloadClass DownloadClassInstance;
-    
+
     public bool DoConvertOnly;
 
 
@@ -28,9 +28,13 @@ public class MainCharacterCache : MonoBehaviour
 
     void Start()
     {
-        if(DoConvertOnly)
+        if (DoConvertOnly)
         {
-            print(JsonUtility.ToJson(main_character_instanceJSON));
+            var jsonData = JsonUtility.ToJson(main_character_instanceJSON, true);
+#if UNITY_EDITOR
+            File.WriteAllText(UnityEditor.AssetDatabase.GetAssetPath(DummyResponse), jsonData);
+#endif
+            print(jsonData);
         }
         else
         {
@@ -51,7 +55,7 @@ public class MainCharacterCache : MonoBehaviour
         }
     }
 
-    
+
     void CreateFolderStucture()
     {
         DownloadClassInstance.Root_Dir = Application.persistentDataPath + "/MainCharacter";
@@ -67,11 +71,11 @@ public class MainCharacterCache : MonoBehaviour
             print("Error Root : " + ex.Message);
         }
 
-        for(int i = 0; i < DownloadClassInstance.items.Length;i++)
+        for (int i = 0; i < DownloadClassInstance.items.Length; i++)
         {
             try
             {
-                if (!Directory.Exists(DownloadClassInstance.Root_Dir+DownloadClassInstance.items[i].Dir))
+                if (!Directory.Exists(DownloadClassInstance.Root_Dir + DownloadClassInstance.items[i].Dir))
                 {
                     Directory.CreateDirectory(DownloadClassInstance.Root_Dir + DownloadClassInstance.items[i].Dir);
                 }
@@ -83,13 +87,13 @@ public class MainCharacterCache : MonoBehaviour
         }
         for (int i = 0; i < main_character_instanceJSON.body.Length; i++)
         {
-            string FolderName = "/SkinTone_" + (i + 1).ToString()+"/";
+            string FolderName = "/SkinTone_" + (i + 1).ToString() + "/";
             for (int j = 0; j < main_character_instanceJSON.accessories.skin_tones_lipsticks[i].lipsticks.Length; j++)
             {
                 try
                 {
                     string LipstickFullPath = DownloadClassInstance.Root_Dir + DownloadClassInstance.items[2].Dir + FolderName
-                    +"/" + main_character_instanceJSON.accessories.skin_tones_lipsticks[i].lipsticks[j].lipstick_name;
+                    + "/" + main_character_instanceJSON.accessories.skin_tones_lipsticks[i].lipsticks[j].lipstick_name;
                     if (!Directory.Exists(LipstickFullPath))
                     {
                         Directory.CreateDirectory(LipstickFullPath);
@@ -116,7 +120,7 @@ public class MainCharacterCache : MonoBehaviour
 
         if (request.downloadHandler.text == "")
         {
-            
+
         }
         else if (main_character_instance.code == "1")
         {
@@ -135,15 +139,15 @@ public class MainCharacterCache : MonoBehaviour
         string[] ImageURL_Array = new string[0];
         string[] LocalImages = new string[0];
 
-        if (DownloadClassInstance.CurrentItem==0)
+        if (DownloadClassInstance.CurrentItem == 0)
         {
             DownloadClassInstance.NumberOfImages = main_character_instance.body.Length;
             ImageURL_Array = main_character_instance.body[DownloadClassInstance.DownloadCounter].body_image.Split('/');
         }
         else if (DownloadClassInstance.CurrentItem == 1)
-        {            
+        {
             DownloadClassInstance.NumberOfImages = main_character_instance.cloths.Length;
-            if(DownloadClassInstance.items[DownloadClassInstance.CurrentItem].current_sub_item==0)
+            if (DownloadClassInstance.items[DownloadClassInstance.CurrentItem].current_sub_item == 0)
             {
                 ImageURL_Array = main_character_instance.cloths[DownloadClassInstance.DownloadCounter].cloth_image.Split('/');
             }
@@ -164,8 +168,10 @@ public class MainCharacterCache : MonoBehaviour
                 ImageURL_Array = main_character_instance.cloths[DownloadClassInstance.DownloadCounter].cloth_icon.Split('/');
             }
         }
+
         LocalImages = Directory.GetFiles(DownloadClassInstance.Root_Dir + DownloadClassInstance.items[DownloadClassInstance.CurrentItem].Dir);
         bool IsImageFound = false;
+
         if (LocalImages.Length > 0)
         {
             for (int i = 0; i < LocalImages.Length; i++)
@@ -203,8 +209,7 @@ public class MainCharacterCache : MonoBehaviour
                 {
                     www = UnityWebRequestTexture.GetTexture(main_character_instance.cloths[DownloadClassInstance.DownloadCounter].cloth_icon);
                 }
-                
-            }           
+            }
         }
         yield return www.SendWebRequest();
 
@@ -249,13 +254,13 @@ ImageURL_Array[ImageURL_Array.Length - 1], www.downloadHandler.data);
         }
         else
         {
-            if(DownloadClassInstance.items[DownloadClassInstance.CurrentItem].sub_item_length>1)
+            if (DownloadClassInstance.items[DownloadClassInstance.CurrentItem].sub_item_length > 1)
             {
                 DownloadClassInstance.items[DownloadClassInstance.CurrentItem].current_sub_item++;
-                if (DownloadClassInstance.items[DownloadClassInstance.CurrentItem].current_sub_item<
+                if (DownloadClassInstance.items[DownloadClassInstance.CurrentItem].current_sub_item <
                     DownloadClassInstance.items[DownloadClassInstance.CurrentItem].sub_item_length)
                 {
-                    DownloadClassInstance.DownloadCounter=0;
+                    DownloadClassInstance.DownloadCounter = 0;
                     StartCoroutine(DownloadMainCharacterImagesCo());
                 }
             }

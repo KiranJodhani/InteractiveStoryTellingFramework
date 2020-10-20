@@ -4769,8 +4769,13 @@ MonoBehaviour:
     body: []
     cloths: []
     accessories:
-      skin_tones_lipsticks: []
       earrings: []
+      tattoos: []
+      glasses: []
+      skin_tones_lipsticks: []
+    eyes:
+      basic_eyes: []
+      rolling_eyes: []
   DownloadClassInstance:
     CurrentItem: 0
     DownloadCounter: 0
@@ -4819,19 +4824,34 @@ MonoBehaviour:
     body:
     - body_color: 1
       body_image: https://i.imgur.com/TRuX05J.png
+      body_icon: https://i.imgur.com/lIbOEX4.png
       body_sprite: {fileID: 0}
+      body_icon_sprite: {fileID: 0}
+      price: 0
     - body_color: 2
       body_image: https://i.imgur.com/TAa6Wk3.png
+      body_icon: https://i.imgur.com/fehnOyz.png
       body_sprite: {fileID: 0}
+      body_icon_sprite: {fileID: 0}
+      price: 0
     - body_color: 3
       body_image: https://i.imgur.com/JvzKGqG.png
+      body_icon: https://i.imgur.com/fdWbu0k.png
       body_sprite: {fileID: 0}
+      body_icon_sprite: {fileID: 0}
+      price: 0
     - body_color: 4
       body_image: https://i.imgur.com/zyRPKT1.png
+      body_icon: https://i.imgur.com/3lBnU8W.png
       body_sprite: {fileID: 0}
+      body_icon_sprite: {fileID: 0}
+      price: 0
     - body_color: 5
       body_image: https://i.imgur.com/2l25PAh.png
+      body_icon: https://i.imgur.com/xlSpain.png
       body_sprite: {fileID: 0}
+      body_icon_sprite: {fileID: 0}
+      price: 0
     cloths:
     - cloth_name: 1
       cloth_image: https://i.imgur.com/H0lI8vj.png
@@ -4864,6 +4884,57 @@ MonoBehaviour:
       cloth_icon_sprite: {fileID: 0}
       price: 43
     accessories:
+      earrings:
+      - earring_name: 1
+        earring_image: https://i.imgur.com/bcOAQ50.png
+        earring_icon: https://i.imgur.com/yPloqDZ.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 0
+      - earring_name: 2
+        earring_image: https://i.imgur.com/ezJWIYL.png
+        earring_icon: https://i.imgur.com/t23A8u7.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 20
+      - earring_name: 3
+        earring_image: https://i.imgur.com/lQlFP2X.png
+        earring_icon: https://i.imgur.com/92yvArc.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 40
+      - earring_name: 4
+        earring_image: https://i.imgur.com/7ifHGIb.png
+        earring_icon: https://i.imgur.com/GtdWWdw.png
+        earring_sprite: {fileID: 0}
+        earring_icon_sprite: {fileID: 0}
+        price: 30
+      tattoos:
+      - tattoo_name: tattoo-1
+        tattoo_image: https://i.imgur.com/Z3pOKOE.png
+        tattoo_icon: https://i.imgur.com/nS71qap.png
+        tattoo_sprite: {fileID: 0}
+        tattoo_icon_sprite: {fileID: 0}
+        price: 0
+      - tattoo_name: tattoo-2
+        tattoo_image: https://i.imgur.com/Opj4usO.png
+        tattoo_icon: https://i.imgur.com/rZH88sl.png
+        tattoo_sprite: {fileID: 0}
+        tattoo_icon_sprite: {fileID: 0}
+        price: 0
+      glasses:
+      - glasses_name: glasses-1
+        glasses_image: https://i.imgur.com/M23MByf.png
+        glasses_icon: https://i.imgur.com/SfIbtdJ.png
+        glasses_sprite: {fileID: 0}
+        glasses_icon_sprite: {fileID: 0}
+        price: 0
+      - glasses_name: glasses-2
+        glasses_image: https://i.imgur.com/fufaHu8.png
+        glasses_icon: https://i.imgur.com/dSlgxJF.png
+        glasses_sprite: {fileID: 0}
+        glasses_icon_sprite: {fileID: 0}
+        price: 0
       skin_tones_lipsticks:
       - skin_color: 1
         lipsticks:
@@ -5225,31 +5296,93 @@ MonoBehaviour:
           - emotion_name: wink
             emotion_image: https://i.imgur.com/B1nRbqG.png
             emotion_image_sprite: {fileID: 0}
-      earrings:
-      - earring_name: 1
-        earring_image: https://i.imgur.com/bcOAQ50.png
-        earring_icon: https://i.imgur.com/yPloqDZ.png
-        earring_sprite: {fileID: 0}
-        earring_icon_sprite: {fileID: 0}
+    eyes:
+      basic_eyes:
+      - eyecolor_name: yellow
+        eye_image: https://i.imgur.com/9dyMoWu.png
+        eye_icon: https://i.imgur.com/H9oWIeu.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
         price: 0
-      - earring_name: 2
-        earring_image: https://i.imgur.com/ezJWIYL.png
-        earring_icon: https://i.imgur.com/t23A8u7.png
-        earring_sprite: {fileID: 0}
-        earring_icon_sprite: {fileID: 0}
-        price: 20
-      - earring_name: 3
-        earring_image: https://i.imgur.com/lQlFP2X.png
-        earring_icon: https://i.imgur.com/92yvArc.png
-        earring_sprite: {fileID: 0}
-        earring_icon_sprite: {fileID: 0}
-        price: 40
-      - earring_name: 4
-        earring_image: https://i.imgur.com/7ifHGIb.png
-        earring_icon: https://i.imgur.com/GtdWWdw.png
-        earring_sprite: {fileID: 0}
-        earring_icon_sprite: {fileID: 0}
-        price: 30
+      - eyecolor_name: violet
+        eye_image: https://i.imgur.com/9GGPnBs.png
+        eye_icon: https://i.imgur.com/Qv3L64p.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: blue
+        eye_image: https://i.imgur.com/QnlfAhj.png
+        eye_icon: https://i.imgur.com/O8v5M1E.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: gray
+        eye_image: https://i.imgur.com/lh5zOqm.png
+        eye_icon: https://i.imgur.com/3fLDAqB.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: brown
+        eye_image: https://i.imgur.com/VT4QtJn.png
+        eye_icon: https://i.imgur.com/vhUlrZs.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: green
+        eye_image: https://i.imgur.com/c0WmJGV.png
+        eye_icon: https://i.imgur.com/AU1OxOL.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: dark blue
+        eye_image: https://i.imgur.com/iTa8SXP.png
+        eye_icon: https://i.imgur.com/8DVMfvo.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      rolling_eyes:
+      - eyecolor_name: yellow
+        eye_image: https://i.imgur.com/F0OFDsv.png
+        eye_icon: https://i.imgur.com/H9oWIeu.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: violet
+        eye_image: https://i.imgur.com/B8KyWqY.png
+        eye_icon: https://i.imgur.com/Qv3L64p.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: blue
+        eye_image: https://i.imgur.com/hroUTfb.png
+        eye_icon: https://i.imgur.com/O8v5M1E.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: gray
+        eye_image: https://i.imgur.com/q7AIlF7.png
+        eye_icon: https://i.imgur.com/3fLDAqB.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: brown
+        eye_image: https://i.imgur.com/rujiNl2.png
+        eye_icon: https://i.imgur.com/vhUlrZs.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: green
+        eye_image: https://i.imgur.com/GoqBY55.png
+        eye_icon: https://i.imgur.com/AU1OxOL.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
+      - eyecolor_name: dark blue
+        eye_image: https://i.imgur.com/emoPtoG.png
+        eye_icon: https://i.imgur.com/8DVMfvo.png
+        eye_sprite: {fileID: 0}
+        eye_icon_sprite: {fileID: 0}
+        price: 0
 --- !u!4 &2046147482
 Transform:
   m_ObjectHideFlags: 0
