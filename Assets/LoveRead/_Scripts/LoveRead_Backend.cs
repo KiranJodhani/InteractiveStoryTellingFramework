@@ -56,6 +56,7 @@ public class LoveRead_Backend : MonoBehaviour
     public readonly static string ScreenType_Choice = "choice";
     public readonly static string ScreenType_Action = "action";
     public static int ChapterX_LastScreen = 0;
+    public static int ChapterX_LastScene = 0;
 
 
 }
@@ -366,7 +367,6 @@ public class Chapter
 {
     public string chapter_name;
     public ChapterScene[] ChapterScene_Instance;
-    public other_character[] other_Characters;
 }
 
 [Serializable]

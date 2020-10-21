@@ -117,7 +117,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject MainCharacter;
     public GameObject OtherCharacter;
     public GameObject[] ScreensTypes;  // 0 narration,1 mc_speaking,2 oc_speaking,3 mc_thinking,4 oc_thinking,5 choice,5 action
-
+    public GameObject CurrentScreenTmp;
     void Start()
     {
         //print(JsonUtility.ToJson(ChapterInstance));
@@ -324,9 +324,9 @@ public class MainMenuManager : MonoBehaviour
     public void ApplySelectedSkinColor(int SkinColorIndex)
     {
         LoveRead_Backend.SelectedSkinColor = SkinColorIndex;
-        Sprite FaceSprite = MainCharacterInstance.MainCharacterFaceInstance[SkinColorIndex].MainCharacterLipstickInstance[0].FaceSprite[3];
+        Sprite FaceSprite = MainCharacterInstance.MainCharacterFaceInstance[SkinColorIndex].MainCharacterLipstickInstance[0].emotions[3].emotion;
         MainCharacterInstance.Face.sprite = FaceSprite;
-        MainCharacterInstance.Body.sprite = MainCharacterInstance.MainCharacterBodyInstance[SkinColorIndex].BodySprite;
+        MainCharacterInstance.Body.sprite = MainCharacterInstance.MainCharacterBodyInstance[SkinColorIndex].body_sprite;
         MainCharacterInstance.HairStyleShadow.sprite =
             MainCharacterInstance.MainCharacterHairInstance[LoveRead_Backend.SelectedHairStyle].HairStyleShadowSprites[SkinColorIndex];
         int children = SkinColorScrollContent.childCount;
@@ -376,10 +376,10 @@ public class MainMenuManager : MonoBehaviour
         if (Type == LoveRead_Backend.Look_SkinColor)
         {
             confirmedItemsInstance.CategoriesInstance[0].ConfirmButton.SetActive(!confirmedItemsInstance.CategoriesInstance[0].IsConfirmed);
-            if (MainCharacterInstance.MainCharacterBodyInstance[LoveRead_Backend.SelectedSkinColor].Price > 0)
+            if (MainCharacterInstance.MainCharacterBodyInstance[LoveRead_Backend.SelectedSkinColor].price > 0)
             {
                 confirmedItemsInstance.CategoriesInstance[0].ConfirmButton.transform.GetChild(1).GetChild(1).transform.GetComponent<TextMeshProUGUI>().text =
-                    MainCharacterInstance.MainCharacterBodyInstance[LoveRead_Backend.SelectedSkinColor].Price.ToString();
+                    MainCharacterInstance.MainCharacterBodyInstance[LoveRead_Backend.SelectedSkinColor].price.ToString();
                 confirmedItemsInstance.CategoriesInstance[0].ConfirmButton.transform.GetChild(1).gameObject.SetActive(true);
             }
             else
@@ -718,7 +718,7 @@ public class MainMenuManager : MonoBehaviour
 
         MainCharacterInstance.Face.sprite =
             MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
-            .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].FaceSprite[3];
+            .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions[3].emotion;
 
         int children = LipsticksScrollContent.childCount;
         for (int i = 0; i < children; i++)
@@ -1001,7 +1001,7 @@ public class MainMenuManager : MonoBehaviour
     {
         for (int i = 0; i < Purchased_Data_Instance.purchased_skintone.Count; i++)
         {
-            MainCharacterInstance.MainCharacterBodyInstance[Purchased_Data_Instance.purchased_skintone[i]].Price = 0;
+            MainCharacterInstance.MainCharacterBodyInstance[Purchased_Data_Instance.purchased_skintone[i]].price = 0;
         }
 
         for (int i = 0; i < Purchased_Data_Instance.Purchased_eyeColor.Count; i++)
@@ -1102,6 +1102,7 @@ public class MainMenuManager : MonoBehaviour
     /************* CHAPTER STARTS ************/
     public void OpenChapter()
     {
+        //Manage scene background
         HideAllScreens();
         MainCharacterInstance.InGame_HairStyle.sprite = MainCharacterInstance.HairStyle.sprite;
         MainCharacterInstance.InGame_Body.sprite = MainCharacterInstance.Body.sprite;
@@ -1116,6 +1117,58 @@ public class MainMenuManager : MonoBehaviour
         MainCharacterInstance.InGame_Cloth.sprite = MainCharacterInstance.Cloth.sprite;
         MainCharacterInstance.InGame_HairStyle.sprite = MainCharacterInstance.HairStyle.sprite;
         ChapterScreen.SetActive(true);
+        ShowChapterScreen();
+    }
+
+    public void ShowChapterScreen()
+    {
+        MainCharacter.SetActive(false);
+        OtherCharacter.SetActive(false);
+        for(int i = 0; i < ScreensTypes.Length;i++)
+        {
+            ScreensTypes[i].SetActive(false);
+        }
+
+        string ScreenTypeTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScene].screenType;
+        
+        if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Narration)
+        {
+            CurrentScreenTmp = ScreensTypes[0];
+            CurrentScreenTmp.SetActive(true);
+            CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text=
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScene].content;
+
+        }
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Speaking)
+        {
+            CurrentScreenTmp = ScreensTypes[1];
+            CurrentScreenTmp.SetActive(true);
+            MainCharacter.SetActive(true);
+            CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScene].content;
+
+        }
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Speaking)
+        {
+            CurrentScreenTmp = ScreensTypes[2];
+        }
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Thinking)
+        {
+            CurrentScreenTmp = ScreensTypes[3];
+        }
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Thinking)
+        {
+            CurrentScreenTmp = ScreensTypes[4];
+        }
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Choice)
+        {
+            CurrentScreenTmp = ScreensTypes[5];
+        }
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Action)
+        {
+            CurrentScreenTmp = ScreensTypes[6];
+        }
+
     }
 
     /************* CHAPTER ENDS ************/
@@ -1397,8 +1450,12 @@ public class MainCharacter
 [Serializable]
 public class MainCharacterBody
 {
-    public int Price;
-    public Sprite BodySprite;
+    public string body_color;
+    public string body_image;
+    public string body_icon;
+    public Sprite body_sprite;
+    public Sprite body_icon_sprite;
+    public int price;
 }
 
 [Serializable]
@@ -1445,8 +1502,16 @@ public class MainCharacterEye
 public class MainCharacterLipstick
 {
     public string LipstickName;
-    public Sprite[] FaceSprite;
+    public MainCharacterEmotion[] emotions;
 }
+
+[Serializable]
+public class MainCharacterEmotion
+{
+    public string emotion_name;
+    public Sprite emotion;
+}
+
 
 [Serializable]
 public class LipstickPrice
