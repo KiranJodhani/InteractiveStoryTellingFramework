@@ -191,10 +191,10 @@ public class main_character
 {
     public string code;
     public main_character_body[] body;
-    //public main_character_hair[] hair;
-    //public main_character_look look;
     public main_character_cloth[] cloths;
     public main_character_accessories accessories;
+    public main_character_eyes eyes;
+    //public main_character_hair[] hair;
 }
 
 [Serializable]
@@ -202,50 +202,10 @@ public class main_character_body
 {
     public string body_color;
     public string body_image;
+    public string body_icon;
     public Sprite body_sprite;
-}
-
-[Serializable]
-public class main_character_look
-{
-    public main_character_look_skintone[] mc_look_skintone;
-    public main_character_look_eyeColor[] mc_look_eyetone;
-}
-
-[Serializable]
-public class main_character_look_skintone
-{
-    public string skintone_name;
-    public string body_image;
-    public string color_icon;
-    public main_character_lipstick[] lipsticks;
-}
-
-[Serializable]
-public class main_character_lipstick
-{
-    public string lipstick_name;
-    public string[] lipstick_images;
-    public string[] lipstick_icons;
-}
-
-[Serializable]
-public class main_character_look_eyeColor
-{
-    public string eyecolor_name;
-    public string eye_image;
-    public string eye_icon;
-}
-
-[Serializable]
-public class main_character_hair
-{
-    public string hair_name;
-    public string[] hairstyle_back_images;
-    public string[] hairstyle_shadow_images;
-    public string[] hairstyle_images;
-    public string[] hairstyle_color_icons;
-    public string[] hairstyle_icons;
+    public Sprite body_icon_sprite;
+    public int price;
 }
 
 [Serializable]
@@ -262,8 +222,10 @@ public class main_character_cloth
 [Serializable]
 public class main_character_accessories
 {
-    public skin_tones[] skin_tones_lipsticks;
     public earring[] earrings;
+    public tattoo[] tattoos;
+    public eye_glasses[] glasses;
+    public lipstick_skin_tones[] skin_tones_lipsticks;
 }
 
 [Serializable]
@@ -278,7 +240,29 @@ public class earring
 }
 
 [Serializable]
-public class skin_tones
+public class tattoo
+{
+    public string tattoo_name;
+    public string tattoo_image;
+    public string tattoo_icon;
+    public Sprite tattoo_sprite;
+    public Sprite tattoo_icon_sprite;
+    public int price;
+}
+
+[Serializable]
+public class eye_glasses
+{
+    public string glasses_name;
+    public string glasses_image;
+    public string glasses_icon;
+    public Sprite glasses_sprite;
+    public Sprite glasses_icon_sprite;
+    public int price;
+}
+
+[Serializable]
+public class lipstick_skin_tones
 {
     public string skin_color;
     public lipstick[] lipsticks;
@@ -300,6 +284,46 @@ public class emotion
     public string emotion_name;
     public string emotion_image;
     public Sprite emotion_image_sprite;
+}
+
+[Serializable]
+public class main_character_eyes
+{
+    public basic_eyes[] basic_eyes;
+    public rolling_eyes[] rolling_eyes;
+}
+
+[Serializable]
+public class basic_eyes
+{
+    public string eyecolor_name;
+    public string eye_image;
+    public string eye_icon;
+    public Sprite eye_sprite;
+    public Sprite eye_icon_sprite;
+    public int price;
+}
+
+[Serializable]
+public class rolling_eyes
+{
+    public string eyecolor_name;
+    public string eye_image;
+    public string eye_icon;
+    public Sprite eye_sprite;
+    public Sprite eye_icon_sprite;
+    public int price;
+}
+
+[Serializable]
+public class main_character_hair
+{
+    public string hair_name;
+    public string[] hairstyle_back_images;
+    public string[] hairstyle_shadow_images;
+    public string[] hairstyle_images;
+    public string[] hairstyle_color_icons;
+    public string[] hairstyle_icons;
 }
 
 /********** MAIN CHARACTER ENDS API **********/
