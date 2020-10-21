@@ -1,4 +1,13 @@
-﻿
+﻿>>Adding option for other character placement
+>>Adding object of other character in serialized class
+>>Importing Bale character and referencing it to the chapter class
+>>Creating array of body and emotions for each other character
+>>Removing unwanted variables from script
+>>Adding screens of content in chapter
+>>Adjusting other character position and scale
+>>Defining required variable to start executing chapter
+>>Adding last screen of X chapter
+
 1. Chapter algorithm
 
 2. Caching main character body image

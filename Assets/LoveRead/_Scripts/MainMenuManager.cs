@@ -114,12 +114,13 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("##### CHAPTER CONTENTS #####")]
     public Chapter ChapterInstance;
-    public TextMeshProUGUI MC_NameText;
-    public TextMeshProUGUI MC_SpeakingText;
-    
+    public GameObject MainCharacter;
+    public GameObject OtherCharacter;
+    public GameObject[] ScreensTypes;  // 0 narration,1 mc_speaking,2 oc_speaking,3 mc_thinking,4 oc_thinking,5 choice,5 action
+
     void Start()
     {
-        print(JsonUtility.ToJson(ChapterInstance));
+        //print(JsonUtility.ToJson(ChapterInstance));
         HideAllScreens();
         OpenMainCharacterScreen(2);
         //OpenStorySelectionScreen();

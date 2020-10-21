@@ -47,7 +47,7 @@ public class LoveRead_Backend : MonoBehaviour
     //***********  SHOP *************
     public readonly static string PURCHASED_DATA_KEY = "PURCHASED_DATA_KEY";
 
-    //***********  CUSTOMISATION *************
+    //***********  CHAPTER *************
     public readonly static string ScreenType_Narration = "narration";
     public readonly static string ScreenType_MC_Speaking = "mc_speaking";
     public readonly static string ScreenType_OC_Speaking = "oc_speaking";
@@ -55,6 +55,7 @@ public class LoveRead_Backend : MonoBehaviour
     public readonly static string ScreenType_OC_Thinking = "oc_thinking";
     public readonly static string ScreenType_Choice = "choice";
     public readonly static string ScreenType_Action = "action";
+    public static int ChapterX_LastScreen = 0;
 
 
 }
@@ -320,7 +321,6 @@ public class purchased_data
     public List<int> Purchased_earrings = new List<int>();
     public List<int> Purchased_glasses = new List<int>();
     public List<int> Purchased_tattoos = new List<int>();
-
 }
 
 [Serializable]
@@ -342,6 +342,7 @@ public class Chapter
 {
     public string chapter_name;
     public ChapterScene[] ChapterScene_Instance;
+    public other_character[] other_Characters;
 }
 
 [Serializable]
@@ -358,9 +359,33 @@ public class ChapterSceneScreen
     public string character_name;
     public string content;
     public string emotion;
+    public string oc_body_type;  // 0 with cloth , 1 naked
     public choiceScreen choiceScreen;
     public actionScreen actionScreen;
 }
+
+[Serializable]
+public class other_character
+{
+    public string name;
+    public other_character_bodies[] bodies;
+    public other_character_emotion[] emotions;
+}
+
+[Serializable]
+public class other_character_bodies
+{
+    public string body_image;
+    public Sprite body_sprite;
+}
+
+[Serializable]
+public class other_character_emotion
+{
+    public string emotion_image;
+    public Sprite emotion_sprite;
+}
+
 
 [Serializable]
 public class choiceScreen
