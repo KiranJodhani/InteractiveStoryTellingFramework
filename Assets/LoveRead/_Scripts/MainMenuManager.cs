@@ -1129,14 +1129,14 @@ public class MainMenuManager : MonoBehaviour
             ScreensTypes[i].SetActive(false);
         }
 
-        string ScreenTypeTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScene].screenType;
+        string ScreenTypeTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].screenType;
         
         if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Narration)
         {
             CurrentScreenTmp = ScreensTypes[0];
             CurrentScreenTmp.SetActive(true);
             CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text=
-                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScene].content;
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].content;
 
         }
         else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Speaking)
@@ -1145,16 +1145,87 @@ public class MainMenuManager : MonoBehaviour
             CurrentScreenTmp.SetActive(true);
             MainCharacter.SetActive(true);
             CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
-                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScene].content;
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].content;
+            string EmotionTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].emotion;
+            int LengthTmp = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions.Length;
+            for (int i = 0; i < LengthTmp;i++)
+            {
+                if(MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions[i].emotion_name==EmotionTmp)
+                {
+                    MainCharacterInstance.InGame_Face.sprite = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                        .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions[i].emotion;
+                    break;
+                }
+            }
 
         }
         else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Speaking)
         {
             CurrentScreenTmp = ScreensTypes[2];
+            CurrentScreenTmp.SetActive(true);
+            OtherCharacter.SetActive(true);
+            CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].content;
+
+            string EmotionTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].emotion;
+            string OC_BodyTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].oc_body_type;
+
+            int OC_Index = 0;
+            
+            for (int i = 0; i < OtherCharacterCache.Instance.other_Characters.Length;i++)
+            {
+                if(OtherCharacterCache.Instance.other_Characters[i].id.ToLower()==ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].character_id.ToLower())
+                {
+                    OC_Index = i;
+                    break;
+                }
+            }
+
+            int EmotionLengthTmp = OtherCharacterCache.Instance.other_Characters[OC_Index].emotions.Length;
+            for (int i = 0; i < EmotionLengthTmp; i++)
+            {
+                if (OtherCharacterCache.Instance.other_Characters[OC_Index].emotions[i].emotion_name.ToLower() == EmotionTmp.ToLower())
+                {
+                    OtherCharacter.transform.GetChild(1).GetChild(0).GetComponent<Image>().sprite =
+                        OtherCharacterCache.Instance.other_Characters[OC_Index].emotions[i].emotion_sprite;
+                    break;
+                }
+            }
+
+            int OC_BodyLengthTmp = OtherCharacterCache.Instance.other_Characters[OC_Index].bodies.Length;
+
+            for (int i = 0; i < OC_BodyLengthTmp; i++)
+            {
+                if (OtherCharacterCache.Instance.other_Characters[OC_Index].bodies[i].body_id.ToLower() == OC_BodyTmp.ToLower())
+                {
+                    OtherCharacter.transform.GetChild(1).GetChild(1).GetComponent<Image>().sprite =
+                        OtherCharacterCache.Instance.other_Characters[OC_Index].bodies[i].body_sprite;
+                    break;
+                }
+            }
         }
         else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Thinking)
         {
             CurrentScreenTmp = ScreensTypes[3];
+            CurrentScreenTmp.SetActive(true);
+            MainCharacter.SetActive(true);
+            CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].content;
+            string EmotionTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].emotion;
+            int LengthTmp = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions.Length;
+            for (int i = 0; i < LengthTmp; i++)
+            {
+                if (MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions[i].emotion_name == EmotionTmp)
+                {
+                    MainCharacterInstance.InGame_Face.sprite = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                        .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions[i].emotion;
+                    break;
+                }
+            }
         }
         else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Thinking)
         {
@@ -1168,7 +1239,7 @@ public class MainMenuManager : MonoBehaviour
         {
             CurrentScreenTmp = ScreensTypes[6];
         }
-
+        LoveRead_Backend.ChapterX_LastScreen++;
     }
 
     /************* CHAPTER ENDS ************/

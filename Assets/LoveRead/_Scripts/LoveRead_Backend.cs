@@ -381,6 +381,7 @@ public class ChapterSceneScreen
 {
     public string screenType;
     public string character_name;
+    public string character_id;
     public string content;
     public string emotion;
     public string oc_body_type;  // 0 with cloth , 1 naked
@@ -392,6 +393,7 @@ public class ChapterSceneScreen
 public class other_character
 {
     public string name;
+    public string id;
     public other_character_bodies[] bodies;
     public other_character_emotion[] emotions;
 }
@@ -399,6 +401,7 @@ public class other_character
 [Serializable]
 public class other_character_bodies
 {
+    public string body_id;
     public string body_image;
     public Sprite body_sprite;
 }
@@ -406,6 +409,7 @@ public class other_character_bodies
 [Serializable]
 public class other_character_emotion
 {
+    public string emotion_name;
     public string emotion_image;
     public Sprite emotion_sprite;
 }

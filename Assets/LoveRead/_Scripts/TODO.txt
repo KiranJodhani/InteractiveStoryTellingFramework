@@ -1,11 +1,8 @@
-﻿21-Oct
-Love Read - 2 hour
->>Updating main character class body and face instance 
->>Referencing lipsticks for first body type
+﻿29 Oct 2020 2 hours
+>>Reading chapter document for understanding of action screen
+>>Creating sample action screen and adding basic assets
+>>Creating grid view for actions
 
->>Implementing initial version for showing chapter screen
->>Adding validation as per the screen type
->>Finding suitable way of input for the next screen type of chapter
 
 1. Chapter algorithm
 

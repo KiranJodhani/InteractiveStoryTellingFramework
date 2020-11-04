@@ -6,6 +6,13 @@ public class OtherCharacterCache : MonoBehaviour
 {
     public other_character[] other_Characters;
 
+
+    public static OtherCharacterCache Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         
