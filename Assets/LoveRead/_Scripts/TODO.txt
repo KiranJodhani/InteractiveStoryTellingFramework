@@ -1,9 +1,14 @@
-﻿29 Oct 2020 2 hours
->>Reading chapter document for understanding of action screen
->>Creating sample action screen and adding basic assets
->>Creating grid view for actions
+﻿>>Updating choice screen to allow interaction with option
+>>Importing reference character image and converting into sprite
+>>Updating main character and other character layout
+>>Spawining number of game object based on the avaialble option
+>>Managing price field for each option
+>>Adding option text,price and target screen number for each option
+>>Creatig basic set up for action screen
 
+TODO
 
+Saving of paid option once purchased
 1. Chapter algorithm
 
 2. Caching main character body image

@@ -118,6 +118,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject OtherCharacter;
     public GameObject[] ScreensTypes;  // 0 narration,1 mc_speaking,2 oc_speaking,3 mc_thinking,4 oc_thinking,5 choice,5 action
     public GameObject CurrentScreenTmp;
+    public int CurrentScreenNumber;
     void Start()
     {
         //print(JsonUtility.ToJson(ChapterInstance));
@@ -1139,9 +1140,19 @@ public class MainMenuManager : MonoBehaviour
                 ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].content;
 
         }
-        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Speaking)
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Speaking || ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Thinking)
         {
             CurrentScreenTmp = ScreensTypes[1];
+            if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Speaking)
+            {
+                CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Italic;
+            }
+            else
+            if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Speaking)
+            {
+                CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
+            }
+
             CurrentScreenTmp.SetActive(true);
             MainCharacter.SetActive(true);
             CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
@@ -1161,8 +1172,18 @@ public class MainMenuManager : MonoBehaviour
             }
 
         }
-        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Speaking)
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Speaking || ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Thinking)
         {
+            if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Speaking)
+            {
+                CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
+            }
+            else
+            if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Thinking)
+            {
+                CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Italic;
+            }
+
             CurrentScreenTmp = ScreensTypes[2];
             CurrentScreenTmp.SetActive(true);
             OtherCharacter.SetActive(true);
@@ -1206,13 +1227,14 @@ public class MainMenuManager : MonoBehaviour
                 }
             }
         }
-        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_MC_Thinking)
+        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Choice)
         {
-            CurrentScreenTmp = ScreensTypes[3];
+            CurrentScreenTmp = ScreensTypes[5];
             CurrentScreenTmp.SetActive(true);
             MainCharacter.SetActive(true);
             CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
-                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].content;
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceText;
             string EmotionTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].emotion;
             int LengthTmp = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
                 .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions.Length;
@@ -1226,22 +1248,57 @@ public class MainMenuManager : MonoBehaviour
                     break;
                 }
             }
-        }
-        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_OC_Thinking)
-        {
-            CurrentScreenTmp = ScreensTypes[4];
-        }
-        else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Choice)
-        {
-            CurrentScreenTmp = ScreensTypes[5];
+
+            int Options = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions.Length;
+
+            //Clear old options if any
+            foreach(Transform OptionElement in CurrentScreenTmp.transform.GetChild(2))
+            {
+                if(OptionElement.gameObject.activeSelf)
+                {
+                    Destroy(OptionElement.gameObject);
+                }
+            }
+            for(int j = 0; j < Options;j++)
+            {
+                GameObject Tmp = Instantiate(CurrentScreenTmp.transform.GetChild(2).GetChild(0).gameObject,
+                    CurrentScreenTmp.transform.GetChild(2).transform);
+                int Price = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].price;
+
+                if(Price>0)
+                {
+                    Tmp.transform.GetChild(1).gameObject.SetActive(true);
+                    Tmp.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = Price.ToString();
+                }
+
+                Tmp.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                    ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].optionText;
+
+                string TargetScreenNumber = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].targetScreenNumber.ToString();
+                Tmp.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>OnOptionButtonClicked(TargetScreenNumber));
+                Tmp.SetActive(true);
+
+            }
         }
         else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Action)
         {
             CurrentScreenTmp = ScreensTypes[6];
         }
+        CurrentScreenNumber = LoveRead_Backend.ChapterX_LastScreen;
         LoveRead_Backend.ChapterX_LastScreen++;
+        
     }
 
+
+    public void OnOptionButtonClicked(string Index)
+    {
+        LoveRead_Backend.ChapterX_LastScreen = int.Parse(Index);
+        ShowChapterScreen();
+    }
     /************* CHAPTER ENDS ************/
     /******************************************/
 
