@@ -1287,12 +1287,54 @@ public class MainMenuManager : MonoBehaviour
         else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Action)
         {
             CurrentScreenTmp = ScreensTypes[6];
+            CurrentScreenTmp.SetActive(true);
+            MainCharacter.SetActive(true);
+            CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].actionScreen.actionText;
+            string EmotionTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].emotion;
+            int LengthTmp = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions.Length;
+            for (int i = 0; i < LengthTmp; i++)
+            {
+                if (MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions[i].emotion_name == EmotionTmp)
+                {
+                    MainCharacterInstance.InGame_Face.sprite = MainCharacterInstance.MainCharacterFaceInstance[LoveRead_Backend.SelectedSkinColor]
+                        .MainCharacterLipstickInstance[LoveRead_Backend.SelectedLipstick].emotions[i].emotion;
+                    break;
+                }
+            }
+
+            CurrentScreenTmp.transform.GetChild(2).gameObject.SetActive(false);
+            CurrentScreenTmp.transform.GetChild(3).gameObject.SetActive(false);
+            CurrentScreenTmp.transform.GetChild(4).gameObject.SetActive(false);
+            CurrentScreenTmp.transform.GetChild(5).gameObject.SetActive(false);
+
+            int Options = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].actionScreen.actionScreenOptions.Length;
+
+            CurrentScreenTmp.transform.GetChild(Options + 1).gameObject.SetActive(true);
+
+
+            for (int j = 0; j < Options; j++)
+            {
+                CurrentScreenTmp.transform.GetChild(Options + 1).GetChild(j).GetChild(0).GetComponent<Image>().sprite=
+                    ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].actionScreen.actionScreenOptions[j].image_sprite;
+
+                string TargetScreenNumber = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].actionScreen.actionScreenOptions[j].targetScreenNumber.ToString();
+                CurrentScreenTmp.transform.GetChild(Options + 1).GetChild(j).transform.GetChild(2)
+                    .GetComponent<Button>().onClick.AddListener(() => OnOptionButtonClicked(TargetScreenNumber));
+            }
         }
         CurrentScreenNumber = LoveRead_Backend.ChapterX_LastScreen;
         LoveRead_Backend.ChapterX_LastScreen++;
         
     }
 
+    
 
     public void OnOptionButtonClicked(string Index)
     {

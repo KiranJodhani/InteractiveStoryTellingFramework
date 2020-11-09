@@ -442,6 +442,8 @@ public class actionScreenOptions
 {
     public string optionText;
     public int price;
+    public string image_url;
+    public Sprite image_sprite;
     public int targetScreenNumber;
 }
 /********** PURCHASED ITEMS ENDS *******/

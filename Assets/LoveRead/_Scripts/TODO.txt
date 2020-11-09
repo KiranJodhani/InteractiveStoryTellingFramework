@@ -1,10 +1,9 @@
-﻿>>Updating choice screen to allow interaction with option
->>Importing reference character image and converting into sprite
->>Updating main character and other character layout
->>Spawining number of game object based on the avaialble option
->>Managing price field for each option
->>Adding option text,price and target screen number for each option
->>Creatig basic set up for action screen
+﻿7-11-2020
+>>Creating screen variation based on number of item in action screen
+>>Analysis of required changes for the image of each option in action screen
+>>Updating action object's property for adding image URL and sprite
+>>Adding contraints on action screen for activating target screen
+>>Reseting old action screen data before showing current
 
 TODO
 
