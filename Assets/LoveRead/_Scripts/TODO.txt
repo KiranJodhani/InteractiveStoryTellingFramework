@@ -1,9 +1,10 @@
-﻿7-11-2020
->>Creating screen variation based on number of item in action screen
->>Analysis of required changes for the image of each option in action screen
->>Updating action object's property for adding image URL and sprite
->>Adding contraints on action screen for activating target screen
->>Reseting old action screen data before showing current
+﻿9-11-2020
+>>Updating action element placeemtn for 4 options
+>>Adding confirm button in each option screen
+>>Adding content size fitter to fit price and text in button
+>>Rearranging icons for avoiding cut from sides
+>>Changing circle bg to make white line thinner
+>>Checking list of chagnes for replacing placement of mc and oc
 
 TODO
 
