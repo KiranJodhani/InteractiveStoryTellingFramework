@@ -1105,7 +1105,7 @@ public class MainMenuManager : MonoBehaviour
     {
         //Manage scene background
         HideAllScreens();
-        MainCharacterInstance.InGame_HairStyle.sprite = MainCharacterInstance.HairStyle.sprite;
+        MainCharacterInstance.InGame_HairStyleBack.sprite = MainCharacterInstance.HairStyleBack.sprite;
         MainCharacterInstance.InGame_Body.sprite = MainCharacterInstance.Body.sprite;
         MainCharacterInstance.InGame_Eye.sprite = MainCharacterInstance.Eye.sprite;
         MainCharacterInstance.InGame_Earring.gameObject.SetActive(MainCharacterInstance.Earring.gameObject.activeSelf); 
