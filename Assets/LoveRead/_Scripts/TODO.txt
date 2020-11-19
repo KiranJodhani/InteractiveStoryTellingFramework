@@ -1,17 +1,24 @@
-﻿9-11-2020
->>Updating action element placeemtn for 4 options
->>Adding confirm button in each option screen
->>Adding content size fitter to fit price and text in button
->>Rearranging icons for avoiding cut from sides
->>Changing circle bg to make white line thinner
->>Checking list of chagnes for replacing placement of mc and oc
+﻿19-11-2020
+>>Updating action screen's inner image and circle size
+>>Maximising option element size to fit with screen size
+>>Updating font size for action screen
+>>Adding flow of selection option from action screen
+>>Adding color change effect when option is clicked
+>>Managing confirm button with price when action screen's option clicked
+>>Updating callback of choice screen option
+>>Adding available coin validation while clickin on option of choice screen
 
 TODO
+[19-11-2020] For caching chapter assets when chapter button clicked get it's json and download and cache
+[19-11-2020] navigation wardrobe from game play
+[19-11-2020] navigation from not enough coins >> go to store and back from there
+[19-11-2020] navigation from menu in chapter screen
 
 Saving of paid option once purchased
 1. Chapter algorithm
-
 2. Caching main character body image
+
+
 
 manage items which has mutliple url
 
