@@ -120,6 +120,8 @@ public class MainMenuManager : MonoBehaviour
     public GameObject CurrentScreenTmp;
     public int CurrentScreenNumber;
     public GameObject ActionScreen_Object;
+    public Color ActionNormalColor;
+    public Color ActionSelectedColor;
     void Start()
     {
         //print(JsonUtility.ToJson(ChapterInstance));
@@ -1314,7 +1316,7 @@ public class MainMenuManager : MonoBehaviour
                 CurrentScreenTmp.transform.GetChild(Options + 1).GetChild(i+1).GetChild(0).GetComponent<Image>().sprite =
                     ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
                  .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].actionScreen.actionScreenOptions[i].image_sprite;
-                CurrentScreenTmp.transform.GetChild(Options + 1).GetChild(i + 1).GetComponent<Image>().color = SubButtonNormalColor;
+                CurrentScreenTmp.transform.GetChild(Options + 1).GetChild(i + 1).GetComponent<Image>().color = ActionNormalColor;
             }
         }
         CurrentScreenNumber = LoveRead_Backend.ChapterX_LastScreen;
@@ -1358,11 +1360,11 @@ public class MainMenuManager : MonoBehaviour
         {
             if (i == Index+1)
             {
-                ActionScreen_Object.transform.GetChild(i).GetComponent<Image>().color = ScrollItemSelectedColor;
+                ActionScreen_Object.transform.GetChild(i).GetComponent<Image>().color = ActionSelectedColor;
             }
             else
             {
-                ActionScreen_Object.transform.GetChild(i).GetComponent<Image>().color = ScrollItemNormalColor;
+                ActionScreen_Object.transform.GetChild(i).GetComponent<Image>().color = ActionNormalColor;
             }
         }
 

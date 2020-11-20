@@ -87534,6 +87534,8 @@ MonoBehaviour:
   CurrentScreenTmp: {fileID: 0}
   CurrentScreenNumber: 0
   ActionScreen_Object: {fileID: 0}
+  ActionNormalColor: {r: 1, g: 0.9764706, b: 0.9764706, a: 1}
+  ActionSelectedColor: {r: 1, g: 0.38039216, b: 0.76862746, a: 1}
 --- !u!1 &2120467463
 GameObject:
   m_ObjectHideFlags: 0
