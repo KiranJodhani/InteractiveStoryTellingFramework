@@ -366,6 +366,7 @@ public class purchased_hair
 public class Chapter
 {
     public string chapter_name;
+    public string chapter_id;
     public ChapterScene[] ChapterScene_Instance;
 }
 
@@ -427,6 +428,7 @@ public class choiceScreenOptions
 {
     public string optionText;
     public int price;
+    public bool is_purchased;
     public int targetScreenNumber;
 }
 
@@ -442,9 +444,12 @@ public class actionScreenOptions
 {
     public string optionText;
     public int price;
+    public bool is_purchased;
     public string image_url;
     public Sprite image_sprite;
     public int targetScreenNumber;
 }
 /********** PURCHASED ITEMS ENDS *******/
 /**************************************/
+
+

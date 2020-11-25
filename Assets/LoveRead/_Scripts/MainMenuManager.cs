@@ -122,8 +122,12 @@ public class MainMenuManager : MonoBehaviour
     public GameObject ActionScreen_Object;
     public Color ActionNormalColor;
     public Color ActionSelectedColor;
+
+
+
     void Start()
     {
+
         //print(JsonUtility.ToJson(ChapterInstance));
         HideAllScreens();
         OpenMainCharacterScreen(2);
@@ -151,11 +155,11 @@ public class MainMenuManager : MonoBehaviour
         ScreenTransitionAnimation.GetComponent<Animator>().Play(panelFadeIn);
         StartCoroutine(ManageUI_Interaction());
     }
-    public void ToogleSettingMenu()
-    {
-        PlayScreenTransitionAnimation();
-        Invoke("SettingScreenToogle", 1);
-    }
+    //public void ToogleSettingMenu()
+    //{
+    //    PlayScreenTransitionAnimation();
+    //    Invoke("SettingScreenToogle", 1);
+    //}
 
     IEnumerator ManageUI_Interaction()
     {
@@ -173,6 +177,35 @@ public class MainMenuManager : MonoBehaviour
         //    MainCharacterScreen.SetActive(true);
         //}
     }
+
+    public void OpenSettingScreen()
+    {
+        PlayScreenTransitionAnimation();
+        ManageUI_Interaction();
+        StartCoroutine(OpenSettingScreenCo());
+    }
+
+    IEnumerator OpenSettingScreenCo()
+    {
+        yield return new WaitForSeconds(1);
+        SettingScreen.SetActive(true);
+    }
+
+
+    public void CloseSettingScreen()
+    {
+        PlayScreenTransitionAnimation();
+        ManageUI_Interaction();
+        StartCoroutine(CloseSettingScreenCo());
+    }
+
+    IEnumerator CloseSettingScreenCo()
+    {
+        yield return new WaitForSeconds(1);
+        SettingScreen.SetActive(false);
+    }
+
+
 
     public void OpenFreeDiamondPopup()
     {
@@ -1087,10 +1120,10 @@ public class MainMenuManager : MonoBehaviour
     public void GoToMainGameScene()
     {
         PlayScreenTransitionAnimation();
-        StartCoroutine(GoToMainGameSceneDelayed());
+        StartCoroutine(GoToMainGameSceneCo());
     }
 
-    IEnumerator GoToMainGameSceneDelayed()
+    IEnumerator GoToMainGameSceneCo()
     {
         yield return new WaitForSeconds(1);
         HideAllScreens();
@@ -1121,6 +1154,7 @@ public class MainMenuManager : MonoBehaviour
         MainCharacterInstance.InGame_Cloth.sprite = MainCharacterInstance.Cloth.sprite;
         MainCharacterInstance.InGame_HairStyle.sprite = MainCharacterInstance.HairStyle.sprite;
         ChapterScreen.SetActive(true);
+        LastOpenedScreen = ChapterScreen;
         ShowChapterScreen();
     }
 
@@ -1294,7 +1328,7 @@ public class MainMenuManager : MonoBehaviour
         {
             CurrentScreenTmp = ScreensTypes[6];
             CurrentScreenTmp.SetActive(true);
-            MainCharacter.SetActive(true);
+            MainCharacter.SetActive(false);
             CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
                 ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].actionScreen.actionText;
@@ -1367,10 +1401,12 @@ public class MainMenuManager : MonoBehaviour
                 ActionScreen_Object.transform.GetChild(i).GetComponent<Image>().color = ActionNormalColor;
             }
         }
+        bool IsPurchased = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                   .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen - 1].actionScreen.actionScreenOptions[Index].is_purchased;
 
         ActionScreen_Option_Price = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
                    .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen-1].actionScreen.actionScreenOptions[Index].price;
-        if (ActionScreen_Option_Price > 0)
+        if (ActionScreen_Option_Price > 0 && !IsPurchased)
         {
             ActionScreen_Object.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
             ActionScreen_Object.transform.GetChild(0).GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text
@@ -1384,7 +1420,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void Confirm_ActionScreen_Option()
     {
-
         if (ActionScreen_Object.transform.GetChild(0).transform.GetChild(1).gameObject.activeSelf)
         {
             if (Purchased_Data_Instance.AvailableDiamonds >= ActionScreen_Option_Price)
@@ -1397,6 +1432,12 @@ public class MainMenuManager : MonoBehaviour
                  .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen-1].actionScreen.
                  actionScreenOptions[ActionScreen_Option_Index].targetScreenNumber;
 
+
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen - 1].actionScreen.
+                 actionScreenOptions[ActionScreen_Option_Index].is_purchased = true;
+
+                //Save chapter response locally and
                 LoveRead_Backend.ChapterX_LastScreen = ActionScreen_OptionTarget;
                 ShowChapterScreen();
                 //Manage purchased options of action screen
@@ -1434,8 +1475,8 @@ public class MainMenuManager : MonoBehaviour
     IEnumerator OpenShopMenuCo()
     {
         PlayScreenTransitionAnimation();
+        LastOpenedScreen = SettingScreen;
         yield return new WaitForSeconds(1f);
-        HideAllScreens();
         ShopScreen.SetActive(true);
     }
 
@@ -1448,12 +1489,7 @@ public class MainMenuManager : MonoBehaviour
     {
         PlayScreenTransitionAnimation();
         yield return new WaitForSeconds(1f);
-        HideAllScreens();
-        if(LastOpenedScreen)
-        {
-            LastOpenedScreen.SetActive(true);
-        }
-        //SettingScreen.SetActive(true);
+        ShopScreen.SetActive(false);
     }
 
 

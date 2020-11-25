@@ -1,18 +1,16 @@
-﻿19-11-2020
->>Updating action screen's inner image and circle size
->>Maximising option element size to fit with screen size
->>Updating font size for action screen
->>Adding flow of selection option from action screen
->>Adding color change effect when option is clicked
->>Managing confirm button with price when action screen's option clicked
->>Updating callback of choice screen option
->>Adding available coin validation while clickin on option of choice screen
+﻿23-11-2020
+>>Adding content text for action screen to show
+>>Analysing the flow for implementation of navigation from chapter screen
+>>Fixig menu button animation
+>>Removing unwanted events to simplify navigation
+>>Setting up chapter option layout
+
 
 TODO
-[19-11-2020] For caching chapter assets when chapter button clicked get it's json and download and cache
-[19-11-2020] navigation wardrobe from game play
-[19-11-2020] navigation from not enough coins >> go to store and back from there
-[19-11-2020] navigation from menu in chapter screen
+1. For caching chapter assets when chapter button clicked get it's json and download and cache
+2. navigation wardrobe from game play
+3. resume chapter
+4.Look index exception
 
 Saving of paid option once purchased
 1. Chapter algorithm
