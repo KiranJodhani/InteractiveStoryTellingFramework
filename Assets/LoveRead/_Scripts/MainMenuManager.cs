@@ -6,6 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -122,7 +123,7 @@ public class MainMenuManager : MonoBehaviour
     public GameObject ActionScreen_Object;
     public Color ActionNormalColor;
     public Color ActionSelectedColor;
-
+    public ModalWindowManager BuyDiamondsPopup;
 
 
     void Start()
@@ -326,6 +327,7 @@ public class MainMenuManager : MonoBehaviour
         EarringsScrollContent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         GlassesScrollContent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         TattoosScrollContent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+        
     }
 
     /************* LOOK START ************/
@@ -1269,7 +1271,9 @@ public class MainMenuManager : MonoBehaviour
             CurrentScreenTmp = ScreensTypes[5];
             CurrentScreenTmp.SetActive(true);
             MainCharacter.SetActive(true);
-            CurrentScreenTmp.transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text =
+            CurrentScreenTmp.transform.GetChild(3).gameObject.SetActive(false);
+            CurrentScreenTmp.transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
+            CurrentScreenTmp.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text =
                 ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceText;
             string EmotionTmp = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene].chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].emotion;
@@ -1286,42 +1290,62 @@ public class MainMenuManager : MonoBehaviour
                 }
             }
 
-            int Options = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
-                .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions.Length;
-
-            //Clear old options if any
-            foreach(Transform OptionElement in CurrentScreenTmp.transform.GetChild(2))
+            if (ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceType == LoveRead_Backend.ChoiceType_Normal ||
+                ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                    .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceType == LoveRead_Backend.ChoiceType_Game)
             {
-                if(OptionElement.gameObject.activeSelf)
+                int Options = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                    .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions.Length;
+
+                //Clear old options if any
+                foreach (Transform OptionElement in CurrentScreenTmp.transform.GetChild(2))
                 {
-                    Destroy(OptionElement.gameObject);
+                    if (OptionElement.gameObject.activeSelf)
+                    {
+                        Destroy(OptionElement.gameObject);
+                    }
+                }
+                for (int j = 0; j < Options; j++)
+                {
+                    GameObject Tmp = Instantiate(CurrentScreenTmp.transform.GetChild(2).GetChild(0).gameObject,
+                        CurrentScreenTmp.transform.GetChild(2).transform);
+                    int Price = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                     .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].price;
+
+                    if (Price > 0)
+                    {
+                        Tmp.transform.GetChild(1).gameObject.SetActive(true);
+                        Tmp.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = Price.ToString();
+                    }
+
+                    Tmp.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text =
+                        ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                     .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].optionText;
+
+                    string TargetScreenNumber = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                     .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].targetScreenNumber.ToString();
+
+                    string PriceString = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                     .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].price.ToString();
+
+                    Tmp.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(() => ChoiceScreen_Option(TargetScreenNumber, PriceString));
+                    Tmp.SetActive(true);
                 }
             }
-            for(int j = 0; j < Options;j++)
+            else if (ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                    .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceType == LoveRead_Backend.ChoiceType_Cloth)
             {
-                GameObject Tmp = Instantiate(CurrentScreenTmp.transform.GetChild(2).GetChild(0).gameObject,
-                    CurrentScreenTmp.transform.GetChild(2).transform);
-                int Price = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
-                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].price;
+                MainCharacter.SetActive(false);
+                LoveRead_Backend.ChapterX_LastScreen--;
+                CurrentScreenTmp.transform.GetChild(3).gameObject.SetActive(true);
+            }
 
-                if(Price>0)
-                {
-                    Tmp.transform.GetChild(1).gameObject.SetActive(true);
-                    Tmp.transform.GetChild(1).GetChild(1).GetComponent<TextMeshProUGUI>().text = Price.ToString();
-                }
 
-                Tmp.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text =
-                    ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
-                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].optionText;
-
-                string TargetScreenNumber = ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
-                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].targetScreenNumber.ToString();
-
-                string PriceString= ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
-                 .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceScreenOptions[j].price.ToString();
-
-                Tmp.transform.GetChild(2).GetComponent<Button>().onClick.AddListener(()=>ChoiceScreen_Option(TargetScreenNumber, PriceString));
-                Tmp.SetActive(true);
+           if (ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                    .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.choiceType == LoveRead_Backend.ChoiceType_Game)
+            {
+                CurrentScreenTmp.transform.GetChild(3).gameObject.SetActive(true);
             }
         }
         else if (ScreenTypeTmp == LoveRead_Backend.ScreenType_Action)
@@ -1357,6 +1381,7 @@ public class MainMenuManager : MonoBehaviour
         LoveRead_Backend.ChapterX_LastScreen++;
     }
 
+    
     public void ChoiceScreen_Option(string Index,string OptionPrice)
     {
         int ChoiceScreen_Option_Price = int.Parse(OptionPrice);
@@ -1382,6 +1407,38 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    public void GoToWardrobeFromChoice()
+    {
+        for(int i = 0; i < ClothesScrollContent.childCount;i++)
+        {
+            ClothesScrollContent.GetChild(i).gameObject.SetActive(false);
+        }
+        for (int i = 0; i < ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+        .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.clothe_id.Length; i++)
+        {
+            foreach(Transform ClothTemp in ClothesScrollContent)
+            {
+                if (ChapterInstance.ChapterScene_Instance[LoveRead_Backend.ChapterX_LastScene]
+                    .chapterSceneScreens[LoveRead_Backend.ChapterX_LastScreen].choiceScreen.clothe_id[i] == ClothTemp.name)
+                {
+
+                    ClothesScrollContent.GetChild(i).gameObject.SetActive(true);
+                }
+
+            }
+        }
+        ClothesScrollContent.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0.5f);
+        ClothesScrollContent.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0.5f);
+        ClothesScrollContent.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0.5f);
+        ClothesScrollContent.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+
+        OpenMainCharacterScreen(4);
+        Main_Cloth_Button();
+        confirmedItemsInstance.CategoriesInstance[0].IsConfirmed = true;
+        confirmedItemsInstance.CategoriesInstance[1].IsConfirmed = true;
+        SelectionButtonHolder.transform.GetChild(0).gameObject.SetActive(false);
+        LoveRead_Backend.ChapterX_LastScreen++;
+    }
     int ActionScreen_Option_Price=0;
     int ActionScreen_Option_Index = 0;
     public void ActionScreen_Option(int Index)
@@ -1648,10 +1705,10 @@ public class MainMenuManager : MonoBehaviour
 
     private void OpenNameScreen()
     {
-        StartCoroutine(OpenNameScreenCO());
+        StartCoroutine(OpenNameScreenCo());
     }
 
-    IEnumerator OpenNameScreenCO()
+    IEnumerator OpenNameScreenCo()
     {
         PlayScreenTransitionAnimation();
         yield return new WaitForSeconds(1f);
@@ -1688,10 +1745,32 @@ public class MainMenuManager : MonoBehaviour
         OpenMainCharacterScreen(2);
     }
 
+    public void ToggleChapterOptionMenu(Transform ChapterOptionsGroup)
+    {
+        Sequence s = DOTween.Sequence();
+        if(ChapterOptionsGroup.localEulerAngles.z>120)
+        {
+            s.Insert(0, ChapterOptionsGroup.DOLocalRotate(new Vector3(0, 0, 0), 1f).OnComplete(OnAnimationFinished));
+        }
+        else
+        {
+            s.Insert(0, ChapterOptionsGroup.DOLocalRotate(new Vector3(0, 0, 130), 1f).OnComplete(OnAnimationFinished));
+        }
+        EventSystem.SetActive(false);
+    }
 
+    void OnAnimationFinished()
+    {
+        EventSystem.SetActive(true);
+    }
+
+    public void OpenBuyDiamondPopup()
+    {
+        BuyDiamondsPopup.OpenWindow();
+    }
 
     /************* STORY/BOOK/CHAPTER ENDS ************/
-    /**********************************************************/
+    /**************************************************/
 }
 
 [Serializable]

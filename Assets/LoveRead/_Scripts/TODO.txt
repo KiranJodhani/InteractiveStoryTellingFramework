@@ -1,12 +1,23 @@
-﻿23-11-2020
->>Adding content text for action screen to show
->>Analysing the flow for implementation of navigation from chapter screen
->>Fixig menu button animation
->>Removing unwanted events to simplify navigation
->>Setting up chapter option layout
+﻿04-12-2020
+
+>>Checking flow of adding property to allow to go to wardrobe
+>>Understanding client thought for MC narration screen 
+>>Making changes in chapter algorithm
+
+
+>>Reviewing algorithm to add come back to the current screen
+>>Handling target screen to navigate from action screen to target screen
+>>Adding button to go to wardrobe from chapter
+>>Changing choice screen object to add property of game and cloth type
+>>Adding contraints to check choice type screen
+>>Implementing navigation from chapter to wardrobe from chapter screen
+>>Fixing screen number navigation when coming back from wardrobe
 
 
 TODO
+0. Choice type : Normal,cloth,Game
+Background for wardrobe
+Game type
 1. For caching chapter assets when chapter button clicked get it's json and download and cache
 2. navigation wardrobe from game play
 3. resume chapter

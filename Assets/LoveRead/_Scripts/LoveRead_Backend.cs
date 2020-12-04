@@ -54,6 +54,9 @@ public class LoveRead_Backend : MonoBehaviour
     public readonly static string ScreenType_MC_Thinking = "mc_thinking";
     public readonly static string ScreenType_OC_Thinking = "oc_thinking";
     public readonly static string ScreenType_Choice = "choice";
+    public readonly static string ChoiceType_Normal = "normal";
+    public readonly static string ChoiceType_Cloth = "clothes";
+    public readonly static string ChoiceType_Game = "game";
     public readonly static string ScreenType_Action = "action";
     public static int ChapterX_LastScreen = 0;
     public static int ChapterX_LastScene = 0;
@@ -420,7 +423,10 @@ public class other_character_emotion
 public class choiceScreen
 {
     public string choiceText;
+    public string choiceType;
+    public int timer;
     public choiceScreenOptions[] choiceScreenOptions;
+    public string[] clothe_id;
 }
 
 [Serializable]
